@@ -1,0 +1,9 @@
+{
+  "name": "ipremb-betim-site",
+  "version": "1.0.0",
+  "description": "Site institucional IPREMB - Instituto de Previdência Municipal de Betim MG",
+  "main": "index.html",
+  "keywords": ["ipremb", "betim", "previdencia", "rpps"],
+  "license": "MIT",
+  "files": ["*.html"]
+}
