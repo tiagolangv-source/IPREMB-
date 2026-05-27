@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviços — IPREMB</title>
+<meta name="description" content="Serviços do IPREMB — Acesse o Portal do Segurado, Contracheque, Informe de Rendimentos, Empréstimo Consignado e demais serviços do Instituto de Previdência Municipal de Betim.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: #F4F6FA;
+    color: #18243F;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  svg { flex-shrink: 0; }
+
+  /* ===== CSS VARIABLES ===== */
+  :root {
+    --blue-900: #091D45;
+    --blue-800: #0E2860;
+    --blue-700: #163880;
+    --blue-600: #1749C8;
+    --blue-500: #2058E0;
+    --blue-400: #4A7CF0;
+    --blue-100: #D6E4FF;
+    --blue-50:  #EBF2FF;
+    --gold:     #B8932A;
+    --gold-light: #D4AD52;
+    --white:    #FFFFFF;
+    --gray-50:  #F4F6FA;
+    --gray-100: #ECEEF4;
+    --gray-200: #DDE0EB;
+    --gray-300: #C8CCDA;
+    --gray-500: #717D97;
+    --gray-600: #515C75;
+    --gray-700: #333F5A;
+    --gray-900: #18243F;
+    --section-blue-soft: #EDF4FF;
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --shadow-xs: 0 1px 4px rgba(9,29,69,0.06);
+    --shadow-sm: 0 2px 10px rgba(9,29,69,0.07);
+    --shadow-md: 0 6px 24px rgba(9,29,69,0.10);
+    --shadow-lg: 0 14px 44px rgba(9,29,69,0.13);
+    --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-w: 1320px;
+  }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 52px; }
+  .section { padding: 100px 0; }
+  .section-sm { padding: 68px 0; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--blue-600); margin-bottom: 14px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 18px; height: 2px;
+    background: var(--blue-600); border-radius: 2px;
+  }
+  .section-title {
+    font-size: clamp(24px, 2.6vw, 34px); font-weight: 700;
+    color: var(--gray-900); line-height: 1.22; letter-spacing: -0.025em;
+  }
+  .section-title em { font-style: normal; color: var(--blue-600); }
+  .section-subtitle {
+    font-size: 15.5px; color: var(--gray-500); max-width: 480px;
+    margin-top: 12px; line-height: 1.78; font-weight: 400;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 24px; border-radius: 8px; font-size: 13.5px; font-weight: 600;
+    cursor: pointer; border: none; transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    letter-spacing: 0.01em; white-space: nowrap; font-family: inherit; line-height: 1.4;
+  }
+  .btn:focus-visible { outline: 2px solid var(--blue-400); outline-offset: 3px; }
+  .btn-primary { background: var(--blue-600); color: var(--white); box-shadow: 0 2px 10px rgba(23,73,200,0.24); }
+  .btn-primary:hover { background: var(--blue-700); box-shadow: 0 4px 18px rgba(23,73,200,0.36); transform: translateY(-1px); }
+  .btn-sm { padding: 8px 16px; font-size: 13px; }
+
+  /* ===== ALERT BANNER ===== */
+  .alert-banner { background: #FFF7E6; border-bottom: 1px solid #F0D280; padding: 10px 0; font-size: 13px; color: #7A5400; }
+  .alert-banner .container { display: flex; align-items: center; gap: 10px; justify-content: center; }
+  .alert-close { margin-left: auto; background: none; border: none; cursor: pointer; font-size: 15px; color: #9A7020; padding: 0 4px; opacity: 0.7; transition: opacity 0.15s; }
+  .alert-close:hover { opacity: 1; }
+
+  /* ===== TOP BAR ===== */
+  .top-bar { background: var(--blue-900); color: rgba(255,255,255,0.65); font-size: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .top-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .top-bar-left { display: flex; align-items: center; gap: 18px; }
+  .top-bar-right { display: flex; align-items: center; gap: 18px; }
+  .top-bar a { color: rgba(255,255,255,0.60); transition: color 0.18s; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .top-bar a:hover { color: rgba(255,255,255,0.92); }
+  .top-bar-divider { width: 1px; height: 13px; background: rgba(255,255,255,0.12); }
+  .accessibility-controls { display: flex; align-items: center; gap: 4px; }
+  .accessibility-controls span { font-size: 11px; color: rgba(255,255,255,0.4); margin-right: 4px; }
+  .accessibility-controls button {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+    padding: 2px 7px; border-radius: 4px; cursor: pointer; font-size: 11.5px; font-family: inherit; font-weight: 600;
+    transition: all 0.15s; line-height: 1.6;
+  }
+  .accessibility-controls button:hover { background: rgba(255,255,255,0.16); color: white; }
+  .top-bar .horario { display: flex; align-items: center; gap: 7px; font-size: 12px; color: rgba(255,255,255,0.60); }
+  .horario-dot { width: 6px; height: 6px; background: #34D058; border-radius: 50%; animation: pulse-dot 2.5s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  /* ===== HEADER ===== */
+  .header { background: var(--white); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 var(--gray-200), 0 4px 20px rgba(9,29,69,0.06); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 32px; }
+  .logo-area { display: flex; align-items: center; gap: 13px; flex-shrink: 0; }
+  .logo-icon { width: 48px; height: 48px; background: linear-gradient(140deg, var(--blue-800) 0%, var(--blue-600) 100%); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; font-weight: 800; letter-spacing: -1px; position: relative; overflow: hidden; }
+  .logo-text { line-height: 1.25; }
+  .logo-name { font-size: 20px; font-weight: 800; color: var(--blue-900); letter-spacing: -0.03em; }
+  .logo-tagline { font-size: 10.5px; color: var(--gray-500); font-weight: 400; letter-spacing: 0.02em; }
+
+  /* ===== NAV ===== */
+  nav.main-nav { display: flex; align-items: center; gap: 0; flex: 1; justify-content: center; }
+  .nav-item { position: relative; }
+  .nav-link { display: flex; align-items: center; gap: 4px; padding: 8px 10px; font-size: 12.5px; font-weight: 500; color: var(--gray-600); border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; cursor: pointer; }
+  .nav-link:hover, .nav-link.active { color: var(--blue-600); background: var(--blue-50); }
+  .nav-link.active { font-weight: 600; background: var(--blue-50); color: var(--blue-700); }
+  .nav-link .nav-chevron { width: 12px; height: 12px; opacity: 0.40; transition: opacity 0.2s, transform 0.2s; flex-shrink: 0; }
+  .nav-item.open .nav-link .nav-chevron, .nav-item:hover .nav-link .nav-chevron { opacity: 0.7; transform: rotate(180deg); }
+  .nav-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0; background: var(--white); border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(9,29,69,0.14), 0 4px 16px rgba(9,29,69,0.07); padding: 8px; min-width: 200px;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity 0.18s cubic-bezier(0.4,0,0.2,1), transform 0.18s cubic-bezier(0.4,0,0.2,1), visibility 0.18s;
+    border: 1px solid var(--gray-200); z-index: 500;
+  }
+  .nav-item:hover .nav-dropdown, .nav-item.open .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-dropdown a { display: flex; align-items: center; gap: 8px; padding: 7px 11px; font-size: 12.5px; color: var(--gray-600); border-radius: 8px; transition: background 0.13s, color 0.13s; font-weight: 400; white-space: nowrap; }
+  .nav-dropdown a::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gray-300); flex-shrink: 0; transition: background 0.13s; }
+  .nav-dropdown a:hover { background: var(--blue-50); color: var(--blue-600); }
+  .nav-dropdown a:hover::before { background: var(--blue-400); }
+  .nav-mega { min-width: 600px; padding: 16px; display: none; }
+  .nav-item:hover .nav-mega, .nav-item.open .nav-mega { display: block; opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-mega { opacity: 0; visibility: hidden; transform: translateY(-8px); display: block !important; }
+  .nav-mega-grid { display: grid; gap: 4px; }
+  .nav-mega-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .nav-mega-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .nav-mega-heading { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-300); padding: 4px 11px 6px; display: block; }
+  .nav-mega-divider { height: 1px; background: var(--gray-100); margin: 8px 0; grid-column: 1 / -1; }
+  .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .search-btn { width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--gray-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--gray-500); transition: var(--transition); }
+  .search-btn:hover { border-color: var(--blue-400); color: var(--blue-600); background: var(--blue-50); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border-radius: var(--radius-sm); background: none; border: none; }
+  .hamburger span { display: block; width: 20px; height: 2px; background: var(--gray-700); border-radius: 2px; transition: var(--transition); }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--blue-900); color: rgba(255,255,255,0.55); }
+  .footer-top { padding: 68px 0 52px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 52px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .footer-logo-icon { width: 42px; height: 42px; background: rgba(255,255,255,0.10); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; color: white; letter-spacing: -1px; border: 1px solid rgba(255,255,255,0.08); }
+  .footer-logo-name { font-size: 18px; font-weight: 800; color: white; letter-spacing: -0.025em; }
+  .footer-logo-tag { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 400; margin-top: 1px; }
+  .footer-desc { font-size: 13px; line-height: 1.78; margin-bottom: 22px; color: rgba(255,255,255,0.42); font-weight: 400; max-width: 300px; }
+  .footer-social { display: flex; gap: 8px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); transition: background 0.18s, color 0.18s; border: 1px solid rgba(255,255,255,0.06); }
+  .footer-social a:hover { background: rgba(255,255,255,0.14); color: white; }
+  .footer-col-title { font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.60); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 12.5px; color: rgba(255,255,255,0.40); transition: color 0.18s; display: flex; align-items: center; gap: 7px; font-weight: 400; line-height: 1.45; }
+  .footer-links a::before { content: ''; width: 3px; height: 3px; background: rgba(255,255,255,0.18); border-radius: 50%; flex-shrink: 0; transition: background 0.18s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.82); }
+  .footer-links a:hover::before { background: var(--gold-light); }
+  .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,0.28); font-weight: 400; }
+  .footer-bottom-links { display: flex; gap: 18px; }
+  .footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.30); transition: color 0.18s; font-weight: 400; }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.70); }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--blue-900); z-index: 999; padding: 22px 24px 32px; flex-direction: column; gap: 20px; overflow-y: auto; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; }
+  .mobile-close { width: 38px; height: 38px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.10); border-radius: 9px; color: rgba(255,255,255,0.8); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s; }
+  .mobile-close:hover { background: rgba(255,255,255,0.15); }
+  .mobile-nav-links { display: flex; flex-direction: column; gap: 5px; }
+  .mobile-nav-links a { display: block; padding: 14px 18px; font-size: 15px; color: rgba(255,255,255,0.72); border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); font-weight: 500; transition: background 0.18s, color 0.18s; }
+  .mobile-nav-links a:hover { background: rgba(255,255,255,0.10); color: white; }
+  .mobile-quick-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .mobile-quick-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 13px 14px; text-align: center; color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 600; font-family: inherit; transition: background 0.18s; cursor: pointer; text-decoration: none; display: block; }
+  .mobile-quick-btn:hover { background: rgba(255,255,255,0.13); color: white; }
+  .mobile-accordion-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 13px 20px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer; font-family: inherit; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.15s; text-align: left; }
+  .mobile-accordion-toggle:hover { background: rgba(255,255,255,0.05); }
+  .mobile-accordion-toggle svg { transition: transform 0.2s; opacity: 0.5; flex-shrink: 0; }
+  .mobile-accordion-toggle.open svg { transform: rotate(180deg); }
+  .mobile-accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.28s ease; background: rgba(0,0,0,0.15); }
+  .mobile-accordion-body.open { max-height: 600px; }
+  .mobile-accordion-body a { display: block; padding: 9px 20px 9px 32px; font-size: 13px; color: rgba(255,255,255,0.60); border-bottom: 1px solid rgba(255,255,255,0.04); transition: color 0.15s, background 0.15s; }
+  .mobile-accordion-body a:hover { color: rgba(255,255,255,0.90); background: rgba(255,255,255,0.04); }
+  .mobile-nav-simple-link { display: block; padding: 13px 20px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.15s; }
+  .mobile-nav-simple-link:hover { background: rgba(255,255,255,0.05); }
+
+  /* ===== SEARCH MODAL ===== */
+  .search-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(9,29,69,0.55); z-index: 9000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+  .search-modal-overlay.open { display: flex; }
+  .search-modal { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 32px; width: 100%; max-width: 520px; margin: 0 20px; position: relative; }
+  .search-modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .search-modal-title { font-size: 17px; font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; }
+  .search-modal-close { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-500); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
+  .search-modal-close:hover { background: var(--gray-100); color: var(--gray-900); }
+  .search-modal-input-wrap { position: relative; }
+  .search-modal-input { width: 100%; padding: 12px 16px 12px 44px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; font-weight: 400; color: var(--gray-900); background: var(--gray-50); outline: none; transition: border-color 0.18s; box-sizing: border-box; }
+  .search-modal-input:focus { border-color: var(--blue-400); background: var(--white); }
+  .search-modal-input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-400); pointer-events: none; }
+  .search-modal-hint { font-size: 12px; color: var(--gray-500); font-weight: 400; margin-top: 10px; }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-up { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .fade-up { transition: none; opacity: 1; transform: none; } * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+
+  /* ===== LOGO ===== */
+  .logo-icon-img { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-img { width: 52px; height: 52px; object-fit: contain; display: block; }
+  .logo-img-white { filter: brightness(0) invert(1); opacity: 0.9; }
+  .logo-icon-mobile { width: 44px; height: 44px; }
+  .logo-icon-mobile .logo-img { width: 44px; height: 44px; }
+  .logo-icon-fallback { width: 48px; height: 48px; background: linear-gradient(140deg, var(--blue-800) 0%, var(--blue-600) 100%); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; font-weight: 800; letter-spacing: -1px; }
+  .logo-icon-fallback-mobile { background: rgba(255,255,255,0.15); color: white; }
+  .footer-logo-img { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .footer-logo-img-tag { width: 44px; height: 44px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; }
+  .footer-logo-icon-fallback { width: 42px; height: 42px; background: rgba(255,255,255,0.10); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; color: white; letter-spacing: -1px; border: 1px solid rgba(255,255,255,0.08); }
+
+  /* ===== INTERNAL PAGE ===== */
+  .page-hero { background: linear-gradient(135deg, var(--blue-900) 0%, #0F2760 60%, #1a3a8a 100%); padding: 52px 0 44px; position: relative; overflow: hidden; }
+  .page-hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .page-hero-inner { position: relative; z-index: 2; }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 18px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.45); transition: color 0.15s; }
+  .breadcrumb a:hover { color: rgba(255,255,255,0.80); }
+  .breadcrumb-sep { opacity: 0.3; }
+  .breadcrumb-current { color: rgba(255,255,255,0.78); font-weight: 500; }
+  .page-title { font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 14px; }
+  .page-intro { font-size: 15.5px; color: rgba(255,255,255,0.60); max-width: 620px; line-height: 1.80; font-weight: 400; }
+  .page-body { background: var(--gray-50); min-height: 60vh; padding: 60px 0 80px; }
+
+  /* ===== INFO CARDS ===== */
+  .icard { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--gray-200); padding: 22px; transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s; }
+  .icard:hover { border-color: rgba(23,73,200,0.18); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .icard-icon { width: 40px; height: 40px; background: var(--blue-50); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--blue-600); margin-bottom: 14px; }
+  .icard-title { font-size: 13.5px; font-weight: 700; color: var(--gray-800); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .icard-desc { font-size: 12.5px; color: var(--gray-500); line-height: 1.70; font-weight: 400; }
+
+  /* ===== ALERT BOX ===== */
+  .alert-box { display: flex; gap: 14px; padding: 16px 20px; border-radius: var(--radius-sm); margin-bottom: 20px; }
+  .alert-box.info { background: var(--blue-50); border-left: 3px solid var(--blue-400); }
+  .alert-box-icon { flex-shrink: 0; color: var(--blue-600); }
+  .alert-box-text { font-size: 13px; color: var(--gray-700); line-height: 1.65; }
+  .alert-box-text strong { font-weight: 700; display: block; margin-bottom: 3px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1280px) { .container { padding: 0 36px; } }
+  @media (max-width: 1100px) { .container { padding: 0 28px; } .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; } }
+  @media (max-width: 992px) { nav.main-nav { display: none; } .hamburger { display: flex; } }
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; padding: 48px 0 36px; }
+    .footer-brand { grid-column: span 2; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .top-bar-right { display: none; }
+  }
+  @media (max-width: 580px) { .footer-top { grid-template-columns: 1fr; } .footer-brand { grid-column: span 1; } }
+
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert-banner" id="alertBanner">
+  <div class="container">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:0.7"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <strong>Informativo:</strong> Acompanhe os comunicados e atualizações oficiais do IPREMB. <a href="comunicados.html" style="color:#1D4ED8;font-weight:600;">Ver comunicados</a>
+    <button class="alert-close" onclick="document.getElementById('alertBanner').style.display='none'" aria-label="Fechar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <div class="horario">
+        <span class="horario-dot"></span>
+        <span>Seg–Sex, 9h às 16h30</span>
+      </div>
+      <div class="top-bar-divider"></div>
+      <a href="tel:+553135945380">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6.72 6.72l1.03-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (31) 3594-5380
+      </a>
+      <div class="top-bar-divider"></div>
+      <a href="mailto:atendimento@ipremb.betim.mg.gov.br">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        atendimento@ipremb.betim.mg.gov.br
+      </a>
+    </div>
+    <div class="top-bar-right">
+      <div class="accessibility-controls">
+        <span>Acessibilidade</span>
+        <button onclick="adjustFont(1)" title="Aumentar fonte">A+</button>
+        <button onclick="adjustFont(-1)" title="Diminuir fonte">A−</button>
+        <button onclick="toggleContrast()" title="Alto contraste">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20V2z" fill="currentColor" stroke="none"/></svg>
+        </button>
+      </div>
+      <div class="top-bar-divider"></div>
+      <a href="transparencia-contratos.html">Acesso à Informação</a>
+      <a href="instituto-lgpd-privacidade.html">LGPD</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <div class="logo-icon-img" style="width:160px;height:52px;">
+          <img src="https://ipremb.mg.gov.br/images/LOGOIPREMB.png" alt="IPREMB" class="logo-img" style="width:160px;height:52px;object-fit:contain;object-position:left center;" onerror="this.parentElement.innerHTML='<div class=\'logo-icon-fallback\'>IP</div>'">
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <div class="nav-item"><a href="index.html" class="nav-link">Início</a></div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Instituto <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="instituto-conselho.html">Conselho</a>
+            <a href="instituto-lgpd-privacidade.html">LGPD — Privacidade</a>
+            <a href="instituto-fotos.html">Fotos</a>
+            <a href="instituto-historico-previdenciario.html">Histórico Previdenciário</a>
+            <a href="instituto-presidencia.html">Presidência</a>
+            <a href="instituto-quem-somos.html">Quem somos</a>
+            <a href="instituto-sede.html">Sede</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="servicos.html" class="nav-link active">Serviços <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="servicos-emprestimo-consignado.html">Empréstimo Consignado IPREMB</a>
+            <a href="servicos-programa-portas-abertas.html">Programa Portas Abertas</a>
+            <a href="servicos-alteracao-de-cadastro-e-senha.html">Alteração de Cadastro e Senha</a>
+            <a href="servicos-informe-de-rendimentos.html">Informe de Rendimentos</a>
+            <a href="servicos-orgao-oficial.html">Órgão Oficial</a>
+            <a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a>
+            <a href="servicos-tutoriais-ipremb.html">Tutoriais IPREMB</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Previdência <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="previdencia-abono-de-permanencia.html">Abono de Permanência</a>
+            <a href="previdencia-acumulacao.html">Acumulação</a>
+            <a href="previdencia-aposentadoria.html">Aposentadoria</a>
+            <a href="previdencia-certidao-de-tempo-de-contribuicao.html">Certidão de Tempo de Contribuição</a>
+            <a href="previdencia-contribuicao.html">Contribuição</a>
+            <a href="previdencia-documentos-necessarios.html">Documentos para abertura de processos</a>
+            <a href="previdencia-estudo-previo.html">Estudo Prévio</a>
+            <a href="previdencia-pensao.html">Pensão</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Transparência <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="transparencia-contratos.html">Contratos</a>
+            <a href="transparencia-diarias-de-viagem.html">Diárias de Viagem</a>
+            <a href="transparencia-editais.html">Editais</a>
+            <a href="transparencia-licitacoes.html">Licitações</a>
+            <a href="transparencia-plano-de-contratacoes-anuais.html">Plano de Contratações Anuais</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Investimentos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown nav-mega">
+            <div class="nav-mega-grid cols-2">
+              <div><a href="investimentos-alm.html">ALM</a><a href="investimentos-atas-comite.html">Atas Comitê de Investimentos</a><a href="investimentos-autorizacao-aplicacao-resgate.html">Autorização de Aplicação e Resgate</a><a href="investimentos-avaliacao-atuarial.html">Avaliação Atuarial</a></div>
+              <div><a href="investimentos-certificado-regularidade.html">Certificado de Regularidade Previdenciária</a><a href="investimentos-composicao-da-carteira.html">Composição da Carteira</a><a href="investimentos-decretos.html">Decretos</a><a href="investimentos-politica-de-investimento.html">Política de Investimento</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Normativos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown nav-mega">
+            <div class="nav-mega-grid cols-2">
+              <div><a href="normativos-decreto.html">Decreto</a><a href="normativos-demais-legislacoes.html">Demais Legislações</a><a href="normativos-leis-municipais.html">Leis Municipais</a><a href="normativos-notas-tecnicas.html">Notas Técnicas</a></div>
+              <div><a href="normativos-portarias-administrativas.html">Portarias Administrativas</a><a href="normativos-portarias-de-beneficios.html">Portarias de Benefícios</a><a href="normativos-portarias-organizacionais.html">Portarias Organizacionais</a><a href="normativos-regulamento-emprestimo.html">Regulamento do Empréstimo Consignado</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Relatórios <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown nav-mega">
+            <div class="nav-mega-grid cols-2">
+              <div><a href="relatorios-outros.html">Outros</a><a href="relatorios-auditorias.html">Relatórios de Auditorias</a><a href="relatorios-investimentos.html">Relatório de Investimentos</a></div>
+              <div><a href="relatorios-credito-consignado.html">Relatório do Crédito Consignado</a><a href="relatorios-gerenciais.html">Relatórios Gerenciais</a><a href="relatorios-visitas-financeiras.html">Relatório de Visitas de Instituições Financeiras</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Contabilidade <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="contabilidade-balancetes.html">Balancetes</a>
+            <a href="contabilidade-despesas.html">Despesas</a>
+            <a href="contabilidade-receitas.html">Receitas</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="contato.html" class="nav-link">Contato</a></div>
+      </nav>
+      <div class="header-actions">
+        <button class="search-btn" title="Buscar" onclick="document.getElementById('searchModal').classList.add('open')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+        </button>
+        <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Portal do Segurado</a>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="logo-area">
+      <div class="logo-icon-img logo-icon-mobile">
+        <img src="https://ipremb.mg.gov.br/images/LOGOIPREMB.png" alt="IPREMB" class="logo-img logo-img-white" onerror="this.parentElement.innerHTML='<div class=\'logo-icon-fallback logo-icon-fallback-mobile\'>IP</div>'">
+      </div>
+      <div class="logo-text">
+        <div class="logo-name" style="color:white;">IPREMB</div>
+        <div class="logo-tagline" style="color:rgba(255,255,255,0.5);">Instituto de Previdência de Betim</div>
+      </div>
+    </div>
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Fechar menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links" style="padding:0;">
+    <a href="index.html" class="mobile-nav-simple-link">Início</a>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Instituto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="instituto-conselho.html">Conselho</a><a href="instituto-lgpd-privacidade.html">LGPD — Privacidade</a>
+        <a href="instituto-fotos.html">Fotos</a><a href="instituto-historico-previdenciario.html">Histórico Previdenciário</a>
+        <a href="instituto-presidencia.html">Presidência</a><a href="instituto-quem-somos.html">Quem somos</a><a href="instituto-sede.html">Sede</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Serviços <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="servicos-emprestimo-consignado.html">Empréstimo Consignado IPREMB</a>
+        <a href="servicos-programa-portas-abertas.html">Programa Portas Abertas</a>
+        <a href="servicos-alteracao-de-cadastro-e-senha.html">Alteração de Cadastro e Senha</a>
+        <a href="servicos-informe-de-rendimentos.html">Informe de Rendimentos</a>
+        <a href="servicos-orgao-oficial.html">Órgão Oficial</a>
+        <a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a>
+        <a href="servicos-tutoriais-ipremb.html">Tutoriais IPREMB</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Previdência <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="previdencia-abono-de-permanencia.html">Abono de Permanência</a><a href="previdencia-acumulacao.html">Acumulação</a>
+        <a href="previdencia-aposentadoria.html">Aposentadoria</a><a href="previdencia-certidao-de-tempo-de-contribuicao.html">Certidão de Tempo de Contribuição</a>
+        <a href="previdencia-contribuicao.html">Contribuição</a><a href="previdencia-documentos-necessarios.html">Documentos para abertura de processos</a>
+        <a href="previdencia-estudo-previo.html">Estudo Prévio</a><a href="previdencia-pensao.html">Pensão</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Transparência <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="transparencia-contratos.html">Contratos</a><a href="transparencia-diarias-de-viagem.html">Diárias de Viagem</a>
+        <a href="transparencia-editais.html">Editais</a><a href="transparencia-licitacoes.html">Licitações</a>
+        <a href="transparencia-plano-de-contratacoes-anuais.html">Plano de Contratações Anuais</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Investimentos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="investimentos-alm.html">ALM</a><a href="investimentos-atas-comite.html">Atas Comitê de Investimentos</a>
+        <a href="investimentos-autorizacao-aplicacao-resgate.html">Autorização de Aplicação e Resgate</a>
+        <a href="investimentos-avaliacao-atuarial.html">Avaliação Atuarial</a>
+        <a href="investimentos-certificado-regularidade.html">Certificado de Regularidade Previdenciária</a>
+        <a href="investimentos-composicao-da-carteira.html">Composição da Carteira</a>
+        <a href="investimentos-decretos.html">Decretos</a><a href="investimentos-politica-de-investimento.html">Política de Investimento</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Normativos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="normativos-decreto.html">Decreto</a><a href="normativos-demais-legislacoes.html">Demais Legislações</a>
+        <a href="normativos-leis-municipais.html">Leis Municipais</a><a href="normativos-notas-tecnicas.html">Notas Técnicas</a>
+        <a href="normativos-portarias-administrativas.html">Portarias Administrativas</a>
+        <a href="normativos-portarias-de-beneficios.html">Portarias de Benefícios</a>
+        <a href="normativos-portarias-organizacionais.html">Portarias Organizacionais</a>
+        <a href="normativos-regulamento-emprestimo.html">Regulamento do Empréstimo Consignado</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Relatórios <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="relatorios-outros.html">Outros</a><a href="relatorios-auditorias.html">Relatórios de Auditorias</a>
+        <a href="relatorios-investimentos.html">Relatório de Investimentos</a>
+        <a href="relatorios-credito-consignado.html">Relatório do Crédito Consignado</a>
+        <a href="relatorios-gerenciais.html">Relatórios Gerenciais</a>
+        <a href="relatorios-visitas-financeiras.html">Relatório de Visitas de Instituições Financeiras</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Contabilidade <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="contabilidade-balancetes.html">Balancetes</a><a href="contabilidade-despesas.html">Despesas</a><a href="contabilidade-receitas.html">Receitas</a>
+      </div>
+    </div>
+    <a href="contato.html" class="mobile-nav-simple-link">Contato</a>
+  </nav>
+  <div class="mobile-quick-btns">
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Contracheque</a>
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Informe IR</a>
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Prova de Vida</a>
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Portal do Segurado</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Serviços</span>
+    </div>
+    <h1 class="page-title">Serviços</h1>
+    <p class="page-intro">Acesse os serviços previdenciários, digitais e de atendimento disponibilizados pelo IPREMB para aposentados, pensionistas e servidores ativos do município de Betim.</p>
+  </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-body" style="padding:56px 0 80px;">
+  <div class="container">
+
+    <!-- Área Digital -->
+    <div style="margin-bottom:52px;">
+      <div class="section-label" style="margin-bottom:8px;">Área Digital</div>
+      <h2 style="font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:6px;letter-spacing:-0.02em;">Acesse online, sem sair de casa</h2>
+      <p style="font-size:13.5px;color:var(--gray-500);margin-bottom:24px;">Serviços disponíveis 24h no Portal do Segurado com CPF e senha.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+        <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="icard-title">Portal do Segurado</div>
+          <div class="icard-desc">Acesse sua área restrita com CPF e senha para gerenciar seu benefício.</div>
+        </a>
+        <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <div class="icard-title">Contracheque</div>
+          <div class="icard-desc">Consulte e imprima seu extrato de pagamento mensal diretamente no portal.</div>
+        </a>
+        <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="icard-title">Informe de Rendimentos</div>
+          <div class="icard-desc">Obtenha o documento anual necessário para a declaração do Imposto de Renda.</div>
+        </a>
+        <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+          </div>
+          <div class="icard-title">Prova de Vida</div>
+          <div class="icard-desc">Realize o recadastramento anual obrigatório para manutenção do benefício.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Empréstimo Consignado -->
+    <div style="margin-bottom:52px;">
+      <div class="section-label" style="margin-bottom:8px;">Crédito</div>
+      <h2 style="font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:6px;letter-spacing:-0.02em;">Empréstimo Consignado</h2>
+      <p style="font-size:13.5px;color:var(--gray-500);margin-bottom:24px;">Crédito com desconto em folha e condições especiais para servidores e aposentados.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+        <a href="https://contratante.facsistemas.com.br/login" target="_blank" rel="noopener" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="icard-title">Simular e Contratar</div>
+          <div class="icard-desc">Acesse o portal de contratação do Empréstimo Consignado IPREMB. Simule parcelas e condições.</div>
+        </a>
+        <a href="servicos-emprestimo-consignado.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="icard-title">Regulamento e Informações</div>
+          <div class="icard-desc">Conheça as condições, documentos necessários e o regulamento completo do empréstimo consignado.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Benefícios -->
+    <div style="margin-bottom:52px;">
+      <div class="section-label" style="margin-bottom:8px;">Benefícios Previdenciários</div>
+      <h2 style="font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:6px;letter-spacing:-0.02em;">Conheça seus direitos</h2>
+      <p style="font-size:13.5px;color:var(--gray-500);margin-bottom:24px;">Benefícios disponíveis para servidores efetivos, aposentados e pensionistas.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+        <a href="previdencia-aposentadoria.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icard-title">Aposentadoria</div>
+          <div class="icard-desc">Requisitos, modalidades e como abrir o processo de aposentadoria.</div>
+        </a>
+        <a href="previdencia-pensao.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="icard-title">Pensão por Morte</div>
+          <div class="icard-desc">Habilitação e manutenção do benefício de pensão para dependentes do servidor.</div>
+        </a>
+        <a href="previdencia-abono-de-permanencia.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="icard-title">Abono de Permanência</div>
+          <div class="icard-desc">Benefício ao servidor que permanece em atividade após adquirir direito à aposentadoria.</div>
+        </a>
+        <a href="previdencia-certidao-de-tempo-de-contribuicao.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="icard-title">Certidão de Tempo de Contribuição</div>
+          <div class="icard-desc">Emissão de certidão para comprovação de tempo de contribuição ao RPPS.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Outros Serviços -->
+    <div>
+      <div class="section-label" style="margin-bottom:8px;">Mais Serviços</div>
+      <h2 style="font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:6px;letter-spacing:-0.02em;">Apoio e capacitação</h2>
+      <p style="font-size:13.5px;color:var(--gray-500);margin-bottom:24px;">Programas e recursos de suporte disponíveis para os segurados.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+        <a href="servicos-programa-portas-abertas.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="icard-title">Programa Portas Abertas</div>
+          <div class="icard-desc">Atividades educativas e de qualidade de vida para os segurados do IPREMB.</div>
+        </a>
+        <a href="servicos-tutoriais-ipremb.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="icard-title">Tutoriais IPREMB</div>
+          <div class="icard-desc">Material de apoio para uso dos sistemas, portais e entendimento dos seus direitos.</div>
+        </a>
+        <a href="servicos-alteracao-de-cadastro-e-senha.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg>
+          </div>
+          <div class="icard-title">Alteração de Cadastro e Senha</div>
+          <div class="icard-desc">Atualize seus dados cadastrais e de acesso ao Portal do Segurado.</div>
+        </a>
+        <a href="servicos-selecao-de-estagiarios.html" class="icard" style="display:flex;flex-direction:column;text-decoration:none;">
+          <div class="icard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="icard-title">Seleção de Estagiários</div>
+          <div class="icard-desc">Oportunidades de estágio e informações sobre processos seletivos em andamento.</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-img">
+            <img src="https://ipremb.mg.gov.br/images/LOGOIPREMB.png" alt="IPREMB" class="footer-logo-img-tag" onerror="this.parentElement.innerHTML='<div class=\'footer-logo-icon-fallback\'>IP</div>'">
+          </div>
+          <div>
+            <div class="footer-logo-name">IPREMB</div>
+            <div class="footer-logo-tag">Instituto de Previdência Municipal de Betim</div>
+          </div>
+        </div>
+        <p class="footer-desc">Autarquia municipal responsável por administrar o Regime Próprio de Previdência Social dos servidores públicos efetivos de Betim — MG.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/ipremb.betim.mg/" target="_blank" rel="noopener" title="Instagram do IPREMB">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">O Instituto</div>
+        <div class="footer-links">
+          <a href="instituto-quem-somos.html">Sobre o IPREMB</a>
+          <a href="instituto-quem-somos.html">Estrutura Organizacional</a>
+          <a href="normativos-leis-municipais.html">Legislação</a>
+          <a href="index.html">Notícias</a>
+          <a href="contato.html">Fale Conosco</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Transparência</div>
+        <div class="footer-links">
+          <a href="transparencia-contratos.html">Portal da Transparência</a>
+          <a href="transparencia-licitacoes.html">Licitações</a>
+          <a href="transparencia-contratos.html">Contratos</a>
+          <a href="investimentos-politica-de-investimento.html">Investimentos</a>
+          <a href="relatorios-gerenciais.html">Relatórios Oficiais</a>
+          <a href="servicos-orgao-oficial.html">Diário Oficial</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Atendimento</div>
+        <div class="footer-links">
+          <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener">Portal do Segurado</a>
+          <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener">Contracheque</a>
+          <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener">Informe de Rendimentos</a>
+          <a href="servicos-alteracao-de-cadastro-e-senha.html">Prova de Vida</a>
+          <a href="ouvidoria.html">Ouvidoria</a>
+          <a href="instituto-lgpd-privacidade.html">LGPD</a>
+        </div>
+        <div style="margin-top:22px;">
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-links">
+            <a href="tel:+553135945380">(31) 3594-5380</a>
+            <a href="https://api.whatsapp.com/send?phone=553195409461" target="_blank" rel="noopener">(31) 9540-9461</a>
+            <a href="mailto:atendimento@ipremb.betim.mg.gov.br" style="font-size:11.5px;word-break:break-all;">atendimento@ipremb.betim.mg.gov.br</a>
+          </div>
+          <div style="margin-top:12px;font-size:11.5px;color:rgba(255,255,255,0.32);line-height:1.6;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;opacity:0.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Seg–Sex · 9h às 16h30
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2026 IPREMB — Praça José Lino da Silva, 144, Brasiléia – Betim/MG · CEP 32600-308 · Todos os direitos reservados.</div>
+      <div class="footer-bottom-links">
+        <a href="instituto-lgpd-privacidade.html">Privacidade</a>
+        <a href="instituto-lgpd-privacidade.html">LGPD</a>
+        <a href="#">Acessibilidade</a>
+        <a href="#">Mapa do Site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { var m=document.getElementById('mobileMenu'); m.classList.toggle('open'); document.body.style.overflow=m.classList.contains('open')?'hidden':''; }
+  var fontSize=16; function adjustFont(d){fontSize=Math.max(12,Math.min(22,fontSize+d*2));document.documentElement.style.fontSize=fontSize+'px';}
+  function toggleContrast(){document.body.classList.toggle('high-contrast');}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.getElementById('searchModal');if(m)m.classList.remove('open');}});
+  var searchBtn=document.querySelector('.search-btn');if(searchBtn){searchBtn.addEventListener('click',function(){setTimeout(function(){var inp=document.getElementById('searchInput');if(inp)inp.focus();},50);});}
+  var fadeEls=Array.from(document.querySelectorAll('.fade-up'));
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.01,rootMargin:'120px 0px 0px 0px'});fadeEls.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight+120){el.classList.add('visible');}else{io.observe(el);}});}else{fadeEls.forEach(function(el){el.classList.add('visible');});}
+  setTimeout(function(){fadeEls.forEach(function(el){if(!el.classList.contains('visible'))el.classList.add('visible');});},1000);
+  var header=document.querySelector('.header');
+  window.addEventListener('scroll',function(){if(window.scrollY>8){header.style.boxShadow='0 2px 0 var(--gray-200), 0 6px 28px rgba(9,29,69,0.10)';}else{header.style.boxShadow='0 1px 0 var(--gray-200), 0 4px 20px rgba(9,29,69,0.06)';}},{passive:true});
+  var contrastStyle=document.createElement('style');contrastStyle.textContent='.high-contrast{filter:contrast(1.5) grayscale(0.15);}';document.head.appendChild(contrastStyle);
+</script>
+
+<!-- MODAL DE BUSCA -->
+<div class="search-modal-overlay" id="searchModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="search-modal" role="dialog" aria-modal="true">
+    <div class="search-modal-header">
+      <span class="search-modal-title">Buscar no site</span>
+      <button class="search-modal-close" onclick="document.getElementById('searchModal').classList.remove('open')" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-modal-input-wrap">
+      <span class="search-modal-input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+      <input type="text" class="search-modal-input" id="searchInput" placeholder="O que você procura?">
+    </div>
+    <p class="search-modal-hint">Ex: Contracheque, Prova de Vida, Informe de Rendimentos</p>
+  </div>
+</div>
+
+<script>
+(function(){var items=document.querySelectorAll('#mainNav .nav-item');var openTimer,closeTimer;items.forEach(function(item){var dropdown=item.querySelector('.nav-dropdown');if(!dropdown)return;item.addEventListener('mouseenter',function(){clearTimeout(closeTimer);openTimer=setTimeout(function(){items.forEach(function(i){i.classList.remove('open');});item.classList.add('open');},60);});item.addEventListener('mouseleave',function(){clearTimeout(openTimer);closeTimer=setTimeout(function(){item.classList.remove('open');},120);});var link=item.querySelector('.nav-link');if(link){link.addEventListener('click',function(e){if(dropdown){e.preventDefault();var isOpen=item.classList.contains('open');items.forEach(function(i){i.classList.remove('open');});if(!isOpen)item.classList.add('open');}});}});document.addEventListener('click',function(e){if(!e.target.closest('#mainNav'))items.forEach(function(i){i.classList.remove('open');});});document.addEventListener('keydown',function(e){if(e.key==='Escape')items.forEach(function(i){i.classList.remove('open');});});})();
+function toggleMobileAccordion(btn){var body=btn.nextElementSibling;var isOpen=body.classList.contains('open');document.querySelectorAll('.mobile-accordion-body.open').forEach(function(b){b.classList.remove('open');b.previousElementSibling.classList.remove('open');});if(!isOpen){body.classList.add('open');btn.classList.add('open');}}
+</script>
+
+</body>
+</html>
