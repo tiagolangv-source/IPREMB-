@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denúncia de Assédio – Canal Interno do IPREMB — IPREMB</title>
+<meta name="description" content="Canal interno do IPREMB para registro de denúncias de assédio moral ou sexual.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Sora', sans-serif; background: #F4F6FA; color: #18243F; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  svg { flex-shrink: 0; }
+  :root {
+    --blue-900: #091D45; --blue-800: #0E2860; --blue-700: #163880; --blue-600: #1749C8;
+    --blue-400: #4A7CF0; --blue-100: #D6E4FF; --blue-50: #EBF2FF;
+    --gold-light: #D4AD52; --white: #FFFFFF; --gray-50: #F4F6FA;
+    --gray-100: #ECEEF4; --gray-200: #DDE0EB; --gray-300: #C8CCDA; --gray-500: #717D97;
+    --gray-600: #515C75; --gray-700: #333F5A; --gray-800: #243050; --gray-900: #18243F;
+    --radius-sm: 10px; --radius-md: 14px; --radius-lg: 20px;
+    --shadow-sm: 0 2px 10px rgba(9,29,69,0.07); --shadow-md: 0 6px 24px rgba(9,29,69,0.10);
+    --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1); --max-w: 1320px;
+  }
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 52px; }
+  .section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 14px; }
+  .section-label::before { content: ''; display: block; width: 18px; height: 2px; background: var(--blue-600); border-radius: 2px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer; border: none; transition: background 0.2s, transform 0.15s; letter-spacing: 0.01em; white-space: nowrap; font-family: inherit; line-height: 1.4; }
+  .btn-primary { background: var(--blue-600); color: var(--white); box-shadow: 0 2px 10px rgba(23,73,200,0.24); }
+  .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); }
+  .btn-sm { padding: 8px 16px; font-size: 13px; }
+  .alert-banner { background: #FFF7E6; border-bottom: 1px solid #F0D280; padding: 10px 0; font-size: 13px; color: #7A5400; }
+  .alert-banner .container { display: flex; align-items: center; gap: 10px; justify-content: center; }
+  .alert-close { margin-left: auto; background: none; border: none; cursor: pointer; font-size: 15px; color: #9A7020; padding: 0 4px; opacity: 0.7; }
+  .alert-close:hover { opacity: 1; }
+  .top-bar { background: var(--blue-900); color: rgba(255,255,255,0.65); font-size: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .top-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .top-bar-left { display: flex; align-items: center; gap: 18px; }
+  .top-bar-right { display: flex; align-items: center; gap: 18px; }
+  .top-bar a { color: rgba(255,255,255,0.60); transition: color 0.18s; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .top-bar a:hover { color: rgba(255,255,255,0.92); }
+  .top-bar-divider { width: 1px; height: 13px; background: rgba(255,255,255,0.12); }
+  .accessibility-controls { display: flex; align-items: center; gap: 4px; }
+  .accessibility-controls span { font-size: 11px; color: rgba(255,255,255,0.4); margin-right: 4px; }
+  .accessibility-controls button { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); padding: 2px 7px; border-radius: 4px; cursor: pointer; font-size: 11.5px; font-family: inherit; font-weight: 600; line-height: 1.6; }
+  .accessibility-controls button:hover { background: rgba(255,255,255,0.16); color: white; }
+  .top-bar .horario { display: flex; align-items: center; gap: 7px; }
+  .horario-dot { width: 6px; height: 6px; background: #34D058; border-radius: 50%; animation: pulse-dot 2.5s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .header { background: var(--white); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 var(--gray-200), 0 4px 20px rgba(9,29,69,0.06); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 32px; }
+  .logo-area { display: flex; align-items: center; gap: 13px; flex-shrink: 0; }
+  nav.main-nav { display: flex; align-items: center; gap: 0; flex: 1; justify-content: center; }
+  .nav-item { position: relative; }
+  .nav-link { display: flex; align-items: center; gap: 4px; padding: 8px 10px; font-size: 12.5px; font-weight: 500; color: var(--gray-600); border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; cursor: pointer; }
+  .nav-link:hover, .nav-link.active { color: var(--blue-600); background: var(--blue-50); }
+  .nav-link.active { font-weight: 600; }
+  .nav-link .nav-chevron { width: 12px; height: 12px; opacity: 0.40; transition: opacity 0.2s, transform 0.2s; flex-shrink: 0; }
+  .nav-item.open .nav-link .nav-chevron, .nav-item:hover .nav-link .nav-chevron { opacity: 0.7; transform: rotate(180deg); }
+  .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: var(--white); border-radius: var(--radius-md); box-shadow: 0 20px 60px rgba(9,29,69,0.14); padding: 8px; min-width: 200px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity 0.18s, transform 0.18s, visibility 0.18s; border: 1px solid var(--gray-200); z-index: 500; }
+  .nav-item:hover .nav-dropdown, .nav-item.open .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-dropdown a { display: flex; align-items: center; gap: 8px; padding: 7px 11px; font-size: 12.5px; color: var(--gray-600); border-radius: 8px; transition: background 0.13s, color 0.13s; font-weight: 400; white-space: nowrap; }
+  .nav-dropdown a::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gray-300); flex-shrink: 0; }
+  .nav-dropdown a:hover { background: var(--blue-50); color: var(--blue-600); }
+  .nav-mega { min-width: 600px; padding: 16px; display: block !important; opacity: 0; visibility: hidden; transform: translateY(-8px); }
+  .nav-item:hover .nav-mega, .nav-item.open .nav-mega { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-mega-grid { display: grid; gap: 4px; }
+  .nav-mega-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .search-btn { width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--gray-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--gray-500); transition: var(--transition); }
+  .search-btn:hover { border-color: var(--blue-400); color: var(--blue-600); background: var(--blue-50); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border-radius: var(--radius-sm); background: none; border: none; }
+  .hamburger span { display: block; width: 20px; height: 2px; background: var(--gray-700); border-radius: 2px; }
+  footer { background: var(--blue-900); color: rgba(255,255,255,0.55); }
+  .footer-top { padding: 68px 0 52px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 52px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .footer-logo-name { font-size: 18px; font-weight: 800; color: white; letter-spacing: -0.025em; }
+  .footer-logo-tag { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 400; margin-top: 1px; }
+  .footer-desc { font-size: 13px; line-height: 1.78; margin-bottom: 22px; color: rgba(255,255,255,0.42); font-weight: 400; max-width: 300px; }
+  .footer-social { display: flex; gap: 8px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); transition: background 0.18s, color 0.18s; border: 1px solid rgba(255,255,255,0.06); }
+  .footer-social a:hover { background: rgba(255,255,255,0.14); color: white; }
+  .footer-col-title { font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.60); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 12.5px; color: rgba(255,255,255,0.40); transition: color 0.18s; display: flex; align-items: center; gap: 7px; font-weight: 400; }
+  .footer-links a::before { content: ''; width: 3px; height: 3px; background: rgba(255,255,255,0.18); border-radius: 50%; flex-shrink: 0; }
+  .footer-links a:hover { color: rgba(255,255,255,0.82); }
+  .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,0.28); font-weight: 400; }
+  .footer-bottom-links { display: flex; gap: 18px; }
+  .footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.30); transition: color 0.18s; }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.70); }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--blue-900); z-index: 999; padding: 22px 24px 32px; flex-direction: column; gap: 20px; overflow-y: auto; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; }
+  .mobile-close { width: 38px; height: 38px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.10); border-radius: 9px; color: rgba(255,255,255,0.8); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .mobile-nav-links { display: flex; flex-direction: column; gap: 5px; }
+  .mobile-quick-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .mobile-quick-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 13px 14px; text-align: center; color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 600; font-family: inherit; text-decoration: none; display: block; }
+  .mobile-quick-btn:hover { background: rgba(255,255,255,0.13); color: white; }
+  .mobile-accordion-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 13px 20px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer; font-family: inherit; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
+  .mobile-accordion-toggle svg { transition: transform 0.2s; opacity: 0.5; flex-shrink: 0; }
+  .mobile-accordion-toggle.open svg { transform: rotate(180deg); }
+  .mobile-accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.28s ease; background: rgba(0,0,0,0.15); }
+  .mobile-accordion-body.open { max-height: 600px; }
+  .mobile-accordion-body a { display: block; padding: 9px 20px 9px 32px; font-size: 13px; color: rgba(255,255,255,0.60); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .mobile-accordion-body a:hover { color: rgba(255,255,255,0.90); }
+  .mobile-nav-simple-link { display: block; padding: 13px 20px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .search-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(9,29,69,0.55); z-index: 9000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+  .search-modal-overlay.open { display: flex; }
+  .search-modal { background: var(--white); border-radius: var(--radius-lg); padding: 32px; width: 100%; max-width: 520px; margin: 0 20px; }
+  .search-modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .search-modal-title { font-size: 17px; font-weight: 700; color: var(--gray-900); }
+  .search-modal-close { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-500); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .search-modal-input-wrap { position: relative; }
+  .search-modal-input { width: 100%; padding: 12px 16px 12px 44px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; color: var(--gray-900); background: var(--gray-50); outline: none; box-sizing: border-box; }
+  .search-modal-input:focus { border-color: var(--blue-400); }
+  .search-modal-input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-400); pointer-events: none; }
+  .search-modal-hint { font-size: 12px; color: var(--gray-500); margin-top: 10px; }
+  .logo-icon-img { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-img { object-fit: contain; display: block; }
+  .logo-img-white { filter: brightness(0) invert(1); opacity: 0.9; }
+  .logo-icon-mobile { width: 44px; height: 44px; }
+  .logo-icon-fallback { width: 48px; height: 48px; background: linear-gradient(140deg, var(--blue-800) 0%, var(--blue-600) 100%); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; font-weight: 800; letter-spacing: -1px; }
+  .logo-icon-fallback-mobile { background: rgba(255,255,255,0.15); color: white; }
+  .footer-logo-img { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .footer-logo-img-tag { width: 44px; height: 44px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; }
+  .footer-logo-icon-fallback { width: 42px; height: 42px; background: rgba(255,255,255,0.10); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; color: white; letter-spacing: -1px; border: 1px solid rgba(255,255,255,0.08); }
+  .page-hero { background: linear-gradient(135deg, var(--blue-900) 0%, #0F2760 60%, #1a3a8a 100%); padding: 52px 0 44px; position: relative; overflow: hidden; }
+  .page-hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .page-hero-inner { position: relative; z-index: 2; }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 18px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.45); transition: color 0.15s; }
+  .breadcrumb a:hover { color: rgba(255,255,255,0.80); }
+  .breadcrumb-sep { opacity: 0.3; }
+  .breadcrumb-current { color: rgba(255,255,255,0.78); font-weight: 500; }
+  .breadcrumb-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  .breadcrumb-row .breadcrumb { margin-bottom: 0; }
+  .btn-back { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.8); font-size:12.5px; font-weight:500; padding:6px 14px; border-radius:7px; cursor:pointer; font-family:inherit; transition:background .18s,color .18s; }
+  .btn-back:hover { background:rgba(255,255,255,.2); color:white; }
+  .page-title { font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 14px; }
+  .page-intro { font-size: 15.5px; color: rgba(255,255,255,0.60); max-width: 620px; line-height: 1.80; font-weight: 400; }
+  .page-body { background: var(--gray-50); min-height: 60vh; padding: 60px 0 80px; }
+  .icard { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--gray-200); padding: 22px; transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s; }
+  .icard:hover { border-color: rgba(23,73,200,0.18); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .icard-icon { width: 40px; height: 40px; background: var(--blue-50); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--blue-600); margin-bottom: 14px; transition: background 0.18s, color 0.18s; }
+  .icard:hover .icard-icon { background: var(--blue-600); color: white; }
+  .icard-title { font-size: 13.5px; font-weight: 700; color: var(--gray-800); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .icard-desc { font-size: 12.5px; color: var(--gray-500); line-height: 1.70; font-weight: 400; }
+  .alert-box { display: flex; gap: 14px; padding: 16px 20px; border-radius: var(--radius-sm); margin-bottom: 20px; }
+  .alert-box.info { background: var(--blue-50); border-left: 3px solid var(--blue-400); }
+  .alert-box-icon { flex-shrink: 0; color: var(--blue-600); margin-top: 1px; }
+  .alert-box-text { font-size: 13px; color: var(--gray-700); line-height: 1.65; }
+  .alert-box-text strong { font-weight: 700; display: block; margin-bottom: 3px; }
+  @media (max-width: 1280px) { .container { padding: 0 36px; } }
+  @media (max-width: 1100px) { .container { padding: 0 28px; } .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; } }
+  @media (max-width: 992px) { nav.main-nav { display: none; } .hamburger { display: flex; } }
+  @media (max-width: 768px) { .container { padding: 0 20px; } .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; padding: 48px 0 36px; } .footer-brand { grid-column: span 2; } .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; } .top-bar-right { display: none; } }
+  @media (max-width: 580px) { .footer-top { grid-template-columns: 1fr; } .footer-brand { grid-column: span 1; } }
+  /* Formulário visual */
+  .form-wrapper { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--gray-200); padding: 36px 40px 40px; box-shadow: var(--shadow-sm); }
+  .form-section { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--gray-100); }
+  .form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .form-section-title { font-size: 12px; font-weight: 700; color: var(--blue-700); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row:last-child { margin-bottom: 0; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+  .form-group:last-child { margin-bottom: 0; }
+  .form-label { font-size: 13px; font-weight: 600; color: var(--gray-700); }
+  .form-req { color: var(--blue-600); }
+  .form-input { width: 100%; padding: 10px 14px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-size: 13.5px; font-family: inherit; color: var(--gray-900); background: var(--white); transition: border-color 0.18s, box-shadow 0.18s; outline: none; }
+  .form-input:focus { border-color: var(--blue-400); box-shadow: 0 0 0 3px rgba(74,124,240,0.12); }
+  .form-input[readonly] { background: var(--gray-50); color: var(--gray-600); cursor: default; }
+  .form-textarea { width: 100%; padding: 10px 14px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-size: 13.5px; font-family: inherit; color: var(--gray-900); background: var(--white); resize: vertical; min-height: 120px; transition: border-color 0.18s, box-shadow 0.18s; outline: none; line-height: 1.6; }
+  .form-textarea:focus { border-color: var(--blue-400); box-shadow: 0 0 0 3px rgba(74,124,240,0.12); }
+  .form-radio-group { display: flex; flex-direction: column; gap: 10px; }
+  .form-radio-item { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13.5px; color: var(--gray-700); line-height: 1.5; }
+  .form-radio-item input[type="radio"] { margin-top: 2px; accent-color: var(--blue-600); width: 15px; height: 15px; flex-shrink: 0; cursor: pointer; }
+  .form-hint, .form-file-hint { font-size: 12px; color: var(--gray-500); line-height: 1.5; display: block; }
+  .form-file-area { border: 1.5px dashed var(--gray-300); border-radius: 8px; padding: 18px 16px; background: var(--gray-50); }
+  .form-actions { display: flex; gap: 12px; align-items: center; padding-top: 8px; flex-wrap: wrap; }
+  .btn-outline { background: transparent; color: var(--gray-600); border: 1.5px solid var(--gray-300); padding: 11px 24px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: background 0.18s, border-color 0.18s; font-family: inherit; line-height: 1.4; white-space: nowrap; display: inline-flex; align-items: center; }
+  .btn-outline:hover { background: var(--gray-100); border-color: var(--gray-500); }
+  @media (max-width: 580px) { .form-wrapper { padding: 24px 20px 28px; } .form-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert-banner" id="alertBanner">
+  <div class="container">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:0.7"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <strong>Informativo:</strong> Acompanhe os comunicados e atualizações oficiais do IPREMB. <a href="comunicados.html" style="color:#1D4ED8;font-weight:600;">Ver comunicados</a>
+    <button class="alert-close" onclick="document.getElementById('alertBanner').style.display='none'" aria-label="Fechar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <div class="horario">
+        <span class="horario-dot"></span>
+        <span>Seg–Sex, 9h às 16h30</span>
+      </div>
+      <div class="top-bar-divider"></div>
+      <a href="tel:+553135945380">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6.72 6.72l1.03-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (31) 3594-5380
+      </a>
+      <div class="top-bar-divider"></div>
+      <a href="mailto:atendimento@ipremb.betim.mg.gov.br">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        atendimento@ipremb.betim.mg.gov.br
+      </a>
+    </div>
+    <div class="top-bar-right">
+      <div class="accessibility-controls">
+        <span>Acessibilidade</span>
+        <button onclick="toggleContrast()" title="Alto contraste">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20V2z" fill="currentColor" stroke="none"/></svg>
+        </button>
+      </div>
+      <div class="top-bar-divider"></div>
+      <a href="transparencia-contratos.html">Acesso à Informação</a>
+      <a href="instituto-lgpd-privacidade.html">LGPD</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <div class="logo-icon-img" style="width:160px;height:52px;">
+          <img src="https://ipremb.mg.gov.br/images/LOGOIPREMB.png" alt="IPREMB" class="logo-img" style="width:160px;height:52px;object-fit:contain;object-position:left center;" onerror="this.parentElement.innerHTML='<div class=\'logo-icon-fallback\'>IP</div>'">
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <div class="nav-item"><a href="index.html" class="nav-link">Início</a></div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Instituto <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="instituto-conselho.html">Conselho</a><a href="instituto-lgpd-privacidade.html">LGPD — Privacidade</a>
+            <a href="instituto-fotos.html">Fotos</a><a href="instituto-historico-previdenciario.html">Histórico Previdenciário</a>
+            <a href="instituto-presidencia.html">Presidência</a><a href="instituto-quem-somos.html">Quem somos</a><a href="instituto-sede.html">Sede</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="servicos.html" class="nav-link">Serviços <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="servicos-emprestimo-consignado.html">Empréstimo Consignado IPREMB</a>
+            <a href="servicos-programa-portas-abertas.html">Programa Portas Abertas</a>
+            <a href="servicos-alteracao-de-cadastro-e-senha.html">Alteração de Cadastro e Senha</a>
+            <a href="servicos-informe-de-rendimentos.html">Informe de Rendimentos</a>
+            <a href="servicos-orgao-oficial.html">Órgão Oficial</a>
+            <a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a>
+            <a href="servicos-tutoriais-ipremb.html">Tutoriais IPREMB</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Previdência <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="previdencia-abono-de-permanencia.html">Abono de Permanência</a><a href="previdencia-acumulacao.html">Acumulação</a>
+            <a href="previdencia-aposentadoria.html">Aposentadoria</a><a href="previdencia-certidao-de-tempo-de-contribuicao.html">Certidão de Tempo de Contribuição</a>
+            <a href="previdencia-contribuicao.html">Contribuição</a><a href="previdencia-documentos-necessarios.html">Documentos para abertura de processos</a>
+            <a href="previdencia-estudo-previo.html">Estudo Prévio</a><a href="previdencia-pensao.html">Pensão</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Transparência <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="transparencia-contratos.html">Contratos</a><a href="transparencia-diarias-de-viagem.html">Diárias de Viagem</a>
+            <a href="transparencia-editais.html">Editais</a><a href="transparencia-licitacoes.html">Licitações</a>
+            <a href="transparencia-plano-de-contratacoes-anuais.html">Plano de Contratações Anuais</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Investimentos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown nav-mega">
+            <div class="nav-mega-grid cols-2">
+              <div><a href="investimentos-alm.html">ALM</a><a href="investimentos-atas-comite.html">Atas Comitê de Investimentos</a><a href="investimentos-autorizacao-aplicacao-resgate.html">Autorização de Aplicação e Resgate</a><a href="investimentos-avaliacao-atuarial.html">Avaliação Atuarial</a></div>
+              <div><a href="investimentos-certificado-regularidade.html">Certificado de Regularidade Previdenciária</a><a href="investimentos-composicao-da-carteira.html">Composição da Carteira</a><a href="investimentos-decretos.html">Decretos</a><a href="investimentos-politica-de-investimento.html">Política de Investimento</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Normativos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown nav-mega">
+            <div class="nav-mega-grid cols-2">
+              <div><a href="normativos-decreto.html">Decreto</a><a href="normativos-demais-legislacoes.html">Demais Legislações</a><a href="normativos-leis-municipais.html">Leis Municipais</a><a href="normativos-notas-tecnicas.html">Notas Técnicas</a></div>
+              <div><a href="normativos-portarias-administrativas.html">Portarias Administrativas</a><a href="normativos-portarias-de-beneficios.html">Portarias de Benefícios</a><a href="normativos-portarias-organizacionais.html">Portarias Organizacionais</a><a href="normativos-regulamento-emprestimo.html">Regulamento do Empréstimo Consignado</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Relatórios <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown nav-mega">
+            <div class="nav-mega-grid cols-2">
+              <div><a href="relatorios-outros.html">Outros</a><a href="relatorios-auditorias.html">Relatórios de Auditorias</a><a href="relatorios-investimentos.html">Relatório de Investimentos</a></div>
+              <div><a href="relatorios-credito-consignado.html">Relatório do Crédito Consignado</a><a href="relatorios-gerenciais.html">Relatórios Gerenciais</a><a href="relatorios-visitas-financeiras.html">Relatório de Visitas de Instituições Financeiras</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Contabilidade <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="nav-dropdown">
+            <a href="contabilidade-balancetes.html">Balancetes</a><a href="contabilidade-despesas.html">Despesas</a><a href="contabilidade-receitas.html">Receitas</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="contato.html" class="nav-link">Contato</a></div>
+      </nav>
+      <div class="header-actions">
+        <button class="search-btn" title="Buscar" onclick="document.getElementById('searchModal').classList.add('open')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+        </button>
+        <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Portal do Segurado</a>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="logo-area">
+      <div class="logo-icon-img logo-icon-mobile">
+        <img src="https://ipremb.mg.gov.br/images/LOGOIPREMB.png" alt="IPREMB" class="logo-img logo-img-white" style="width:44px;height:44px;" onerror="this.parentElement.innerHTML='<div class=\'logo-icon-fallback logo-icon-fallback-mobile\'>IP</div>'">
+      </div>
+      <div style="line-height:1.25;">
+        <div style="font-size:18px;font-weight:800;color:white;letter-spacing:-0.03em;">IPREMB</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.5);">Instituto de Previdência de Betim</div>
+      </div>
+    </div>
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Fechar menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links" style="padding:0;">
+    <a href="index.html" class="mobile-nav-simple-link">Início</a>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Instituto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="instituto-conselho.html">Conselho</a><a href="instituto-lgpd-privacidade.html">LGPD — Privacidade</a>
+        <a href="instituto-fotos.html">Fotos</a><a href="instituto-historico-previdenciario.html">Histórico Previdenciário</a>
+        <a href="instituto-presidencia.html">Presidência</a><a href="instituto-quem-somos.html">Quem somos</a><a href="instituto-sede.html">Sede</a>
+      </div>
+    </div>
+    <div>
+      <button class="mobile-accordion-toggle" onclick="toggleMobileAccordion(this)">Serviços <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      <div class="mobile-accordion-body">
+        <a href="servicos-emprestimo-consignado.html">Empréstimo Consignado IPREMB</a><a href="servicos-programa-portas-abertas.html">Programa Portas Abertas</a>
+        <a href="servicos-alteracao-de-cadastro-e-senha.html">Alteração de Cadastro e Senha</a><a href="servicos-informe-de-rendimentos.html">Informe de Rendimentos</a>
+        <a href="servicos-orgao-oficial.html">Órgão Oficial</a><a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a>
+      </div>
+    </div>
+    <a href="contato.html" class="mobile-nav-simple-link">Contato</a>
+  </nav>
+  <div class="mobile-quick-btns">
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Contracheque</a>
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Informe IR</a>
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Prova de Vida</a>
+    <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="mobile-quick-btn">Portal do Segurado</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb-row">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span> <a href="ouvidoria.html">Ouvidoria</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Denúncia de Assédio – Canal Interno do IPREMB</span>
+      </div>
+      <button class="btn-back" onclick="window.history.back()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Voltar
+      </button>
+    </div>
+    <h1 class="page-title">Denúncia de Assédio – Canal Interno do IPREMB</h1>
+    <p class="page-intro">Este canal é destinado ao recebimento de denúncias de assédio moral ou sexual, com tratamento sigiloso das informações e proteção dos dados pessoais, conforme os procedimentos institucionais aplicáveis.</p>
+  </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-body" style="padding:56px 0 80px;">
+  <div class="container">
+    <div style="max-width:760px;margin:0 auto;">
+
+      <div class="alert-box info" style="margin-bottom:28px;">
+        <div class="alert-box-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="alert-box-text">
+          <strong>Formulário em implantação</strong>
+          Este formulário compõe a estrutura visual do site institucional em desenvolvimento. A integração de envio, protocolo e acompanhamento das manifestações será tratada em etapa posterior, conforme definição técnica e institucional. Para registrar sua manifestação agora, entre em contato pelo e-mail <a href="mailto:ouvidoria@ipremb.betim.mg.gov.br" style="color:var(--blue-600);font-weight:600;">ouvidoria@ipremb.betim.mg.gov.br</a> ou pelo telefone (31) 3594-5380, de segunda a sexta-feira, das 9h às 16h30.
+        </div>
+      </div>
+
+      <div class="form-wrapper">
+        <form id="ouvidoria-form" onsubmit="return false;" autocomplete="off">
+
+          <div class="form-section">
+            <div class="form-section-title">Sua identidade</div>
+            <div class="form-radio-group">
+              <label class="form-radio-item">
+                <input type="radio" name="identidade" value="anonimo">
+                <span>Não quero me identificar (manifestação anônima)</span>
+              </label>
+              <label class="form-radio-item">
+                <input type="radio" name="identidade" value="identificado-publico">
+                <span>Quero me identificar e autorizo a divulgação dos meus dados pessoais</span>
+              </label>
+              <label class="form-radio-item">
+                <input type="radio" name="identidade" value="identificado-sigilo" checked>
+                <span>Quero me identificar, mas solicito sigilo sobre meus dados pessoais</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Tipo de informação</div>
+            <div class="form-group">
+              <label class="form-label" for="tipo-informacao">Categoria da manifestação</label>
+              <input class="form-input" type="text" id="tipo-informacao" name="tipo_informacao" value="Denúncia de Assédio" readonly>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Dados da mensagem</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nome">Nome completo</label>
+                <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                <span class="form-hint">Opcional se manifestação anônima.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-mail</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="seu@email.com.br">
+                <span class="form-hint">Opcional se manifestação anônima.</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="telefone">Telefone</label>
+                <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(31) 00000-0000">
+                <span class="form-hint">Opcional se manifestação anônima.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="assunto">Assunto <span class="form-req">*</span></label>
+                <input class="form-input" type="text" id="assunto" name="assunto" placeholder="Resumo do assunto" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="mensagem">Descrição da manifestação <span class="form-req">*</span></label>
+              <textarea class="form-textarea" id="mensagem" name="mensagem" rows="6" placeholder="Descreva detalhadamente sua manifestação. Inclua datas, locais e nomes de envolvidos, se aplicável." required></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Anexos</div>
+            <div class="form-group">
+              <label class="form-label" for="anexos">Documentos de apoio</label>
+              <div class="form-file-area">
+                <input type="file" id="anexos" name="anexos" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+              </div>
+              <span class="form-file-hint">Formatos aceitos: PDF, DOC, DOCX, JPG, PNG. Tamanho máximo por arquivo: 10 MB.</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary">Enviar</button>
+            <button type="reset" class="btn btn-outline">Limpar Formulário</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-img">
+            <img src="https://ipremb.mg.gov.br/images/LOGOIPREMB.png" alt="IPREMB" class="footer-logo-img-tag" onerror="this.parentElement.innerHTML='<div class=\'footer-logo-icon-fallback\'>IP</div>'">
+          </div>
+          <div>
+            <div class="footer-logo-name">IPREMB</div>
+            <div class="footer-logo-tag">Instituto de Previdência Social do Município de Betim</div>
+          </div>
+        </div>
+        <p class="footer-desc">Autarquia municipal responsável por administrar o Regime Próprio de Previdência Social dos servidores públicos efetivos de Betim — MG.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/ipremb.betim.mg/" target="_blank" rel="noopener" title="Instagram do IPREMB">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">O Instituto</div>
+        <div class="footer-links">
+          <a href="instituto-quem-somos.html">Sobre o IPREMB</a><a href="instituto-quem-somos.html">Estrutura Organizacional</a>
+          <a href="normativos-leis-municipais.html">Legislação</a><a href="comunicados.html">Notícias</a><a href="contato.html">Fale Conosco</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Transparência</div>
+        <div class="footer-links">
+          <a href="transparencia-contratos.html">Portal da Transparência</a><a href="transparencia-licitacoes.html">Licitações</a>
+          <a href="transparencia-contratos.html">Contratos</a><a href="investimentos-politica-de-investimento.html">Investimentos</a>
+          <a href="relatorios-gerenciais.html">Relatórios Oficiais</a><a href="servicos-orgao-oficial.html">Diário Oficial</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Atendimento</div>
+        <div class="footer-links">
+          <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener">Portal do Segurado</a>
+          <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener">Contracheque</a>
+          <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener">Informe de Rendimentos</a>
+          <a href="servicos-prova-de-vida.html">Prova de Vida</a>
+          <a href="ouvidoria.html">Ouvidoria</a><a href="instituto-lgpd-privacidade.html">LGPD</a>
+        </div>
+        <div style="margin-top:22px;">
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-links">
+            <a href="tel:+553135945380">(31) 3594-5380</a>
+            <a href="https://api.whatsapp.com/send?phone=553195409461" target="_blank" rel="noopener">(31) 9540-9461</a>
+            <a href="mailto:atendimento@ipremb.betim.mg.gov.br" style="font-size:11.5px;word-break:break-all;">atendimento@ipremb.betim.mg.gov.br</a>
+          </div>
+          <div style="margin-top:12px;font-size:11.5px;color:rgba(255,255,255,0.32);line-height:1.6;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;opacity:0.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Seg–Sex · 9h às 16h30
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2026 IPREMB — Praça José Lino da Silva, 144, Brasiléia – Betim/MG · CEP 32600-308 · Todos os direitos reservados.</div>
+      <div class="footer-bottom-links">
+        <a href="instituto-lgpd-privacidade.html">Privacidade</a>
+        <a href="instituto-lgpd-privacidade.html">LGPD</a>
+        <a>Acessibilidade</a>
+        <a>Mapa do Site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){var m=document.getElementById('mobileMenu');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+  var fontSize=16;function adjustFont(d){fontSize=Math.max(12,Math.min(22,fontSize+d*2));document.documentElement.style.fontSize=fontSize+'px';}
+  function toggleContrast(){document.body.classList.toggle('high-contrast');}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.getElementById('searchModal');if(m)m.classList.remove('open');}});
+  var header=document.querySelector('.header');
+  window.addEventListener('scroll',function(){if(window.scrollY>8){header.style.boxShadow='0 2px 0 var(--gray-200), 0 6px 28px rgba(9,29,69,0.10)';}else{header.style.boxShadow='0 1px 0 var(--gray-200), 0 4px 20px rgba(9,29,69,0.06)';}},{passive:true});
+  var contrastStyle=document.createElement('style');contrastStyle.textContent='.high-contrast{filter:contrast(1.5) grayscale(0.15);}';document.head.appendChild(contrastStyle);
+</script>
+
+<!-- MODAL DE BUSCA -->
+<div class="search-modal-overlay" id="searchModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="search-modal" role="dialog" aria-modal="true">
+    <div class="search-modal-header">
+      <span class="search-modal-title">Buscar no site</span>
+      <button class="search-modal-close" onclick="document.getElementById('searchModal').classList.remove('open')" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-modal-input-wrap">
+      <span class="search-modal-input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+      <input type="text" class="search-modal-input" id="searchInput" placeholder="O que você procura?">
+    </div>
+    <p class="search-modal-hint">Ex: Denúncia, Reclamação, Acesso à Informação</p>
+  </div>
+</div>
+
+<script>
+(function(){var items=document.querySelectorAll('#mainNav .nav-item');var openTimer,closeTimer;items.forEach(function(item){var dropdown=item.querySelector('.nav-dropdown');if(!dropdown)return;item.addEventListener('mouseenter',function(){clearTimeout(closeTimer);openTimer=setTimeout(function(){items.forEach(function(i){i.classList.remove('open');});item.classList.add('open');},60);});item.addEventListener('mouseleave',function(){clearTimeout(openTimer);closeTimer=setTimeout(function(){item.classList.remove('open');},120);});var link=item.querySelector('.nav-link');if(link){link.addEventListener('click',function(e){if(dropdown){e.preventDefault();var isOpen=item.classList.contains('open');items.forEach(function(i){i.classList.remove('open');});if(!isOpen)item.classList.add('open');}});}});document.addEventListener('click',function(e){if(!e.target.closest('#mainNav'))items.forEach(function(i){i.classList.remove('open');});});})();
+function toggleMobileAccordion(btn){var body=btn.nextElementSibling;var isOpen=body.classList.contains('open');document.querySelectorAll('.mobile-accordion-body.open').forEach(function(b){b.classList.remove('open');b.previousElementSibling.classList.remove('open');});if(!isOpen){body.classList.add('open');btn.classList.add('open');}}
+</script>
+
+</body>
+</html>
