@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fotos 2026 — IPREMB</title>
-<meta name="description" content="Página destinada à divulgação da galeria de fotos institucionais do IPREMB do ano de 2026.">
+<title>Fotos Junho 2026 — IPREMB</title>
+<meta name="description" content="Galeria de fotos das atividades institucionais realizadas pelo IPREMB em junho de 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -2785,56 +2785,32 @@
       <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span>
       <a href="#">Instituto</a> <span class="breadcrumb-sep">›</span>
       <a href="instituto-fotos.html">Fotos</a> <span class="breadcrumb-sep">›</span>
-      <span class="breadcrumb-current">2026</span>
+      <a href="instituto-fotos-2026.html">2026</a> <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Junho</span>
       </div>
       <button class="btn-back" onclick="window.history.back()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         Voltar
       </button>
     </div>
-    <h1 class="page-title">Fotos 2026</h1>
-    <p class="page-intro">Registros fotográficos das atividades realizadas pelo IPREMB no ano de 2026.</p>
+    <h1 class="page-title">Fotos Junho 2026</h1>
+    <p class="page-intro">Registros fotográficos das atividades realizadas pelo IPREMB em junho de 2026.</p>
   </div>
 </section>
 
 <!-- PAGE BODY -->
 <style>
-  .fotos-ano-section { padding: 56px 0 80px; }
-  .fotos-ano-intro { font-size: 15px; color: var(--gray-500); margin-bottom: 40px; line-height: 1.7; font-weight: 400; }
-  .fotos-ano-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-  .fotos-ano-card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-md);
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: var(--shadow-xs);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  }
-  .fotos-ano-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--blue-100); }
-  .fotos-ano-month { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-600); }
-  .fotos-ano-title { font-size: 18px; font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; }
-  .fotos-ano-count { font-size: 13px; color: var(--gray-500); font-weight: 400; }
-  .fotos-ano-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: var(--blue-600);
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.18s;
-    align-self: flex-start;
-    margin-top: 4px;
-  }
-  .fotos-ano-link:hover { background: var(--blue-700); }
-  .fotos-ano-back-wrap { margin-top: 48px; text-align: center; }
-  .fotos-ano-back {
+  .fotos-2026-section { padding: 56px 0 80px; }
+  .fotos-2026-month { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 18px; }
+  .fotos-2026-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; }
+  .fotos-2026-title { font-size: 20px; font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; }
+  .fotos-2026-count { font-size: 13px; color: var(--gray-500); font-weight: 400; }
+  .fotos-2026-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .fotos-2026-item { border-radius: var(--radius-md); overflow: hidden; background: var(--gray-100); border: 1px solid var(--gray-200); box-shadow: var(--shadow-xs); transition: transform 0.2s, box-shadow 0.2s; }
+  .fotos-2026-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .fotos-2026-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .fotos-2026-back-wrap { margin-top: 40px; text-align: center; }
+  .fotos-2026-back {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -2848,27 +2824,53 @@
     border: 1px solid var(--blue-100);
     transition: background 0.18s, border-color 0.18s;
   }
-  .fotos-ano-back:hover { background: var(--blue-100); border-color: var(--blue-200, #bad4ff); }
-  @media (max-width: 480px) { .fotos-ano-section { padding: 32px 0 56px; } }
+  .fotos-2026-back:hover {
+    background: var(--blue-100);
+    border-color: var(--blue-200, #bad4ff);
+  }
+  @media (max-width: 768px) { .fotos-2026-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+  @media (max-width: 480px) { .fotos-2026-grid { grid-template-columns: 1fr; } .fotos-2026-section { padding: 32px 0 56px; } }
 </style>
-<div class="page-body fotos-ano-section">
+<div class="page-body fotos-2026-section">
   <div class="container">
-    <p class="fotos-ano-intro">Selecione o mês desejado para acessar a galeria de fotos:</p>
-    <div class="fotos-ano-grid">
-      <div class="fotos-ano-card">
-        <div class="fotos-ano-month">Junho 2026</div>
-        <div class="fotos-ano-title">Galeria de Junho</div>
-        <div class="fotos-ano-count">9 fotos</div>
-        <a href="instituto-fotos-2026-junho.html" class="fotos-ano-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          Acessar galeria
-        </a>
+    <div class="fotos-2026-month">Junho 2026</div>
+    <div class="fotos-2026-header">
+      <div class="fotos-2026-title">Galeria de Junho</div>
+      <div class="fotos-2026-count">9 fotos</div>
+    </div>
+    <div class="fotos-2026-grid">
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3599.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3600.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3601.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3602.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3603.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3604.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3605.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3606.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
+      </div>
+      <div class="fotos-2026-item">
+        <img src="images/fotos/2026/junho/IMG_3620.JPG.jpeg" alt="Atividade institucional IPREMB — Junho 2026" class="fotos-2026-img" loading="lazy">
       </div>
     </div>
-    <div class="fotos-ano-back-wrap">
-      <a href="instituto-fotos.html" class="fotos-ano-back">
+    <div class="fotos-2026-back-wrap">
+      <a href="instituto-fotos-2026.html" class="fotos-2026-back">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Voltar para Fotos
+        Voltar para Fotos 2026
       </a>
     </div>
   </div>
