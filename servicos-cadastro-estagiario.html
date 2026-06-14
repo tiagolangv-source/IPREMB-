@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seleção de Estagiários — IPREMB</title>
-<meta name="description" content="Acompanhe os processos seletivos de estágio do IPREMB: editais, requisitos e informações para candidatos.">
+<title>Cadastro de Estagiários — IPREMB</title>
+<meta name="description" content="Formulário de cadastro no banco de talentos de estagiários do IPREMB.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -2788,15 +2788,15 @@
   <div class="container page-hero-inner">
     <div class="breadcrumb-row">
       <div class="breadcrumb">
-      <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span> <a href="#">Serviços</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Seleção de Estagiários</span>
+      <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span> <a href="#">Serviços</a> <span class="breadcrumb-sep">›</span> <a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Cadastro</span>
       </div>
       <button class="btn-back" onclick="window.history.back()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         Voltar
       </button>
     </div>
-    <h1 class="page-title">Seleção de Estagiários</h1>
-    <p class="page-intro">O IPREMB disponibiliza oportunidades de estágio para estudantes que desejam adquirir experiência prática e desenvolver suas habilidades profissionais.</p>
+    <h1 class="page-title">Cadastro de Estagiários</h1>
+    <p class="page-intro">Preencha os campos abaixo para fazer parte do banco de talentos do IPREMB. Suas informações serão analisadas conforme a disponibilidade de vagas.</p>
   </div>
 </section>
 
@@ -2804,166 +2804,159 @@
 <div class="page-body" style="padding:60px 0 80px;">
   <div class="container">
     <style>
-      /* ── Estágio funcional ── */
-      .est-layout {
-        display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start;
+      .cad-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        padding: 36px;
+        max-width: 720px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-sm);
       }
-      .est-img {
-        border-radius:var(--radius-xl);overflow:hidden;
-        border:1px solid var(--gray-200);
-        box-shadow:var(--shadow-md);
-        margin-bottom:28px;
+      .cad-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.015em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
       }
-      .est-img img {
-        width:100%;max-height:340px;object-fit:cover;object-position:center 20%;display:block;
+      .cad-title::before {
+        content: '';
+        width: 3px;
+        height: 20px;
+        background: var(--blue-600);
+        border-radius: 2px;
+        flex-shrink: 0;
       }
-      .est-img-placeholder {
-        height:280px;background:var(--blue-50);
-        display:flex;align-items:center;justify-content:center;
-        color:var(--blue-300);
+      .cad-intro {
+        font-size: 13.5px;
+        color: var(--gray-500);
+        line-height: 1.72;
+        margin-bottom: 28px;
       }
-      .est-intro {
-        font-size:15px;color:var(--gray-700);line-height:1.82;
-        margin-bottom:28px;
+      .cad-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
       }
-      .est-areas {
-        background:var(--white);border:1px solid var(--gray-200);
-        border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:28px;
+      .cad-field { display: flex; flex-direction: column; gap: 6px; }
+      .cad-field.full { grid-column: 1 / -1; }
+      .cad-label {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--gray-700);
       }
-      .est-areas-label {
-        font-size:10.5px;font-weight:700;letter-spacing:0.13em;
-        text-transform:uppercase;color:var(--gray-400);margin-bottom:14px;
+      .cad-label sup { color: var(--blue-600); }
+      .cad-input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1.5px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+        font-family: inherit;
+        color: var(--gray-900);
+        background: var(--gray-50);
+        outline: none;
+        transition: border-color 0.18s, background 0.18s;
+        box-sizing: border-box;
       }
-      .est-areas-grid {
-        display:grid;grid-template-columns:1fr 1fr;gap:8px;
+      .cad-input:focus { border-color: var(--blue-400); background: var(--white); }
+      .cad-input[type="file"] { padding: 8px 14px; color: var(--gray-500); font-size: 13px; cursor: pointer; }
+      .cad-file-hint { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
+      .cad-divider { border: none; border-top: 1px solid var(--gray-200); margin: 28px 0 0; }
+      .cad-btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+      .cad-btn-primary {
+        background: var(--blue-600);
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.18s;
+        letter-spacing: 0.01em;
       }
-      .est-area-item {
-        display:flex;align-items:center;gap:8px;
-        font-size:13.5px;color:var(--gray-700);padding:6px 0;
+      .cad-btn-primary:hover { background: var(--blue-700); }
+      .cad-btn-secondary {
+        background: var(--white);
+        color: var(--gray-700);
+        border: 1.5px solid var(--gray-200);
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.18s, border-color 0.18s;
+        letter-spacing: 0.01em;
       }
-      .est-area-dot {
-        width:7px;height:7px;border-radius:50%;
-        background:var(--blue-400);flex-shrink:0;
-      }
-      /* CTA principal */
-      .est-cta-box {
-        background:linear-gradient(130deg,var(--blue-900),var(--blue-700));
-        border-radius:var(--radius-xl);padding:36px 32px;
-        text-align:center;
-      }
-      .est-cta-label {
-        font-size:10px;font-weight:700;letter-spacing:0.15em;
-        text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;
-      }
-      .est-cta-title {
-        font-size:18px;font-weight:800;color:white;
-        letter-spacing:-0.025em;line-height:1.2;margin-bottom:10px;
-      }
-      .est-cta-desc {
-        font-size:13px;color:rgba(255,255,255,.58);line-height:1.68;margin-bottom:24px;
-      }
-      .est-cta-btn {
-        display:block;background:white;color:var(--blue-700);
-        font-size:14px;font-weight:700;padding:14px 28px;
-        border-radius:10px;text-decoration:none;
-        transition:box-shadow .18s,transform .15s;
-        letter-spacing:-0.01em;
-      }
-      .est-cta-btn:hover {
-        box-shadow:0 6px 20px rgba(0,0,0,.18);transform:translateY(-2px);
-      }
-      /* Status atual */
-      .est-status {
-        background:var(--white);border:1px solid var(--gray-200);
-        border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:18px;
-      }
-      .est-status-header {
-        display:flex;align-items:center;gap:10px;margin-bottom:12px;
-      }
-      .est-status-dot {
-        width:8px;height:8px;border-radius:50%;
-        background:var(--gray-300);flex-shrink:0;
-      }
-      .est-status-dot.active {background:#22C55E;}
-      .est-status-title {font-size:13px;font-weight:700;color:var(--gray-800);}
-      .est-status-text {font-size:12.5px;color:var(--gray-500);line-height:1.65;}
-      /* Editais */
-      .est-editais {
-        background:var(--white);border:1px solid var(--gray-200);
-        border-radius:var(--radius-lg);padding:22px 24px;
-      }
-      .est-editais-label {
-        font-size:10.5px;font-weight:700;letter-spacing:0.12em;
-        text-transform:uppercase;color:var(--gray-400);margin-bottom:14px;
-      }
-      .est-editais-empty {
-        font-size:13px;color:var(--gray-400);text-align:center;
-        padding:18px 0;font-style:italic;
-      }
-      @media(max-width:860px){
-        .est-layout{grid-template-columns:1fr;}
-        .est-areas-grid{grid-template-columns:1fr;}
+      .cad-btn-secondary:hover { background: var(--gray-50); border-color: var(--gray-300); }
+      @media(max-width:640px){
+        .cad-grid { grid-template-columns: 1fr; }
+        .cad-card { padding: 24px 18px; }
+        .cad-btn-row { flex-direction: column; }
+        .cad-btn-primary, .cad-btn-secondary { width: 100%; }
       }
     </style>
 
-    <div class="est-layout">
-      <!-- Coluna principal -->
-      <div>
-        <!-- Imagem -->
-        <div class="est-img">
-          <img
-            src="https://ipremb.betim.mg.gov.br/images/stories/estagios/estagiarios.jpg"
-            alt="Seleção de Estagiários — IPREMB"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="est-img-placeholder" style="display:none;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <div class="cad-card">
+      <div class="cad-title">Formulário de Cadastro</div>
+      <p class="cad-intro">Preencha os campos abaixo para realizar o cadastro no banco de talentos de estagiários do IPREMB. As informações serão analisadas conforme a disponibilidade de vagas.</p>
+
+      <form onsubmit="return false;">
+        <div class="cad-grid">
+
+          <div class="cad-field full">
+            <label class="cad-label" for="cad-nome">Nome <sup>*</sup></label>
+            <input type="text" id="cad-nome" class="cad-input" placeholder="Nome completo">
           </div>
-        </div>
 
-        <!-- Introdução -->
-        <p class="est-intro">O IPREMB oferece oportunidades de estágio para estudantes de nível médio e superior. Os processos seletivos são conduzidos com base em critérios objetivos de mérito, garantindo igualdade de oportunidades e transparência.</p>
-
-        <!-- Áreas de atuação -->
-        <div class="est-areas">
-          <div class="est-areas-label">Áreas de atuação disponíveis</div>
-          <div class="est-areas-grid">
-            <div class="est-area-item"><div class="est-area-dot"></div>Administração</div>
-            <div class="est-area-item"><div class="est-area-dot"></div>Contabilidade</div>
-            <div class="est-area-item"><div class="est-area-dot"></div>Direito</div>
-            <div class="est-area-item"><div class="est-area-dot"></div>Tecnologia da Informação</div>
-            <div class="est-area-item"><div class="est-area-dot"></div>Recursos Humanos</div>
-            <div class="est-area-item"><div class="est-area-dot"></div>Comunicação e correlatas</div>
+          <div class="cad-field">
+            <label class="cad-label" for="cad-cpf">CPF <sup>*</sup></label>
+            <input type="text" id="cad-cpf" class="cad-input" placeholder="000.000.000-00">
           </div>
-        </div>
 
-        <!-- Editais anteriores -->
-        <div class="est-editais">
-          <div class="est-editais-label">Editais anteriores</div>
-          <div class="est-editais-empty">Os editais de processos seletivos encerrados serão listados aqui.</div>
-        </div>
-      </div>
-
-      <!-- Coluna lateral -->
-      <div>
-        <!-- Status atual -->
-        <div class="est-status">
-          <div class="est-status-header">
-            <div class="est-status-dot"></div>
-            <div class="est-status-title">Processo seletivo</div>
+          <div class="cad-field">
+            <label class="cad-label" for="cad-nascimento">Data de Nascimento <sup>*</sup></label>
+            <input type="date" id="cad-nascimento" class="cad-input">
           </div>
-          <div class="est-status-text">Nenhum processo seletivo aberto no momento. Acompanhe os comunicados oficiais do IPREMB para ser avisado quando novas vagas forem disponibilizadas.</div>
+
+          <div class="cad-field full">
+            <label class="cad-label" for="cad-mae">Nome da mãe <sup>*</sup></label>
+            <input type="text" id="cad-mae" class="cad-input" placeholder="Nome completo da mãe">
+          </div>
+
+          <div class="cad-field">
+            <label class="cad-label" for="cad-telefone">Telefone de contato <sup>*</sup></label>
+            <input type="text" id="cad-telefone" class="cad-input" placeholder="(31) 00000-0000">
+          </div>
+
+          <div class="cad-field">
+            <label class="cad-label" for="cad-email">E-mail <sup>*</sup></label>
+            <input type="email" id="cad-email" class="cad-input" placeholder="seu@email.com.br">
+          </div>
+
+          <div class="cad-field full">
+            <label class="cad-label" for="cad-docs">Anexar Documentos</label>
+            <input type="file" id="cad-docs" class="cad-input" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple>
+            <span class="cad-file-hint">Formatos aceitos: PDF, DOC, JPG, PNG. Esta função será habilitada em breve.</span>
+          </div>
+
         </div>
 
-        <!-- CTA cadastro -->
-        <div class="est-cta-box">
-          <div class="est-cta-label">Banco de Talentos</div>
-          <div class="est-cta-title">Cadastre-se e fique na fila</div>
-          <div class="est-cta-desc">Se você está em busca de uma oportunidade para desenvolver suas habilidades, faça seu cadastro. Suas informações serão analisadas conforme a disponibilidade de vagas.</div>
-          <a href="servicos-cadastro-estagiario.html" class="est-cta-btn">
-            Acessar formulário de cadastro →
-          </a>
+        <hr class="cad-divider">
+
+        <div class="cad-btn-row">
+          <button type="submit" class="cad-btn-primary">Enviar</button>
+          <button type="reset" class="cad-btn-secondary">Limpar Formulário</button>
+          <button type="button" class="cad-btn-secondary">Editar Cadastro</button>
         </div>
-      </div>
+      </form>
     </div>
 
   </div>
