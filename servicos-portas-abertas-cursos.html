@@ -2805,19 +2805,222 @@
 <!-- PAGE BODY -->
 <div class="page-body" style="padding:56px 0 80px;">
   <div class="container" style="max-width:760px;margin:0 auto;">
-    <div style="background:var(--white);border:1px dashed var(--gray-200);border-radius:var(--radius-lg);padding:52px 20px;text-align:center;">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="margin:0 auto 16px;display:block;color:var(--gray-300);">
-        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-      </svg>
-      <div style="font-size:15px;font-weight:700;color:var(--gray-600);margin-bottom:8px;">Conteúdo em preparação</div>
-      <div style="font-size:13.5px;color:var(--gray-400);line-height:1.70;max-width:380px;margin:0 auto 24px;">
-        O conteúdo desta seção será publicado em breve. Retorne ao menu para acessar outras páginas.
+    <style>
+      .cur-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        padding: 36px;
+        box-shadow: var(--shadow-sm);
+      }
+      .cur-section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.015em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .cur-section-title::before {
+        content: '';
+        width: 3px;
+        height: 20px;
+        background: var(--blue-600);
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+      .cur-intro {
+        font-size: 13.5px;
+        color: var(--gray-500);
+        line-height: 1.70;
+        margin-bottom: 6px;
+      }
+      .cur-alert {
+        background: #FFF7E6;
+        border-left: 3px solid #F0A500;
+        border-radius: 6px;
+        padding: 14px 16px;
+        font-size: 13px;
+        color: #7A5400;
+        line-height: 1.65;
+        margin: 18px 0 24px;
+      }
+      .cur-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .cur-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+      .cur-field.full { grid-column: 1 / -1; }
+      .cur-label {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--gray-700);
+      }
+      .cur-label sup { color: var(--blue-600); }
+      .cur-input, .cur-select {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1.5px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+        font-family: inherit;
+        color: var(--gray-900);
+        background: var(--gray-50);
+        outline: none;
+        transition: border-color 0.18s, background 0.18s;
+        box-sizing: border-box;
+      }
+      .cur-input:focus, .cur-select:focus {
+        border-color: var(--blue-400);
+        background: var(--white);
+      }
+      .cur-courses-title {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--gray-700);
+        margin: 20px 0 12px;
+        letter-spacing: 0.01em;
+      }
+      .cur-check-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .cur-check-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13.5px;
+        color: var(--gray-700);
+        cursor: pointer;
+      }
+      .cur-check-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--blue-600);
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .cur-divider { border: none; border-top: 1px solid var(--gray-200); margin: 24px 0 0; }
+      .cur-btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+      .cur-btn-primary {
+        background: var(--blue-600);
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.18s;
+        letter-spacing: 0.01em;
+      }
+      .cur-btn-primary:hover { background: var(--blue-700); }
+      .cur-btn-secondary {
+        background: var(--white);
+        color: var(--gray-700);
+        border: 1.5px solid var(--gray-200);
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.18s, border-color 0.18s;
+        letter-spacing: 0.01em;
+      }
+      .cur-btn-secondary:hover { background: var(--gray-50); border-color: var(--gray-300); }
+      @media(max-width:580px){
+        .cur-grid { grid-template-columns: 1fr; }
+        .cur-check-grid { grid-template-columns: 1fr 1fr; }
+        .cur-card { padding: 24px 18px; }
+        .cur-btn-row { flex-direction: column; }
+        .cur-btn-primary, .cur-btn-secondary { width: 100%; }
+      }
+    </style>
+
+    <div class="cur-card">
+      <div class="cur-section-title">Informações para Contato</div>
+      <p class="cur-intro">Preencha o formulário abaixo para entrar em contato conosco.</p>
+      <p class="cur-intro">Para um melhor atendimento, preencha todos os campos.</p>
+
+      <div class="cur-alert">
+        O preenchimento da ficha não garante a vaga no curso, necessário aguardar contato
+        da assistente social do IPREMB para confirmar a matrícula no curso escolhido.
       </div>
-      <a href="servicos-programa-portas-abertas.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-600);color:white;font-size:13.5px;font-weight:600;padding:11px 24px;border-radius:8px;text-decoration:none;transition:background .18s;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Voltar
-      </a>
+
+      <form onsubmit="return false;">
+        <div class="cur-grid">
+
+          <div class="cur-field full">
+            <label class="cur-label" for="cur-nome">Nome <sup>*</sup></label>
+            <input type="text" id="cur-nome" class="cur-input" placeholder="Nome completo">
+          </div>
+
+          <div class="cur-field">
+            <label class="cur-label" for="cur-email">E-mail <sup>*</sup></label>
+            <input type="email" id="cur-email" class="cur-input" placeholder="seu@email.com.br">
+          </div>
+
+          <div class="cur-field">
+            <label class="cur-label" for="cur-telefone">Telefone <sup>*</sup></label>
+            <input type="text" id="cur-telefone" class="cur-input" placeholder="(31) 00000-0000">
+          </div>
+
+          <div class="cur-field">
+            <label class="cur-label" for="cur-cpf">CPF <sup>*</sup></label>
+            <input type="text" id="cur-cpf" class="cur-input" placeholder="000.000.000-00">
+          </div>
+
+          <div class="cur-field">
+            <label class="cur-label" for="cur-nascimento">Data de nascimento <sup>*</sup></label>
+            <input type="date" id="cur-nascimento" class="cur-input">
+          </div>
+
+          <div class="cur-field full">
+            <label class="cur-label" for="cur-endereco">Endereço <sup>*</sup></label>
+            <input type="text" id="cur-endereco" class="cur-input" placeholder="Rua, número, bairro">
+          </div>
+
+          <div class="cur-field full">
+            <label class="cur-label" for="cur-vinculo">Vínculo <sup>*</sup></label>
+            <select id="cur-vinculo" class="cur-select">
+              <option value="">Selecione uma opção</option>
+              <option value="aposentado">Aposentado</option>
+              <option value="pensionista">Pensionista</option>
+              <option value="ativo">Ativo</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="cur-courses-title">Cursos de interesse</div>
+        <div class="cur-check-grid">
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="psicanalise"> Psicanálise</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="psicologia"> Psicologia</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="bordado"> Bordado</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="violao"> Violão</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="coral"> Coral</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="decoupage"> Decoupage</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="biscuit"> Biscuit</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="criatividade"> Grupo de Criatividade</label>
+          <label class="cur-check-item"><input type="checkbox" name="curso" value="biodanza"> Biodanza</label>
+        </div>
+
+        <hr class="cur-divider">
+
+        <div class="cur-btn-row">
+          <button type="submit" class="cur-btn-primary">Enviar</button>
+          <button type="reset" class="cur-btn-secondary">Limpar Formulário</button>
+        </div>
+      </form>
     </div>
+
   </div>
 </div>
 
