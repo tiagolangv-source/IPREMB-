@@ -2407,6 +2407,154 @@
   }
 
 </style>
+<style>
+  /* -- Pro-Gestao: submenu lateral (desktop) -- */
+  .nav-sub { position: relative; }
+  .nav-sub-trigger { cursor: pointer; }
+  .nav-sub-arrow {
+    width: 12px; height: 12px;
+    margin-left: auto;
+    opacity: 0.42;
+    flex-shrink: 0;
+    transition: opacity 0.13s, transform 0.13s;
+  }
+  .nav-sub:hover > .nav-sub-trigger,
+  .nav-sub:focus-within > .nav-sub-trigger { background: var(--blue-50); color: var(--blue-600); }
+  .nav-sub:hover > .nav-sub-trigger::before,
+  .nav-sub:focus-within > .nav-sub-trigger::before { background: var(--blue-400); }
+  .nav-sub:hover > .nav-sub-trigger .nav-sub-arrow,
+  .nav-sub:focus-within > .nav-sub-trigger .nav-sub-arrow { opacity: 0.8; transform: translateX(2px); }
+  .nav-sub-menu {
+    position: absolute;
+    top: -8px;
+    left: calc(100% + 8px);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(9,29,69,0.14), 0 4px 16px rgba(9,29,69,0.07);
+    padding: 8px;
+    min-width: 234px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-6px);
+    transition: opacity 0.16s cubic-bezier(0.4,0,0.2,1),
+                transform 0.16s cubic-bezier(0.4,0,0.2,1),
+                visibility 0.16s;
+    z-index: 520;
+  }
+  /* ponte invisivel para nao perder o hover no vao entre os menus */
+  .nav-sub-menu::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -12px;
+    width: 12px; height: 100%;
+  }
+  .nav-sub:hover > .nav-sub-menu,
+  .nav-sub:focus-within > .nav-sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  /* -- Pro-Gestao: segundo nivel no menu mobile -- */
+  .mobile-subaccordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 11px 20px 11px 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.72);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s, color 0.15s;
+    text-align: left;
+  }
+  .mobile-subaccordion-toggle:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.90); }
+  .mobile-subaccordion-toggle svg { transition: transform 0.2s; opacity: 0.5; flex-shrink: 0; }
+  .mobile-subaccordion-toggle.open svg { transform: rotate(180deg); }
+  .mobile-subaccordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.26s ease;
+    background: rgba(0,0,0,0.18);
+  }
+  .mobile-subaccordion-body.open { max-height: 280px; }
+  .mobile-accordion-body .mobile-subaccordion-body a { padding-left: 46px; }
+
+  /* -- Botao flutuante do WhatsApp -- */
+  .wa-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(9,29,69,0.22), 0 2px 8px rgba(9,29,69,0.14);
+    z-index: 900;
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .wa-float:hover, .wa-float:focus-visible {
+    background: #1EBE57;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(9,29,69,0.26), 0 3px 10px rgba(9,29,69,0.16);
+  }
+  .wa-float:focus-visible { outline: 3px solid rgba(23,73,200,0.45); outline-offset: 3px; }
+  .wa-float-icon { width: 29px; height: 29px; display: block; }
+  .wa-float-tip {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    background: #0B1F44;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 9px 13px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    box-shadow: 0 8px 20px rgba(9,29,69,0.18);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+  .wa-float-tip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #0B1F44;
+  }
+  .wa-float:hover .wa-float-tip,
+  .wa-float:focus-visible .wa-float-tip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+  }
+  @media (max-width: 768px) {
+    .wa-float { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+    .wa-float-icon { width: 27px; height: 27px; }
+    .wa-float-tip { font-size: 12px; padding: 8px 11px; }
+  }
+  @media (max-width: 420px) {
+    .wa-float { right: 14px; bottom: 14px; width: 50px; height: 50px; }
+    .wa-float-icon { width: 25px; height: 25px; }
+  }
+</style>
 </head>
 <body>
 
@@ -2490,7 +2638,7 @@
             <a href="servicos-portas-abertas-cursos.html">Programa Portas Abertas</a>
             <a href="servicos-alteracao-de-cadastro-e-senha.html">Alteração de Cadastro e Senha</a>
             <a href="servicos-informe-de-rendimentos.html">Informe de Rendimentos</a>
-            <a href="servicos-orgao-oficial.html">Órgão Oficial</a>
+            <a href="https://www.betim.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a>
             <a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a>
             <a href="servicos-tutoriais-ipremb.html">Tutoriais IPREMB</a>
           </div>
@@ -2520,6 +2668,14 @@
             <a href="transparencia-editais.html">Editais</a>
             <a href="transparencia-licitacoes.html">Licitações</a>
             <a href="transparencia-plano-de-contratacoes-anuais.html">Plano de Contratações Anuais</a>
+            <div class="nav-sub">
+              <a class="nav-sub-trigger" tabindex="0" aria-haspopup="true">Pró-Gestão<svg class="nav-sub-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <div class="nav-sub-menu">
+                <a href="transparencia-pro-gestao-manuais.html">Manuais</a>
+                <a href="transparencia-pro-gestao-mapeamento-de-processos.html">Mapeamentos dos Processos</a>
+                <a href="transparencia-pro-gestao-comite-de-etica.html">Comitê de Ética</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2539,6 +2695,7 @@
                 <a href="investimentos-composicao-da-carteira.html">Composição da Carteira</a>
                 <a href="investimentos-decretos.html">Decretos</a>
                 <a href="investimentos-politica-de-investimento.html">Política de Investimento</a>
+                <a href="investimentos-procedimento-aplicacoes-financeiras.html">Procedimento para aplicações financeiras</a>
               </div>
             </div>
           </div>
@@ -2661,7 +2818,7 @@
         <a href="servicos-portas-abertas-cursos.html">Programa Portas Abertas</a>
         <a href="servicos-alteracao-de-cadastro-e-senha.html">Alteração de Cadastro e Senha</a>
         <a href="servicos-informe-de-rendimentos.html">Informe de Rendimentos</a>
-        <a href="servicos-orgao-oficial.html">Órgão Oficial</a>
+        <a href="https://www.betim.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a>
         <a href="servicos-selecao-de-estagiarios.html">Seleção de Estagiários</a>
         <a href="servicos-tutoriais-ipremb.html">Tutoriais IPREMB</a>
       </div>
@@ -2697,6 +2854,17 @@
         <a href="transparencia-editais.html">Editais</a>
         <a href="transparencia-licitacoes.html">Licitações</a>
         <a href="transparencia-plano-de-contratacoes-anuais.html">Plano de Contratações Anuais</a>
+        <div class="mobile-subaccordion">
+          <button class="mobile-subaccordion-toggle" aria-expanded="false" onclick="toggleMobileSubAccordion(this)">
+            Pró-Gestão
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="mobile-subaccordion-body">
+            <a href="transparencia-pro-gestao-manuais.html">Manuais</a>
+            <a href="transparencia-pro-gestao-mapeamento-de-processos.html">Mapeamentos dos Processos</a>
+            <a href="transparencia-pro-gestao-comite-de-etica.html">Comitê de Ética</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2715,6 +2883,7 @@
         <a href="investimentos-composicao-da-carteira.html">Composição da Carteira</a>
         <a href="investimentos-decretos.html">Decretos</a>
         <a href="investimentos-politica-de-investimento.html">Política de Investimento</a>
+        <a href="investimentos-procedimento-aplicacoes-financeiras.html">Procedimento para aplicações financeiras</a>
       </div>
     </div>
 
@@ -2926,7 +3095,7 @@
         <div class="footer-links">
           <a href="transparencia-contratos.html">Portal da Transparência</a><a href="transparencia-licitacoes.html">Licitações</a>
           <a href="transparencia-contratos.html">Contratos</a><a href="investimentos-politica-de-investimento.html">Investimentos</a>
-          <a href="relatorios-gerenciais.html">Relatórios Oficiais</a><a href="servicos-orgao-oficial.html">Diário Oficial</a>
+          <a href="relatorios-gerenciais.html">Relatórios Oficiais</a><a href="https://www.betim.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a>
         </div>
       </div>
       <div class="footer-col">
@@ -2940,7 +3109,8 @@
           <div class="footer-col-title">Contato</div>
           <div class="footer-links">
             <a href="tel:+553135945380">(31) 3594-5380</a>
-            <a href="https://api.whatsapp.com/send?phone=553195409461" target="_blank" rel="noopener">(31) 9540-9461</a>
+            <a href="tel:+553135957828">(31) 3595-7828</a>
+            <a href="https://api.whatsapp.com/send?phone=5531994509461" target="_blank" rel="noopener">(31) 9450-9461</a>
             <a href="mailto:atendimento@ipremb.betim.mg.gov.br" style="font-size:11.5px;word-break:break-all;">atendimento@ipremb.betim.mg.gov.br</a>
           </div>
           <div style="margin-top:12px;font-size:11.5px;color:rgba(255,255,255,0.32);line-height:1.6;">
@@ -3176,4 +3346,18 @@ function toggleMobileAccordion(btn) {
 }
 </script>
 
+<!-- Botão flutuante do WhatsApp -->
+<a class="wa-float" href="https://api.whatsapp.com/send?phone=5531994509461&text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+o+IPREMB." target="_blank" rel="noopener" title="Fale conosco pelo WhatsApp" aria-label="Fale conosco pelo WhatsApp">
+  <span class="wa-float-tip" aria-hidden="true">Fale conosco pelo WhatsApp</span>
+  <svg class="wa-float-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+<script>
+function toggleMobileSubAccordion(btn) {
+  var body = btn.nextElementSibling;
+  var willOpen = !body.classList.contains('open');
+  body.classList.toggle('open', willOpen);
+  btn.classList.toggle('open', willOpen);
+  btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+}
+</script>
 </html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Composição da Carteira — IPREMB</title>
-<meta name="description" content="Consulte a composição da carteira de investimentos do IPREMB com alocação por segmento e ativo.">
+<title>Manuais — Pró-Gestão — IPREMB</title>
+<meta name="description" content="Manuais publicados no âmbito do Pró-Gestão do IPREMB.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -2661,7 +2661,7 @@
 
         <!-- Transparência -->
         <div class="nav-item">
-          <a href="#" class="nav-link">Transparência <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <a href="#" class="nav-link active">Transparência <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
           <div class="nav-dropdown">
             <a href="transparencia-contratos.html">Contratos</a>
             <a href="transparencia-diarias-de-viagem.html">Diárias de Viagem</a>
@@ -2681,7 +2681,7 @@
 
         <!-- Investimentos -->
         <div class="nav-item">
-          <a href="#" class="nav-link active">Investimentos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <a href="#" class="nav-link">Investimentos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
           <div class="nav-dropdown nav-mega">
             <div class="nav-mega-grid cols-2">
               <div class="nav-mega-col">
@@ -2952,16 +2952,17 @@
     <div class="breadcrumb-row">
       <div class="breadcrumb">
       <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span>
-      <a href="#">Investimentos</a> <span class="breadcrumb-sep">›</span>
-      <span class="breadcrumb-current">Composição da Carteira</span>
+      <a href="#">Transparência</a> <span class="breadcrumb-sep">›</span>
+      <a href="#">Pró-Gestão</a> <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Manuais</span>
       </div>
       <button class="btn-back" onclick="window.history.back()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         Voltar
       </button>
     </div>
-    <h1 class="page-title">Composição da Carteira</h1>
-    <p class="page-intro">Acompanhe a distribuição dos recursos por classe de ativo, publicada mensalmente conforme a Política de Investimento vigente.</p>
+    <h1 class="page-title">Manuais</h1>
+    <p class="page-intro">Manuais publicados no âmbito do Pró-Gestão do IPREMB.</p>
   </div>
 </section>
 
@@ -2969,104 +2970,73 @@
 <div class="page-body" style="padding:56px 0 80px;">
   <div class="container">
     <style>
-.inv-layout{display:grid;grid-template-columns:1fr 260px;gap:28px;align-items:start;}
-.inv-snav{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:18px;margin-bottom:16px;}
-.inv-snav-t{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray-400);margin-bottom:12px;}
-.inv-snav a{display:flex;align-items:center;gap:7px;padding:7px 0;font-size:13px;color:var(--gray-600);border-bottom:1px solid var(--gray-100);text-decoration:none;transition:color .14s;}
-.inv-snav a:last-child{border-bottom:none;}
-.inv-snav a:hover{color:var(--blue-600);}
-.inv-snav a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gray-300);flex-shrink:0;}
-.inv-snav a.cur{color:var(--blue-700);font-weight:600;}
-.inv-snav a.cur::before{background:var(--blue-500);}
-/* section label */
-.inv-sl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-.inv-sl::after{content:'';flex:1;height:1px;background:var(--gray-200);}
-/* year grid */
-.inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;}
-.inv-grid.cols3{grid-template-columns:repeat(3,1fr);}
-.inv-grid.cols2{grid-template-columns:repeat(2,1fr);}
-.inv-yc{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px 12px 16px;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:7px;transition:border-color .18s,box-shadow .18s,transform .18s;position:relative;overflow:hidden;}
-.inv-yc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-600),var(--blue-400));transform:scaleX(0);transform-origin:left;transition:transform .22s;}
-.inv-yc:hover{border-color:rgba(23,73,200,.20);box-shadow:0 5px 18px rgba(9,29,69,.08);transform:translateY(-2px);}
-.inv-yc:hover::after{transform:scaleX(1);}
-.inv-yc.act{background:linear-gradient(130deg,var(--blue-900),var(--blue-700));border:none;}
-.inv-yc.act:hover{box-shadow:0 7px 24px rgba(9,29,69,.20);}
-.inv-yc.act::after{display:none;}
-.inv-yn{font-size:26px;font-weight:800;color:var(--blue-600);letter-spacing:-.04em;line-height:1;}
-.inv-yc.act .inv-yn{color:white;}
-.inv-yl{font-size:10px;font-weight:600;color:var(--gray-400);letter-spacing:.04em;}
-.inv-yc.act .inv-yl{color:rgba(255,255,255,.45);}
-.inv-ya{display:flex;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:var(--blue-500);}
-.inv-yc.act .inv-ya{color:rgba(255,255,255,.65);}
-/* doc list */
-.inv-dl{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:18px;}
-.inv-dr{display:flex;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px solid var(--gray-100);transition:background .13s;}
-.inv-dr:last-child{border-bottom:none;}
-.inv-dr:hover{background:var(--blue-50);}
-.inv-di{width:34px;height:34px;background:var(--blue-50);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--blue-600);flex-shrink:0;}
-.inv-dn{flex:1;font-size:13.5px;font-weight:600;color:var(--gray-700);line-height:1.35;}
-.inv-dm{font-size:11px;color:var(--gray-400);margin-top:2px;}
-.inv-db{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.04em;flex-shrink:0;}
-.inv-db.vig{background:#ECFDF5;color:#065F46;}
-.inv-db.enc{background:var(--gray-100);color:var(--gray-500);}
-.inv-ddl{font-size:11.5px;font-weight:600;color:var(--blue-600);text-decoration:none;background:var(--blue-50);border:1px solid var(--blue-100);padding:4px 11px;border-radius:6px;transition:background .14s;white-space:nowrap;}
-.inv-ddl:hover{background:var(--blue-100);}
-/* empty */
-.inv-empty{padding:40px 20px;text-align:center;background:var(--white);border:1px dashed var(--gray-200);border-radius:var(--radius-lg);}
-.inv-empty svg{margin:0 auto 12px;display:block;opacity:.3;}
-.inv-empty-t{font-size:13.5px;font-weight:700;color:var(--gray-600);margin-bottom:6px;}
-.inv-empty-d{font-size:12.5px;color:var(--gray-400);line-height:1.65;}
-/* ALM / single-doc pages */
-.inv-file-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px 22px;display:flex;align-items:center;gap:16px;transition:border-color .18s,box-shadow .18s;margin-bottom:12px;}
-.inv-file-card:hover{border-color:rgba(23,73,200,.18);box-shadow:var(--shadow-sm);}
-.inv-file-icon{width:44px;height:44px;background:var(--blue-50);border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--blue-600);flex-shrink:0;}
-.inv-file-badge{font-size:10px;font-weight:800;letter-spacing:.06em;background:#E5F2FF;color:var(--blue-700);padding:2px 8px;border-radius:4px;flex-shrink:0;}
-.inv-file-name{flex:1;font-size:14px;font-weight:700;color:var(--gray-800);line-height:1.35;}
-.inv-file-meta{font-size:11.5px;color:var(--gray-400);margin-top:3px;}
-/* CRP special */
-.inv-crp-status{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:16px;}
-.inv-crp-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.inv-crp-dot.ativo{background:#22C55E;}
-.inv-crp-dot.pendente{background:#F59E0B;}
-.inv-crp-label{font-size:13.5px;font-weight:600;color:var(--gray-800);}
-.inv-crp-sub{font-size:12px;color:var(--gray-400);margin-top:1px;}
-@media(max-width:900px){.inv-layout{grid-template-columns:1fr;}.inv-grid{grid-template-columns:repeat(2,1fr);}.inv-grid.cols3{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.inv-grid{grid-template-columns:1fr 1fr;}}
+.tran-layout{display:grid;grid-template-columns:1fr 260px;gap:28px;align-items:start;}
+.tran-snav{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:18px;margin-bottom:16px;}
+.tran-snav-title{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray-400);margin-bottom:12px;}
+.tran-snav a{display:flex;align-items:center;gap:7px;padding:7px 0;font-size:13px;color:var(--gray-600);border-bottom:1px solid var(--gray-100);text-decoration:none;transition:color .14s;}
+.tran-snav a:last-child{border-bottom:none;}
+.tran-snav a:hover{color:var(--blue-600);}
+.tran-snav a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gray-300);flex-shrink:0;}
+.tran-snav a.cur{color:var(--blue-700);font-weight:600;}
+.tran-snav a.cur::before{background:var(--blue-500);}
+.tran-sl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.tran-sl::after{content:'';flex:1;height:1px;background:var(--gray-200);}
+.tran-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;}
+.tran-grid.cols3{grid-template-columns:repeat(3,1fr);}
+.tran-grid.cols2{grid-template-columns:repeat(2,1fr);}
+.tran-ycard{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:22px 14px 18px;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;transition:border-color .18s,box-shadow .18s,transform .18s;position:relative;overflow:hidden;}
+.tran-ycard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-600),var(--blue-400));transform:scaleX(0);transform-origin:left;transition:transform .22s;}
+.tran-ycard:hover{border-color:rgba(23,73,200,.20);box-shadow:0 6px 20px rgba(9,29,69,.09);transform:translateY(-3px);}
+.tran-ycard:hover::after{transform:scaleX(1);}
+.tran-ycard.act{background:linear-gradient(130deg,var(--blue-900),var(--blue-700));border:none;}
+.tran-ycard.act:hover{box-shadow:0 8px 28px rgba(9,29,69,.22);}
+.tran-ycard.act::after{display:none;}
+.tran-yn{font-size:30px;font-weight:800;color:var(--blue-600);letter-spacing:-.04em;line-height:1;}
+.tran-ycard.act .tran-yn{color:white;}
+.tran-yl{font-size:10.5px;font-weight:600;color:var(--gray-400);letter-spacing:.04em;}
+.tran-ycard.act .tran-yl{color:rgba(255,255,255,.5);}
+.tran-yarw{display:flex;align-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--blue-600);}
+.tran-ycard.act .tran-yarw{color:rgba(255,255,255,.70);}
+.tran-doclist{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:18px;}
+.tran-docrow{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--gray-100);transition:background .13s;}
+.tran-docrow:last-child{border-bottom:none;}
+.tran-docrow:hover{background:var(--blue-50);}
+.tran-dicon{width:34px;height:34px;background:var(--blue-50);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--blue-600);flex-shrink:0;}
+.tran-dname{flex:1;font-size:13.5px;font-weight:600;color:var(--gray-700);}
+.tran-dmeta{font-size:11px;color:var(--gray-400);margin-top:2px;}
+.tran-dbadge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.04em;flex-shrink:0;}
+.tran-dbadge.vig{background:#ECFDF5;color:#065F46;}
+.tran-dbadge.enc{background:var(--gray-100);color:var(--gray-500);}
+.tran-ddl{font-size:11.5px;font-weight:600;color:var(--blue-600);text-decoration:none;background:var(--blue-50);border:1px solid var(--blue-100);padding:4px 11px;border-radius:6px;transition:background .14s;white-space:nowrap;}
+.tran-ddl:hover{background:var(--blue-100);}
+.tran-empty{padding:44px 20px;text-align:center;background:var(--white);border:1px dashed var(--gray-200);border-radius:var(--radius-lg);}
+.tran-empty svg{margin:0 auto 12px;display:block;opacity:.3;}
+.tran-empty-t{font-size:13.5px;font-weight:700;color:var(--gray-600);margin-bottom:6px;}
+.tran-empty-d{font-size:12.5px;color:var(--gray-400);line-height:1.65;}
+@media(max-width:900px){.tran-layout{grid-template-columns:1fr;}.tran-grid{grid-template-columns:repeat(2,1fr);}.tran-grid.cols3{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.tran-grid{grid-template-columns:1fr 1fr;}}
 </style>
-    <div class="inv-layout">
-      <div><div class="inv-sl">Selecione o exercício</div>
-<div class="inv-grid cols2">
-  <a href="#" class="inv-yc act"><div class="inv-yn">2025</div><div class="inv-yl">Exercício</div><div class="inv-ya">Vigente <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></a>
-  <a href="#" class="inv-yc"><div class="inv-yn">2024</div><div class="inv-yl">Exercício</div><div class="inv-ya">Acessar <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></a>
-</div>
-<div class="inv-sl">Relatórios 2025</div>
-<div class="inv-dl"><div class="inv-dr">
-  <div class="inv-di"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-  <div><div class="inv-dn">Composição da Carteira — Março/2025</div><div class="inv-dm">Conforme Resolução CMN nº 4.963/2021</div></div>
-  <span class="inv-db vig">Recente</span>
-  <a href="#" class="inv-ddl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar</a>
-</div>
-<div class="inv-dr">
-  <div class="inv-di"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-  <div><div class="inv-dn">Composição da Carteira — Fevereiro/2025</div><div class="inv-dm">Conforme Resolução CMN nº 4.963/2021</div></div>
-  <span class="inv-db vig">Publicado</span>
-  <a href="#" class="inv-ddl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar</a>
-</div>
-<div class="inv-dr">
-  <div class="inv-di"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-  <div><div class="inv-dn">Composição da Carteira — Janeiro/2025</div><div class="inv-dm">Conforme Resolução CMN nº 4.963/2021</div></div>
-  <span class="inv-db vig">Publicado</span>
-  <a href="#" class="inv-ddl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar</a>
-</div></div></div>
-      <div><div class="inv-snav"><div class="inv-snav-t">Investimentos</div><a href="investimentos-alm.html">ALM</a>
-<a href="investimentos-atas-comite.html">Atas Comitê de Investimentos</a>
-<a href="investimentos-autorizacao-aplicacao-resgate.html">Autorização de Aplicação e Resgate</a>
-<a href="investimentos-avaliacao-atuarial.html">Avaliação Atuarial</a>
-<a href="investimentos-certificado-regularidade.html">Certificado de Regularidade Previdenciária</a>
-<a href="investimentos-composicao-da-carteira.html"  class="cur">Composição da Carteira</a>
-<a href="investimentos-decretos.html">Decretos</a>
-<a href="investimentos-politica-de-investimento.html">Política de Investimento</a>
-<a href="investimentos-procedimento-aplicacoes-financeiras.html">Procedimento para aplicações financeiras</a>
+    <div class="tran-layout">
+      <div>
+        <p class="about-body" style="margin-top:0;">Os <strong>Manuais do IPREMB</strong> têm como objetivo padronizar os procedimentos internos, orientar a execução das atividades institucionais e promover maior eficiência, transparência e segurança na gestão dos processos.</p>
+        <p class="about-body">Os documentos descrevem as etapas de execução das atividades, as responsabilidades dos setores envolvidos, os controles adotados e os fluxos operacionais, contribuindo para a uniformização das rotinas administrativas e para a melhoria contínua dos serviços prestados aos segurados e à sociedade.</p>
+        <p class="about-body">Os manuais integram as ações de fortalecimento da governança institucional e atendem às boas práticas de gestão preconizadas pelo <strong>Programa de Certificação Institucional e Modernização da Gestão dos Regimes Próprios de Previdência Social (Pró-Gestão RPPS)</strong>.</p>
+        <p class="about-body" style="margin-bottom:30px;">Nesta página estão disponíveis os manuais vigentes elaborados pelo Instituto, os quais poderão ser atualizados sempre que houver necessidade de adequação dos procedimentos internos.</p>
+        <div class="tran-sl">Manuais</div>
+<div class="tran-empty">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+  <div class="tran-empty-t">Nenhum documento publicado</div>
+  <div class="tran-empty-d">Os manuais do Pró-Gestão serão disponibilizados nesta seção conforme publicação oficial.</div>
+</div></div>
+      <div><div class="tran-snav"><div class="tran-snav-title">Transparência</div><a href="transparencia-contratos.html">Contratos</a>
+<a href="transparencia-diarias-de-viagem.html">Diárias de Viagem</a>
+<a href="transparencia-editais.html">Editais</a>
+<a href="transparencia-licitacoes.html">Licitações</a>
+<a href="transparencia-plano-de-contratacoes-anuais.html">Plano de Contratações Anuais</a>
+<div class="tran-snav-title" style="margin-top:14px;">Pró-Gestão</div>
+<a href="transparencia-pro-gestao-manuais.html" class="cur">Manuais</a>
+<a href="transparencia-pro-gestao-mapeamento-de-processos.html">Mapeamentos dos Processos</a>
+<a href="transparencia-pro-gestao-comite-de-etica.html">Comitê de Ética</a>
 </div></div>
     </div>
   </div>
