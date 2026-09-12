@@ -1,0 +1,309 @@
+/* ============================================================================
+   IPREMB — CSS da Galeria de Fotos
+   Fase 1.15-3. Extraido VERBATIM das paginas instituto-fotos.html,
+   instituto-fotos-2026.html e instituto-fotos-2026-junho.html.
+   Nenhuma regra foi reescrita ou teve valor alterado: apenas mudou de lugar.
+   ========================================================================== */
+
+/* ---- catalogo (hub) ---- */
+
+/* ── Fotos hub styles ── */
+.fotos-hub { max-width: 900px; margin: 0 auto; }
+
+/* Acervo — destaque full-width */
+.fotos-acervo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  background: linear-gradient(130deg, var(--blue-900) 0%, var(--blue-700) 100%);
+  border-radius: var(--radius-xl);
+  padding: 38px 44px;
+  margin-bottom: 28px;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.fotos-acervo::before {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.fotos-acervo::after {
+  content: '';
+  position: absolute;
+  left: -40px; bottom: -70px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
+.fotos-acervo:hover {
+  box-shadow: 0 14px 44px rgba(9,29,69,0.22);
+  transform: translateY(-2px);
+}
+.fotos-acervo-left { position: relative; z-index: 1; }
+.fotos-acervo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 5px;
+  margin-bottom: 14px;
+}
+.fotos-acervo-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.fotos-acervo-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.65;
+  max-width: 380px;
+}
+.fotos-acervo-right {
+  position: relative; z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.fotos-acervo-icon {
+  width: 60px; height: 60px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.80);
+}
+.fotos-acervo-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+}
+
+/* Year grid */
+.fotos-years-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 16px;
+}
+.fotos-years-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.fotos-year-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px 24px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.fotos-year-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-600), var(--blue-400));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+.fotos-year-card:hover {
+  border-color: rgba(23,73,200,0.20);
+  box-shadow: 0 6px 22px rgba(9,29,69,0.09);
+  transform: translateY(-3px);
+}
+.fotos-year-card:hover::after { transform: scaleX(1); }
+.fotos-year-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--blue-600);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.fotos-year-desc {
+  font-size: 12.5px;
+  color: var(--gray-500);
+  line-height: 1.60;
+  font-weight: 400;
+  flex: 1;
+}
+.fotos-year-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue-600);
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .fotos-years-grid { grid-template-columns: repeat(2, 1fr); }
+  .fotos-acervo { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .fotos-acervo-right { flex-direction: row; }
+}
+@media (max-width: 400px) {
+  .fotos-years-grid { grid-template-columns: 1fr; }
+}
+    
+
+/* ---- lista de meses/albuns de um ano ---- */
+  .fotos-ano-section { padding: 56px 0 80px; }
+  .fotos-ano-intro { font-size: 15px; color: var(--gray-500); margin-bottom: 40px; line-height: 1.7; font-weight: 400; }
+  .fotos-ano-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .fotos-ano-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: var(--shadow-xs);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .fotos-ano-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--blue-100); }
+  .fotos-ano-month { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-600); }
+  .fotos-ano-title { font-size: 18px; font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; }
+  .fotos-ano-count { font-size: 13px; color: var(--gray-500); font-weight: 400; }
+  .fotos-ano-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--blue-600);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.18s;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .fotos-ano-link:hover { background: var(--blue-700); }
+  .fotos-ano-back-wrap { margin-top: 48px; text-align: center; }
+  .fotos-ano-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--blue-100);
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .fotos-ano-back:hover { background: var(--blue-100); border-color: var(--blue-200, #bad4ff); }
+  @media (max-width: 480px) { .fotos-ano-section { padding: 32px 0 56px; } }
+
+/* ---- album: grade de fotos ---- */
+  .fotos-2026-section { padding: 56px 0 80px; }
+  .fotos-2026-month { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 18px; }
+  .fotos-2026-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; }
+  .fotos-2026-title { font-size: 20px; font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; }
+  .fotos-2026-count { font-size: 13px; color: var(--gray-500); font-weight: 400; }
+  .fotos-2026-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .fotos-2026-item { border-radius: var(--radius-md); overflow: hidden; background: var(--gray-100); border: 1px solid var(--gray-200); box-shadow: var(--shadow-xs); transition: transform 0.2s, box-shadow 0.2s; }
+  .fotos-2026-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .fotos-2026-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .fotos-2026-item a { display: block; }
+  .fotos-2026-back-wrap { margin-top: 40px; text-align: center; }
+  .fotos-2026-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--blue-100);
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .fotos-2026-back:hover {
+    background: var(--blue-100);
+    border-color: var(--blue-200, #bad4ff);
+  }
+  @media (max-width: 768px) { .fotos-2026-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+  @media (max-width: 480px) { .fotos-2026-grid { grid-template-columns: 1fr; } .fotos-2026-section { padding: 32px 0 56px; } }
+
+/* ---------------------------------------------------------------------------
+   Fase 1.15-3 — estados e navegacao do catalogo orientado por dados.
+   Acrescimos desta fase; nao alteram nenhuma regra herdada acima.
+   --------------------------------------------------------------------------- */
+
+/* trilha interna do catalogo (Fotos > 2026 > Junho) */
+.gal-trilha{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--gray-500);margin-bottom:22px;}
+.gal-trilha a{color:var(--blue-600);text-decoration:none;font-weight:600;}
+.gal-trilha a:hover{text-decoration:underline;}
+.gal-trilha a:focus-visible{outline:3px solid rgba(23,73,200,.45);outline-offset:3px;border-radius:3px;}
+.gal-trilha [aria-current]{color:var(--gray-700);font-weight:600;}
+.gal-trilha-sep{opacity:.4;}
+
+/* contagem de albuns no card de ano */
+.gal-nota{font-size:11.5px;font-weight:600;color:var(--gray-400);}
+
+/* foco visivel nos cards e links do catalogo */
+.fotos-year-card:focus-visible,.fotos-ano-link:focus-visible,
+.fotos-ano-back:focus-visible,.fotos-acervo:focus-visible{outline:3px solid rgba(23,73,200,.45);outline-offset:3px;}
+
+/* estado: carregando */
+.gal-carregando{display:flex;align-items:center;justify-content:center;gap:10px;padding:44px 20px;background:var(--white);border:1px dashed var(--gray-200);border-radius:var(--radius-lg);font-size:13px;color:var(--gray-500);}
+.gal-spinner{width:16px;height:16px;border-radius:50%;border:2px solid var(--gray-200);border-top-color:var(--blue-600);animation:galGira .7s linear infinite;}
+@keyframes galGira{to{transform:rotate(360deg);}}
+@media(prefers-reduced-motion:reduce){.gal-spinner{animation:none;}}
+
+/* estado: vazio */
+.gal-vazio{padding:44px 20px;text-align:center;background:var(--white);border:1px dashed var(--gray-200);border-radius:var(--radius-lg);}
+.gal-vazio svg{margin:0 auto 14px;display:block;opacity:.3;}
+.gal-vazio-t{font-size:14px;font-weight:700;color:var(--gray-600);margin-bottom:6px;}
+.gal-vazio-d{font-size:12.5px;color:var(--gray-400);line-height:1.65;}
+
+/* estado: erro */
+.gal-erro{border-color:#FECACA;background:#FEF2F2;}
+.gal-erro svg{color:#B91C1C;opacity:.55;}
+.gal-repetir{margin-top:16px;font-family:inherit;font-size:12.5px;font-weight:600;color:#FFFFFF;background:var(--blue-600);border:none;border-radius:6px;padding:8px 16px;cursor:pointer;transition:background .14s;}
+.gal-repetir:hover{background:var(--blue-700);}
+.gal-repetir:focus-visible{outline:3px solid rgba(23,73,200,.45);outline-offset:2px;}
+
+/* aviso de parametro invalido */
+.gal-aviso{display:flex;align-items:flex-start;gap:10px;background:#FFFBEB;border:1px solid #FDE68A;color:#92400E;border-radius:var(--radius-md);padding:12px 14px;margin-bottom:20px;font-size:12.5px;line-height:1.55;}
+.gal-aviso svg{flex-shrink:0;width:18px;height:18px;opacity:.75;margin:0;}
