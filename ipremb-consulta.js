@@ -214,8 +214,7 @@
       return c.href
         ? '<a class="cd-cc" href="' + escAttr(c.href) + '">' + corpo +
           '<span class="cd-cc-arrow">Acessar ' + ICO_SETA11 + '</span></a>'
-        : '<div class="cd-cc" aria-disabled="true">' + corpo +
-          '<span class="cd-cc-arrow">Em breve</span></div>';
+        : '<div class="cd-cc" aria-disabled="true">' + corpo + '</div>';
     }).join('') + '</div>';
   }
 
@@ -351,8 +350,11 @@
     if (!blocos.length) return '';
     return blocos.map(function (b) {
       if (b.tipo === 'ficheiro') {
+        /* lista vazia: mantem o rotulo e cai no mesmo estado vazio dos demais
+           blocos (htmlVazio le a chave opcional 'vazio' do proprio bloco). */
+        var fichs = b.ficheiros || [];
         return '<div class="cd-sl">' + esc(b.rotulo) + '</div>' +
-          (b.ficheiros || []).map(htmlFicheiro).join('');
+          (fichs.length ? fichs.map(htmlFicheiro).join('') : htmlVazio(b));
       }
       if (b.tipo === 'status') {
         return '<div class="cd-sl">' + esc(b.rotulo) + '</div>' + htmlStatus(b.status || {});

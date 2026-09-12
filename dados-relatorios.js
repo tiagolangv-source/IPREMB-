@@ -127,11 +127,6 @@
         filtro: 'nenhum',
         rotuloDocumentos: 'Arquivos anexos',
         documentos: [
-          { id: 'out-reforma', titulo: 'Apresentação da Proposta de Reforma Previdenciária',
-            tipo: 'apresentacao', exercicio: null, mes: null, numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'PDF', seloClasse: 'pdf',
-            meta: 'Documento institucional — IPREMB', arquivo: null }
         ],
         vazio: { titulo: 'Nenhum documento publicado', descricao: null }
       },
@@ -141,18 +136,7 @@
         id: 'visitas-financeiras', nome: 'Relatório de Visitas de Instituições Financeiras',
         filtro: 'nenhum',
         rotuloDocumentos: 'Documentos publicados',
-        documentos: [
-          { id: 'vf-2026-03', titulo: 'Relatório de Visita de Instituições Financeiras — Março/2026',
-            tipo: 'relatorio', exercicio: '2026', mes: 'marco', numero: null,
-            dataAto: null, dataPublicacao: 'março de 2026',
-            situacao: 'PDF', seloClasse: 'pdf',
-            meta: 'Publicado em março de 2026', arquivo: null },
-          { id: 'vf-2026-02', titulo: 'Relatório de Visita de Instituições Financeiras — Fevereiro/2026',
-            tipo: 'relatorio', exercicio: '2026', mes: 'fevereiro', numero: null,
-            dataAto: null, dataPublicacao: 'fevereiro de 2026',
-            situacao: 'PDF', seloClasse: 'pdf',
-            meta: 'Publicado em fevereiro de 2026', arquivo: null }
-        ],
+        documentos: [],
         vazio: { titulo: 'Nenhum documento publicado', descricao: null },
         blocosExtras: [
           {
@@ -160,7 +144,7 @@
             documentos: [],
             vazio: {
               titulo: 'Nenhum documento publicado',
-              descricao: 'Os relatórios de visitas de períodos anteriores serão listados em breve.'
+              descricao: null
             }
           }
         ]

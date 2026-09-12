@@ -72,30 +72,6 @@
         filtro: 'nenhum',
         rotuloDocumentos: 'Documentos publicados',
         documentos: [
-          {
-            id: 'dl-cria-ipremb',
-            titulo: 'Cria o Instituto de Previdência Municipal de Betim — REVOGADA',
-            tipo: 'lei-municipal', categoria: null, exercicio: null, mes: null,
-            numero: null, dataAto: null, dataPublicacao: null,
-            situacao: 'Revogada', vigencia: null, revogacao: null,
-            meta: 'Lei Municipal — IPREMB', arquivo: null
-          },
-          {
-            id: 'dl-lei-5850-2015',
-            titulo: 'Lei Ordinária 05850 2015 — Vigente',
-            tipo: 'lei-municipal', categoria: null, exercicio: null, mes: null,
-            numero: null, dataAto: null, dataPublicacao: null,
-            situacao: 'Vigente', vigencia: null, revogacao: null,
-            meta: 'Lei Municipal vigente', arquivo: null
-          },
-          {
-            id: 'dl-resolucao-01-2010',
-            titulo: 'Resolução Nº 01 de 19 de agosto de 2010',
-            tipo: 'resolucao', categoria: null, exercicio: null, mes: null,
-            numero: null, dataAto: null, dataPublicacao: null,
-            situacao: 'PDF', vigencia: null, revogacao: null,
-            meta: 'Resolução normativa', arquivo: null
-          }
         ],
         vazio: { titulo: 'Nenhum documento publicado', descricao: null }
       },
@@ -194,14 +170,6 @@
         filtro: 'nenhum',
         rotuloDocumentos: 'Documentos publicados',
         documentos: [
-          {
-            id: 'reg-002-2025',
-            titulo: 'REGULAMENTO_002.2025',
-            tipo: 'regulamento', categoria: null, exercicio: '2025', mes: null,
-            numero: '002.2025', dataAto: null, dataPublicacao: '2025',
-            situacao: 'Vigente', vigencia: null, revogacao: null,
-            meta: 'Regulamento vigente — publicado em 2025', arquivo: null
-          }
         ],
         vazio: { titulo: 'Nenhum documento publicado', descricao: null },
         blocosExtras: [

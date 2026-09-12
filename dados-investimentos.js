@@ -46,23 +46,11 @@
       /* ------------------------------------------------------------- ALM
          Arquivo unico, sem recorte temporal: continua sem filtro. */
       {
-        id: 'alm', nome: 'ALM — Asset Liability Management',
+        id: 'alm', nome: 'ALM',
         filtro: 'nenhum',
         rotuloDocumentos: 'Arquivos ALM',
         documentos: [],
-        vazio: {
-          titulo: 'Nenhum documento publicado',
-          descricao: 'Relatórios de ALM de outros exercícios serão publicados após aprovação dos órgãos competentes.'
-        },
-        blocosExtras: [
-          {
-            rotulo: 'Arquivos ALM', tipo: 'ficheiro',
-            ficheiros: [
-              { titulo: 'Relatório ALM 2020', meta: 'Gestão de Ativos e Passivos — IPREMB',
-                selo: 'PDF', arquivo: null, exercicio: '2020' }
-            ]
-          }
-        ]
+        vazio: { titulo: 'Nenhum documento publicado', descricao: null }
       },
 
       /* ------------------------------------------ Atas Comite de Investimentos */
@@ -102,16 +90,6 @@
         rotuloDocumentos: 'Documentos disponíveis',
         exercicios: anos([2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016]),
         documentos: [
-          { id: 'aa-2024', titulo: 'Avaliação Atuarial — Exercício 2024',
-            tipo: 'relatorio', exercicio: '2024', mes: null, numero: null,
-            dataAto: null, dataPublicacao: '2024',
-            situacao: 'Vigente', seloClasse: 'vig',
-            meta: 'Publicada em 2024 · Atuário habilitado', arquivo: null },
-          { id: 'aa-2023', titulo: 'Avaliação Atuarial — Exercício 2023',
-            tipo: 'relatorio', exercicio: '2023', mes: null, numero: null,
-            dataAto: null, dataPublicacao: '2023',
-            situacao: 'Anterior', seloClasse: 'enc',
-            meta: 'Publicada em 2023', arquivo: null }
         ],
         vazio: {
           titulo: 'Nenhum documento disponível',
@@ -149,21 +127,6 @@
         rotuloDocumentos: 'Relatórios',
         exercicios: anos([2025, 2024]),
         documentos: [
-          { id: 'cc-2025-03', titulo: 'Composição da Carteira — Março/2025',
-            tipo: 'relatorio', exercicio: '2025', mes: 'marco', numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Recente', seloClasse: 'vig',
-            meta: 'Conforme Resolução CMN nº 4.963/2021', arquivo: null },
-          { id: 'cc-2025-02', titulo: 'Composição da Carteira — Fevereiro/2025',
-            tipo: 'relatorio', exercicio: '2025', mes: 'fevereiro', numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Publicado', seloClasse: 'vig',
-            meta: 'Conforme Resolução CMN nº 4.963/2021', arquivo: null },
-          { id: 'cc-2025-01', titulo: 'Composição da Carteira — Janeiro/2025',
-            tipo: 'relatorio', exercicio: '2025', mes: 'janeiro', numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Publicado', seloClasse: 'vig',
-            meta: 'Conforme Resolução CMN nº 4.963/2021', arquivo: null }
         ],
         vazio: {
           titulo: 'Nenhum documento publicado',
@@ -189,21 +152,6 @@
         filtro: 'nenhum',
         rotuloDocumentos: 'Documentos disponíveis',
         documentos: [
-          { id: 'pi-2025', titulo: 'Política de Investimento — 2025',
-            tipo: 'politica', exercicio: '2025', mes: null, numero: null,
-            dataAto: null, dataPublicacao: 'novembro de 2024',
-            situacao: 'Vigente', seloClasse: 'vig',
-            meta: 'Aprovada em novembro de 2024 · Conselho de Administração', arquivo: null },
-          { id: 'pi-2024', titulo: 'Política de Investimento — 2024',
-            tipo: 'politica', exercicio: '2024', mes: null, numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Anterior', seloClasse: 'enc',
-            meta: 'Exercício anterior', arquivo: null },
-          { id: 'pi-2023', titulo: 'Política de Investimento — 2023',
-            tipo: 'politica', exercicio: '2023', mes: null, numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Anterior', seloClasse: 'enc',
-            meta: 'Exercício anterior', arquivo: null }
         ],
         vazio: { titulo: 'Nenhum documento publicado', descricao: null }
       },

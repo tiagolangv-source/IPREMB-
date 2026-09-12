@@ -51,11 +51,6 @@
         rotuloDocumentos: 'Contratos',
         exercicios: anos([2025, 2024, 2023, 2022]),
         documentos: [
-          { id: 'ct-2025', titulo: 'Contratos serão publicados conforme vigência',
-            tipo: 'contrato', exercicio: '2025', mes: null, numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Vigente', seloClasse: 'vig',
-            meta: 'Publicação em conformidade com a Lei de Acesso à Informação', arquivo: null }
         ],
         vazio: {
           titulo: 'Nenhum documento publicado',
@@ -109,7 +104,7 @@
             documentos: [],
             vazio: {
               titulo: 'Nenhum documento publicado',
-              descricao: 'O histórico de licitações encerradas será publicado em breve.'
+              descricao: null
             }
           }
         ]
@@ -123,16 +118,6 @@
         rotuloDocumentos: 'Documentos disponíveis',
         exercicios: anos([2026, 2025, 2024]),
         documentos: [
-          { id: 'pca-2025', titulo: 'Plano de Contratações Anuais — 2025',
-            tipo: 'plano', exercicio: '2025', mes: null, numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Vigente', seloClasse: 'vig',
-            meta: 'Publicado conforme Lei nº 14.133/2021', arquivo: null },
-          { id: 'pca-2024', titulo: 'Plano de Contratações Anuais — 2024',
-            tipo: 'plano', exercicio: '2024', mes: null, numero: null,
-            dataAto: null, dataPublicacao: null,
-            situacao: 'Encerrado', seloClasse: 'enc',
-            meta: 'Exercício encerrado', arquivo: null }
         ],
         vazio: {
           titulo: 'Nenhum documento publicado',

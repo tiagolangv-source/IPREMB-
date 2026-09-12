@@ -185,7 +185,7 @@
       titulo: 'Buscar no site',
       placeholder: 'O que você procura?',
       dica: 'Ex: Contracheque, Prova de Vida, Informe de Rendimentos',
-      aviso: 'Busca em implementação. Utilize o menu de navegação para encontrar o que procura.'
+      aviso: 'Utilize o menu de navegação para encontrar o que procura.'
     },
 
     /* ------------------------------------------------------------ whatsapp */
