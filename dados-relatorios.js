@@ -137,17 +137,19 @@
         filtro: 'nenhum',
         rotuloDocumentos: 'Documentos publicados',
         documentos: [],
-        vazio: { titulo: 'Nenhum documento publicado', descricao: null },
-        blocosExtras: [
-          {
-            rotulo: 'Documentos anteriores',
-            documentos: [],
-            vazio: {
-              titulo: 'Nenhum documento publicado',
-              descricao: null
-            }
-          }
-        ]
+        vazio: { titulo: 'Nenhum documento publicado', descricao: null }
+        /* O bloco extra "Documentos anteriores" foi retirado enquanto nao ha
+           nenhum documento publicado: com as duas listas vazias a pagina
+           exibia dois estados vazios identicos e consecutivos. Para voltar a
+           exibi-lo quando houver acervo, basta restaurar:
+
+           blocosExtras: [
+             { rotulo: 'Documentos anteriores', documentos: [ ...docs... ],
+               vazio: { titulo: 'Nenhum documento publicado', descricao: null } }
+           ]
+
+           htmlExtras() em ipremb-consulta.js ja trata a chave; nada no motor
+           precisou mudar. Vale so para este assunto. */
       }
     ]
   };

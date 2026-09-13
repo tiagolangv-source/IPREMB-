@@ -51,7 +51,8 @@
 
   /* <a> simples a partir de um item de navegacao */
   function link(item, classe) {
-    var cls = classe ? ' class="' + classe + '"' : '';
+    var cls = classe ? ' class="' + classe + '"'
+      : (item.classe ? ' class="' + escAttr(item.classe) + '"' : '');
     var est = item.estilo ? ' style="' + escAttr(item.estilo) + '"' : '';
     if (!item.href) return '<a' + cls + est + '>' + esc(item.rotulo) + '</a>';
     return '<a href="' + escAttr(item.href) + '"' + cls + alvo(item) + est + '>' + esc(item.rotulo) + '</a>';
@@ -231,17 +232,14 @@
   function tplRodape(n) {
     var r = n.rodape;
 
+    /* Uma coluna pode fechar com o horario de atendimento (hoje so a coluna
+       "Contato" usa). Substituiu o antigo 'blocoContato', que aninhava um
+       segundo titulo dentro da coluna "Atendimento" — coluna que deixou de
+       existir. Nenhum outro dado do projeto usava aquela chave. */
     var colunas = r.colunas.map(function (col) {
-      var bloco = '';
-      if (col.blocoContato) {
-        var bc = col.blocoContato;
-        bloco = '<div style="margin-top:22px;">' +
-          '<div class="footer-col-title">' + esc(bc.titulo) + '</div>' +
-          '<div class="footer-links">' + bc.links.map(function (l) { return link(l); }).join('') + '</div>' +
-          '<div style="margin-top:12px;font-size:11.5px;color:rgba(255,255,255,0.32);line-height:1.6;">' +
-            SVG.relogio + ' ' + esc(bc.horario) + '</div>' +
-          '</div>';
-      }
+      var bloco = col.horario
+        ? '<div class="footer-horario">' + SVG.relogio + ' ' + esc(col.horario) + '</div>'
+        : '';
       return '<div class="footer-col">' +
         '<div class="footer-col-title">' + esc(col.titulo) + '</div>' +
         '<div class="footer-links">' + col.links.map(function (l) { return link(l); }).join('') + '</div>' +
@@ -249,7 +247,8 @@
     }).join('');
 
     var social = r.social.map(function (s) {
-      return '<a href="' + escAttr(s.href) + '" target="_blank" rel="noopener" title="' + esc(s.titulo) + '">' +
+      return '<a href="' + escAttr(s.href) + '" target="_blank" rel="noopener" ' +
+        'title="' + esc(s.titulo) + '" aria-label="' + esc(s.titulo) + '">' +
         (SVG[s.rede] || '') + '</a>';
     }).join('');
 
@@ -257,14 +256,17 @@
       '<div class="footer-top">' +
         '<div class="footer-brand">' +
           '<div class="footer-logo">' +
-            '<div class="footer-logo-img">' +
-              '<img src="' + escAttr(n.marca.logo) + '" alt="' + esc(n.marca.alt) + '" class="footer-logo-img-tag" ' +
-              'onerror="' + onerroLogo('footer-logo-icon-fallback') + '">' +
-            '</div>' +
+            /* A logo pequena (.footer-logo-img) saiu desta coluna: apertava o
+               canto esquerdo e roubava largura do subtitulo. As regras de
+               .footer-logo-img / -img-tag / -icon-fallback continuam em
+               ipremb-global.css, inertes, caso a marca precise voltar. */
             '<div><div class="footer-logo-name">' + esc(r.nome) + '</div>' +
             '<div class="footer-logo-tag">' + esc(r.tagline) + '</div></div>' +
           '</div>' +
           '<p class="footer-desc">' + esc(r.descricao) + '</p>' +
+          /* Instagram fecha a coluna, abaixo da descricao e alinhado a
+             esquerda. Cabe na folga que ja existia entre o fim do texto e a
+             divisoria — a altura do rodape nao muda. */
           '<div class="footer-social">' + social + '</div>' +
         '</div>' +
         colunas +

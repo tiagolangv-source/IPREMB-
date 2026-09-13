@@ -225,36 +225,28 @@
           ]
         },
         {
-          titulo: 'Atendimento',
+          /* Coluna "Contato": substitui a antiga coluna "Atendimento", cujos
+             itens (Portal do Segurado, Contracheque, Informe de Rendimentos,
+             Prova de Vida, Ouvidoria, LGPD) ja aparecem no menu principal e na
+             faixa de acesso rapido. Nenhum dado novo foi inventado: telefones,
+             WhatsApp, e-mail e horario sao os mesmos publicados em contato.html
+             e que ja viviam no bloco de contato deste rodape. */
+          titulo: 'Contato',
           links: [
-            { rotulo: 'Portal do Segurado', href: PORTAL_SEGURADO, externo: true },
-            { rotulo: 'Contracheque', href: PORTAL_SEGURADO, externo: true },
-            { rotulo: 'Informe de Rendimentos', href: PORTAL_SEGURADO, externo: true },
-            { rotulo: 'Prova de Vida', href: 'servicos-prova-de-vida.html' },
-            { rotulo: 'Ouvidoria', href: 'ouvidoria.html' },
-            { rotulo: 'LGPD', href: 'instituto-lgpd-privacidade.html' }
+            { rotulo: '(31) 3594-5380', href: 'tel:+553135945380' },
+            { rotulo: '(31) 3595-7828', href: 'tel:+553135957828' },
+            { rotulo: '(31) 9450-9461', href: 'https://api.whatsapp.com/send?phone=5531994509461', externo: true },
+            { rotulo: 'atendimento@ipremb.betim.mg.gov.br',
+              href: 'mailto:atendimento@ipremb.betim.mg.gov.br',
+              classe: 'footer-email' }
           ],
-          /* bloco "Contato" que hoje mora dentro desta mesma coluna */
-          blocoContato: {
-            titulo: 'Contato',
-            links: [
-              { rotulo: '(31) 3594-5380', href: 'tel:+553135945380' },
-              { rotulo: '(31) 3595-7828', href: 'tel:+553135957828' },
-              { rotulo: '(31) 9450-9461', href: 'https://api.whatsapp.com/send?phone=5531994509461', externo: true },
-              { rotulo: 'atendimento@ipremb.betim.mg.gov.br',
-                href: 'mailto:atendimento@ipremb.betim.mg.gov.br',
-                estilo: 'font-size:11.5px;word-break:break-all;' }
-            ],
-            horario: 'Seg–Sex · 9h às 16h30'
-          }
+          horario: 'Seg–Sex · 9h às 16h30'
         }
       ],
       creditos: '© 2026 IPREMB — Praça José Lino da Silva, 144, Brasiléia – Betim/MG · CEP 32600-308 · Todos os direitos reservados.',
       linksFinais: [
         { rotulo: 'Privacidade', href: 'instituto-lgpd-privacidade.html' },
-        { rotulo: 'LGPD', href: 'instituto-lgpd-privacidade.html' },
-        { rotulo: 'Acessibilidade' },
-        { rotulo: 'Mapa do Site' }
+        { rotulo: 'LGPD', href: 'instituto-lgpd-privacidade.html' }
       ]
     }
   };

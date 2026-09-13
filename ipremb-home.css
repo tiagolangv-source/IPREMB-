@@ -70,16 +70,22 @@
 .news .news-excerpt { color:rgba(255,255,255,0.62) !important; }
 .news .news-meta, .news .news-date { color:rgba(255,255,255,0.42) !important; }
 .news .news-read { color:#FECC02 !important; }
-.transparency { background:linear-gradient(135deg,#071829 0%,#0C2050 100%) !important; }
-.transparency .section-label { color:rgba(255,255,255,0.5) !important; }
-.transparency .section-title { color:#fff !important; }
-.transparency .section-title em { color:#FECC02 !important; }
-.transparency .transparency-intro { color:rgba(255,255,255,0.65) !important; }
-.transparency .transparency-item { background:rgba(255,255,255,0.04) !important; border-color:rgba(255,255,255,0.08) !important; }
-.transparency .transparency-item:hover { background:rgba(255,255,255,0.09) !important; }
-.transparency .trans-label { color:#fff !important; }
-.transparency .trans-sub { color:rgba(255,255,255,0.48) !important; }
-.transparency .trans-icon { color:#FECC02 !important; background:rgba(184,147,42,0.12) !important; }
+
+/* -- Prestacao de contas: composicao clara --------------------------------
+   Os overrides escuros desta secao foram removidos para que a camada clara
+   ja existente em ipremb-global.css volte a valer (fundo, cards, bordas,
+   titulo, rotulos e hover). Ficam aqui apenas os ajustes que a base nao
+   cobre: fundo externo em --gray-50, cards em --white e a manutencao do
+   dourado institucional (--gold) nos icones. O destaque do titulo usa
+   --blue-600 por contraste sobre o fundo claro.
+   Sem !important: ipremb-home.css carrega depois de ipremb-global.css. -- */
+.transparency { background: var(--gray-50); }
+.transparency .section-title em { color: var(--blue-600); }
+.transparency-intro { color: var(--gray-600); }
+.transparency-item { background: var(--white); border-color: var(--gray-200); }
+.trans-sub { color: var(--gray-600); }
+.trans-icon { color: var(--gold); background: rgba(184,147,42,0.12); }
+.transparency-item:hover .trans-icon { color: var(--gold); background: rgba(184,147,42,0.22); }
 @media(max-width:900px) {
     .mh-title { font-size:32px; }
     .mh-content { padding:0 24px; }
@@ -103,4 +109,27 @@
   }
 @media (max-width: 380px) {
     .quick-access-inner { grid-template-columns: repeat(4, 1fr); padding: 0 12px; }
+  }
+
+/* -- Compactacao desktop: Noticias e Prestacao de contas ------------------
+   Apenas espacamento (padding, margin, gap e proporcao da area grafica).
+   Nenhum tamanho de fonte e nenhuma largura de card foi alterado.
+   Escopo em min-width:993px para nao tocar no responsivo ja existente
+   (ipremb-global.css ja trata 992px, 768px, 580px e 380px). -- */
+@media (min-width: 993px) {
+    .news.section,
+    .transparency.section { padding: 68px 0; }
+    .news .section-label,
+    .transparency .section-label { margin-bottom: 10px; }
+    .news-head { margin-bottom: 28px; }
+    .news-grid { gap: 16px; }
+    .news-card.featured .news-img { aspect-ratio: 16/9; }
+    .news-body { padding: 16px 20px 18px; }
+    .news-meta { margin-bottom: 8px; }
+    .news-title { margin-bottom: 8px; }
+    .news-read { margin-top: 10px; }
+    .transparency-inner { gap: 56px; }
+    .transparency-intro { margin-top: 12px; margin-bottom: 22px; }
+    .transparency-links { gap: 10px; }
+    .transparency-item { padding: 14px 16px; }
   }

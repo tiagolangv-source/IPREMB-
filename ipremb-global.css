@@ -732,18 +732,11 @@
     background:rgba(255,255,255,0.28); transition:width 0.1s linear;
     border-radius:0 1px 1px 0; z-index:3;
   }
-
-  /* ===== QUICK ACCESS - destaques dos 3 primeiros ===== */
-  .quick-card.priority {
-    background: var(--blue-50);
-    border-bottom: 2px solid var(--blue-200, #BFCFEE);
-  }
-  .quick-card.priority .quick-icon {
-    background: var(--blue-100);
-    color: var(--blue-600);
-  }
-  .quick-card.priority .quick-label { color: var(--blue-700); }
-  .quick-card.priority:hover { background: var(--blue-100); }
+  /* Os 3 primeiros acessos rapidos tinham a classe .priority, que pintava o
+     card de --blue-50 e criava dois fundos diferentes na mesma faixa. A classe
+     saiu do index.html e o bloco de regras foi removido junto para nao deixar
+     seletor orfao capaz de ressuscitar os dois fundos. O azul-claro agora vive
+     so no chip do icone e no hover. */
 
   /* ===== MODAL DE BUSCA ===== */
   .search-modal-overlay {
@@ -877,12 +870,12 @@
   .quick-icon {
     width: 44px;
     height: 44px;
-    background: var(--gray-100);
+    background: var(--blue-50);
     border-radius: 11px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gray-600);
+    color: var(--blue-600);
     transition: background 0.18s, color 0.18s, transform 0.18s;
     flex-shrink: 0;
   }
@@ -1579,17 +1572,20 @@
     color: rgba(255,255,255,0.55);
   }
   .footer-top {
-    padding: 68px 0 52px;
+    padding: 42px 0 32px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 52px;
+    /* marca de volta a 1.5fr: o alargamento para 1.75fr existia so para caber
+       a logo pequena, que saiu. O subtitulo continua em uma linha. A 4a coluna
+       segue folgada (1.15fr) para o e-mail nao quebrar no desktop. */
+    grid-template-columns: 1.5fr 1fr 1fr 1.15fr;
+    gap: 40px;
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   .footer-logo {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 18px;
+    margin-bottom: 13px;
   }
   .footer-logo-icon {
     width: 42px; height: 42px;
@@ -1618,16 +1614,23 @@
   }
   .footer-desc {
     font-size: 13px;
-    line-height: 1.78;
-    margin-bottom: 22px;
+    line-height: 1.68;
+    margin-bottom: 13px;
     color: rgba(255,255,255,0.42);
     font-weight: 400;
-    max-width: 300px;
+    max-width: 340px;
   }
   .footer-social {
     display: flex;
     gap: 8px;
   }
+  /* Instagram fecha a primeira coluna, abaixo da descricao e rente a
+     esquerda. Mantem os 30x30 discretos que vinham da linha da marca. */
+  .footer-brand .footer-social {
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+  .footer-brand .footer-social a { width: 30px; height: 30px; }
   .footer-social a {
     width: 34px; height: 34px;
     background: rgba(255,255,255,0.07);
@@ -1646,12 +1649,12 @@
     color: rgba(255,255,255,0.60);
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 18px;
+    margin-bottom: 11px;
   }
   .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 6px;
   }
   .footer-links a {
     font-size: 12.5px;
@@ -1674,8 +1677,25 @@
   }
   .footer-links a:hover { color: rgba(255,255,255,0.82); }
   .footer-links a:hover::before { background: var(--gold-light); }
+  /* horario de atendimento que fecha a coluna Contato (antigo bloco aninhado) */
+  .footer-horario {
+    margin-top: 10px;
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.32);
+    line-height: 1.6;
+  }
+  /* e-mail institucional: linha unica no desktop; no mobile pode quebrar,
+     mas quebra dentro da caixa — nunca estoura a viewport. */
+  .footer-email {
+    font-size: 11.5px;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  @media (min-width: 993px) {
+    .footer-email { white-space: nowrap; }
+  }
   .footer-bottom {
-    padding: 20px 0;
+    padding: 14px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
