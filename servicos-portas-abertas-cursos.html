@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cursos Gratuitos — IPREMB</title>
-<meta name="description" content="Página destinada à divulgação dos cursos gratuitos do Programa Portas Abertas do IPREMB.">
+<title>Programa IPREMB de Portas Abertas — IPREMB</title>
+<meta name="description" content="Programa IPREMB de Portas Abertas: atividades de convivência, cultura, bem-estar e qualidade de vida para aposentados e pensionistas do IPREMB.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -38,28 +38,326 @@
       <div class="breadcrumb">
       <a href="index.html">Início</a> <span class="breadcrumb-sep">›</span>
       <a href="servicos.html">Serviços</a> <span class="breadcrumb-sep">›</span>
-      <span class="breadcrumb-current">Cursos Gratuitos</span>
+      <span class="breadcrumb-current">IPREMB de Portas Abertas</span>
       </div>
       <button class="btn-back" onclick="window.history.back()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         Voltar
       </button>
     </div>
-    <h1 class="page-title">Cursos Gratuitos</h1>
-    <p class="page-intro">Capacitações oferecidas gratuitamente pelo IPREMB para servidores e comunidade.</p>
+    <h1 class="page-title">IPREMB de Portas Abertas</h1>
+    <p class="page-intro">Convivência, cultura, bem-estar e qualidade de vida.</p>
   </div>
 </section>
 
-<div class="page-body" style="padding:56px 0 80px;">
-  <div class="container" style="max-width:760px;margin:0 auto;">
+<div class="page-body" style="padding:44px 0 80px;">
+  <div class="container">
+
     <style>
-      .cur-card {
+      /* ==========================================================
+         Programa IPREMB de Portas Abertas — estilos locais da pagina
+         Escopo: prefixo .pa-  (cards, selecao e bloco final)
+         Prefixo .cur-  preservado do formulario original.
+         ========================================================== */
+
+      .pa-sr-only {
+        position: absolute; width: 1px; height: 1px;
+        padding: 0; margin: -1px; overflow: hidden;
+        clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+      }
+
+      /* ---- larguras de leitura ---- */
+      .pa-narrow { max-width: 820px; margin: 0 auto; }
+      .pa-wide   { max-width: 760px; margin: 0 auto; }
+      @media (min-width: 1080px) { .pa-wide { max-width: 1180px; } }
+
+      /* ---- apresentacao do programa ----
+         Integrada ao fluxo da pagina: sem caixa, borda ou sombra,
+         apenas texto sobre o fundo da secao. */
+      .pa-intro-wrap { max-width: 940px; margin: 0 auto; }
+      .pa-apresentacao {
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+      .pa-apresentacao p {
+        font-size: 14.5px;
+        color: var(--gray-600);
+        line-height: 1.85;
+      }
+      .pa-apresentacao p + p { margin-top: 14px; }
+      /* destaque do publico-alvo dentro do proprio paragrafo:
+         apenas peso e cor, sem mudar tamanho, caixa ou fundo. */
+      .pa-publico { font-weight: 700; color: var(--blue-900); }
+
+      /* ---- apoio: Servico Social (discreto, ao lado da area de inscricao) ---- */
+      .pa-apoio {
+        margin-top: 40px;
         background: var(--white);
         border: 1px solid var(--gray-200);
-        border-radius: var(--radius-lg);
-        padding: 36px;
-        box-shadow: var(--shadow-sm);
+        border-radius: var(--radius-md);
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
       }
+      .pa-apoio-icone {
+        width: 40px; height: 40px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: #ECFDF5;
+        color: #065F46;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pa-apoio-icone svg { width: 20px; height: 20px; }
+      .pa-apoio-texto { flex: 1 1 260px; }
+      .pa-apoio-titulo {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.01em;
+        margin-bottom: 3px;
+      }
+      .pa-apoio-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+      .pa-apoio-desc strong { font-weight: 700; color: var(--gray-700); }
+      .pa-apoio-link {
+        display: inline-flex;
+        align-items: center;
+        border: 1.5px solid var(--gray-200);
+        border-radius: 8px;
+        padding: 9px 16px;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--blue-700);
+        white-space: nowrap;
+        transition: background 0.18s, border-color 0.18s;
+      }
+      .pa-apoio-link:hover { background: var(--blue-50); border-color: var(--blue-400); }
+      .pa-apoio-link:focus-visible {
+        outline: 3px solid var(--blue-600);
+        outline-offset: 2px;
+        background: var(--blue-50);
+      }
+
+      /* ---- cabecalho da secao de atividades ---- */
+      .pa-head { text-align: center; max-width: 680px; margin: 44px auto 26px; }
+      .pa-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: #ECFDF5;
+        color: #065F46;
+        border: 1px solid rgba(6,95,70,0.16);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 999px;
+        margin-bottom: 10px;
+      }
+      .pa-h2 {
+        font-size: clamp(21px, 2.3vw, 28px);
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.025em;
+        line-height: 1.25;
+      }
+      .pa-head-sub {
+        font-size: 13.5px;
+        color: var(--gray-500);
+        line-height: 1.72;
+        margin-top: 10px;
+      }
+
+      /* ---- grade de atividades ---- */
+      .pa-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+      @media (min-width: 600px)  { .pa-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 1080px) { .pa-grid { grid-template-columns: repeat(5, 1fr); gap: 18px; } }
+
+      .pa-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+        background: var(--white);
+        border: 1.5px solid var(--gray-200);
+        border-radius: var(--radius-md);
+        /* O padding inferior reserva espaco para o selo "SELECIONADA", que e
+           posicionado em absolute. Reservar evita que o card (e toda a linha
+           da grade) mude de altura no momento da selecao. Calculado para o
+           minimo necessario: selo 23px + bottom 11px + 6px de folga. */
+        padding: 20px 20px 40px;
+        font-family: inherit;
+        cursor: pointer;
+        transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s, background 0.18s;
+      }
+      /* HOVER: apontando para a atividade. Deliberadamente mais fraco que o
+         estado selecionado (fundo mais palido, borda translucida, sem anel). */
+      .pa-card:hover {
+        background: #F5F8FF;
+        border-color: rgba(23,73,200,0.45);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+      }
+      /* FOCO POR TECLADO: mesmo realce do hover + contorno, que nao depende
+         de cor para ser percebido. */
+      .pa-card:focus-visible {
+        outline: 3px solid var(--blue-600);
+        outline-offset: 2px;
+        background: #F5F8FF;
+        box-shadow: var(--shadow-md);
+      }
+      /* Area visual fixa da figura: mesma altura em todos os cards,
+         para que os nomes das atividades fiquem alinhados entre si. */
+      .pa-card-figura {
+        width: 112px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        /* centraliza somente a area da figura; nome, descricao e selo
+           permanecem alinhados a esquerda pelo align-items do card. */
+        align-self: center;
+      }
+      .pa-card-figura img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+      /* Compensacao individual pontual: somente as duas figuras que encostam
+         no teto da area e pesavam mais que as demais na renderizacao desktop.
+         As compensacoes positivas da referencia nao se aplicam: aquelas figuras
+         ja ocupam o maximo que a area fixa permite sem corte. */
+      .pa-card[data-atividade="Coral/Canto"] .pa-card-figura img { max-width: 96%; max-height: 96%; }
+      .pa-card[data-atividade="Biscuit"] .pa-card-figura img     { max-width: 95%; max-height: 95%; }
+      .pa-card-nome {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.012em;
+        line-height: 1.3;
+        margin-bottom: 7px;
+      }
+      .pa-card-desc {
+        font-size: 12.5px;
+        color: var(--gray-500);
+        line-height: 1.6;
+      }
+      .pa-card-flag {
+        position: absolute;
+        left: 20px; bottom: 11px;
+        display: none;
+        align-items: center;
+        gap: 5px;
+        background: #ECFDF5;
+        color: #065F46;
+        border: 1px solid rgba(6,95,70,0.20);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        padding: 4px 9px;
+        border-radius: 999px;
+      }
+
+      /* estado selecionado: borda + anel + titulo destacado + selo textual */
+      .pa-card[aria-checked="true"] {
+        border-color: var(--blue-600);
+        background: var(--blue-50);
+        box-shadow: 0 0 0 3px rgba(23,73,200,0.13), var(--shadow-sm);
+      }
+      .pa-card[aria-checked="true"]:hover {
+        border-color: var(--blue-600);
+        background: var(--blue-50);
+        box-shadow: 0 0 0 3px rgba(23,73,200,0.22), var(--shadow-md);
+      }
+      .pa-card[aria-checked="true"] .pa-card-nome { color: var(--blue-700); }
+      .pa-card[aria-checked="true"] .pa-card-desc { color: var(--gray-600); }
+      .pa-card[aria-checked="true"] .pa-card-flag { display: inline-flex; }
+
+      /* ---- zona do formulario ---- */
+      .pa-form-zone { margin-top: 46px; scroll-margin-top: 110px; }
+      .pa-form-card[hidden], .pa-lock[hidden] { display: none; }
+
+      .pa-lock {
+        border: 1.5px dashed var(--gray-300);
+        border-radius: var(--radius-md);
+        background: var(--white);
+        padding: 30px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+      }
+      .pa-lock-icon {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: var(--gray-100);
+        color: var(--gray-500);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .pa-lock-text {
+        font-size: 13.5px;
+        color: var(--gray-600);
+        line-height: 1.7;
+        max-width: 430px;
+      }
+      .pa-lock-text strong { color: var(--gray-900); font-weight: 700; }
+
+      .pa-form-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+      }
+      .pa-sel-bar {
+        background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+        padding: 20px 32px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px 20px;
+      }
+      .pa-sel-label {
+        display: block;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.60);
+        margin-bottom: 4px;
+      }
+      .pa-sel-nome {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+      .pa-sel-hint {
+        font-size: 12px;
+        color: rgba(255,255,255,0.62);
+        line-height: 1.6;
+      }
+      .pa-form-body { padding: 32px 32px 34px; }
+
+      /* ==========================================================
+         Formulario original preservado (classes .cur-*)
+         ========================================================== */
       .cur-section-title {
         font-size: 16px;
         font-weight: 700;
@@ -124,34 +422,6 @@
         border-color: var(--blue-400);
         background: var(--white);
       }
-      .cur-courses-title {
-        font-size: 12.5px;
-        font-weight: 700;
-        color: var(--gray-700);
-        margin: 20px 0 12px;
-        letter-spacing: 0.01em;
-      }
-      .cur-check-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 8px;
-      }
-      .cur-check-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 13.5px;
-        color: var(--gray-700);
-        cursor: pointer;
-      }
-      .cur-check-item input[type="checkbox"] {
-        width: 16px;
-        height: 16px;
-        accent-color: var(--blue-600);
-        cursor: pointer;
-        flex-shrink: 0;
-      }
       .cur-divider { border: none; border-top: 1px solid var(--gray-200); margin: 24px 0 0; }
       .cur-btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
       .cur-btn-primary {
@@ -182,91 +452,226 @@
         letter-spacing: 0.01em;
       }
       .cur-btn-secondary:hover { background: var(--gray-50); border-color: var(--gray-300); }
-      @media(max-width:580px){
+
+      /* ---- bloco final ---- */
+      .pa-cta { margin-top: 58px; }
+      /* Sem botao de acao: o texto ocupa a largura do bloco (encerramento institucional). */
+      .pa-cta .cta-box-text { max-width: 100%; }
+
+      /* ---- responsivo ---- */
+      @media (max-width: 780px) {
+        .pa-apresentacao { padding: 26px 22px 28px; }
+        .pa-sel-bar { padding: 18px 22px; }
+        .pa-form-body { padding: 24px 20px 28px; }
+      }
+      @media (max-width: 580px) {
         .cur-grid { grid-template-columns: 1fr; }
-        .cur-check-grid { grid-template-columns: 1fr 1fr; }
-        .cur-card { padding: 24px 18px; }
         .cur-btn-row { flex-direction: column; }
         .cur-btn-primary, .cur-btn-secondary { width: 100%; }
+        .pa-card { padding: 20px 18px 46px; }
+        .pa-card-flag { left: 18px; }
       }
     </style>
 
-    <div class="cur-card">
-      <div class="cur-section-title">Informações para Contato</div>
-      <p class="cur-intro">Preencha o formulário abaixo para entrar em contato conosco.</p>
-      <p class="cur-intro">Para um melhor atendimento, preencha todos os campos.</p>
+    <!-- ================= APRESENTACAO DO PROGRAMA ================= -->
+    <section class="pa-intro-wrap">
+      <div class="pa-apresentacao fade-up">
+        <div class="section-label" style="margin-bottom:12px;">O programa</div>
+        <p>O Programa IPREMB de Portas Abertas promove atividades voltadas aos <strong class="pa-publico">aposentados, pensionistas e servidores ativos</strong>, criando oportunidades de convivência, aprendizado, cuidado, expressão artística e fortalecimento de vínculos.</p>
+        <p>São diferentes atividades para você cuidar de si, descobrir novos interesses, compartilhar experiências e aproveitar essa fase da vida com mais participação e bem-estar.</p>
+      </div>
+    </section>
 
-      <div class="cur-alert">
-        O preenchimento da ficha não garante a vaga no curso, necessário aguardar contato
-        da assistente social do IPREMB para confirmar a matrícula no curso escolhido.
+    <!-- ================= ATIVIDADES ================= -->
+    <section id="pa-atividades" class="pa-wide" aria-labelledby="pa-atividades-titulo">
+
+      <div class="pa-head fade-up">
+        <span class="pa-tag">10 atividades</span>
+        <h2 id="pa-atividades-titulo" class="pa-h2">Conheça nossas atividades</h2>
+        <p class="pa-head-sub">Escolha a atividade de seu interesse. Ao selecionar um card, o formulário de inscrição é liberado logo abaixo.</p>
       </div>
 
-      <form onsubmit="return false;">
-        <div class="cur-grid">
+      <div class="pa-grid" id="pa-grid" role="radiogroup" aria-labelledby="pa-atividades-titulo">
 
-          <div class="cur-field full">
-            <label class="cur-label" for="cur-nome">Nome <sup>*</sup></label>
-            <input type="text" id="cur-nome" class="cur-input" placeholder="Nome completo">
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="0" data-atividade="Bordado" data-codigo="bordado">
+          <span class="pa-card-figura"><img src="images/portas-abertas/01_bordado.svg" alt="" width="197" height="143"></span>
+          <span class="pa-card-nome">Bordado</span>
+          <span class="pa-card-desc">Criatividade, concentração e convivência por meio da arte artesanal de criar desenhos e figuras em tecido.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Psicanálise" data-codigo="psicanalise">
+          <span class="pa-card-figura"><img src="images/portas-abertas/02_psicanalise.svg" alt="" width="202" height="139"></span>
+          <span class="pa-card-nome">Psicanálise</span>
+          <span class="pa-card-desc">Atendimento individual com espaço de escuta, reflexão e autoconhecimento.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Psicologia" data-codigo="psicologia">
+          <span class="pa-card-figura"><img src="images/portas-abertas/03_psicologia.svg" alt="" width="161" height="122"></span>
+          <span class="pa-card-nome">Psicologia</span>
+          <span class="pa-card-desc">Atendimento individual para acolhimento e cuidado com questões emocionais e situações do cotidiano.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Tertúlia Literária" data-codigo="tertulia-literaria">
+          <span class="pa-card-figura"><img src="images/portas-abertas/04_tertulia_literaria.svg" alt="" width="174" height="123"></span>
+          <span class="pa-card-nome">Tertúlia Literária</span>
+          <span class="pa-card-desc">Leitura, conversa e troca de experiências por meio da literatura.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Violão" data-codigo="violao">
+          <span class="pa-card-figura"><img src="images/portas-abertas/05_violao.svg" alt="" width="203" height="153"></span>
+          <span class="pa-card-nome">Violão</span>
+          <span class="pa-card-desc">Aprendizado musical, concentração, criatividade e socialização.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Coral/Canto" data-codigo="coral-canto">
+          <span class="pa-card-figura"><img src="images/portas-abertas/06_coral_canto.svg" alt="" width="191" height="152"></span>
+          <span class="pa-card-nome">Coral/Canto</span>
+          <span class="pa-card-desc">Música, expressão vocal, integração e momentos de descontração.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Biscuit" data-codigo="biscuit">
+          <span class="pa-card-figura"><img src="images/portas-abertas/07_biscuit.svg" alt="" width="180" height="154"></span>
+          <span class="pa-card-nome">Biscuit</span>
+          <span class="pa-card-desc">Criatividade e habilidade manual por meio da modelagem e produção de peças artesanais em massa fria.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Decoupage" data-codigo="decoupage">
+          <span class="pa-card-figura"><img src="images/portas-abertas/08_decoupage.svg" alt="" width="209" height="155"></span>
+          <span class="pa-card-nome">Decoupage</span>
+          <span class="pa-card-desc">Expressão artística e criatividade por meio da decoração e personalização de objetos.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Biodanza" data-codigo="biodanza">
+          <span class="pa-card-figura"><img src="images/portas-abertas/09_biodanza.svg" alt="" width="192" height="156"></span>
+          <span class="pa-card-nome">Biodanza</span>
+          <span class="pa-card-desc">Música e movimento para promover integração, expressão e bem-estar. Não é necessário saber dançar.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+        <button type="button" class="pa-card" role="radio" aria-checked="false" tabindex="-1" data-atividade="Grupo de Convivência" data-codigo="grupo-de-convivencia">
+          <span class="pa-card-figura"><img src="images/portas-abertas/10_grupo_convivencia.svg" alt="" width="186" height="133"></span>
+          <span class="pa-card-nome">Grupo de Convivência</span>
+          <span class="pa-card-desc">Encontros conduzidos por uma psicóloga e uma artista plástica, utilizando conversas, atividades lúdicas e arte para trabalhar situações do cotidiano de maneira leve, criativa e acolhedora.</span>
+          <span class="pa-card-flag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Selecionada</span>
+        </button>
+
+      </div>
+
+      <p id="pa-status" class="pa-sr-only" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ================= FORMULARIO UNICO ================= -->
+    <section class="pa-narrow" aria-labelledby="pa-form-titulo">
+      <div class="pa-form-zone" id="pa-form-zone">
+
+        <!-- estado inicial: formulario bloqueado -->
+        <div class="pa-lock" id="pa-lock">
+          <span class="pa-lock-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+          <p class="pa-lock-text"><strong>Formulário de inscrição</strong><br>Selecione uma das atividades acima para liberar o formulário.</p>
+        </div>
+
+        <!-- formulario unico, liberado apos a selecao -->
+        <div class="pa-form-card" id="pa-form-card" hidden>
+
+          <div class="pa-sel-bar">
+            <div>
+              <span class="pa-sel-label">Atividade selecionada</span>
+              <span class="pa-sel-nome" id="pa-sel-nome">—</span>
+            </div>
+            <p class="pa-sel-hint">Para trocar, selecione outra atividade acima.</p>
           </div>
 
-          <div class="cur-field">
-            <label class="cur-label" for="cur-email">E-mail <sup>*</sup></label>
-            <input type="email" id="cur-email" class="cur-input" placeholder="seu@email.com.br">
-          </div>
+          <div class="pa-form-body">
+            <div class="cur-section-title" id="pa-form-titulo">Informações para Contato</div>
+            <p class="cur-intro">Preencha o formulário abaixo para solicitar sua inscrição na atividade selecionada.</p>
+            <p class="cur-intro">Para um melhor atendimento, preencha todos os campos.</p>
 
-          <div class="cur-field">
-            <label class="cur-label" for="cur-telefone">Telefone <sup>*</sup></label>
-            <input type="text" id="cur-telefone" class="cur-input" placeholder="(31) 00000-0000">
-          </div>
+            <div class="cur-alert">
+              O preenchimento da ficha não garante a vaga na atividade, necessário aguardar contato
+              da assistente social do IPREMB para confirmar a inscrição na atividade escolhida.
+            </div>
 
-          <div class="cur-field">
-            <label class="cur-label" for="cur-cpf">CPF <sup>*</sup></label>
-            <input type="text" id="cur-cpf" class="cur-input" placeholder="000.000.000-00">
-          </div>
+            <form id="pa-formulario" onsubmit="return false;">
 
-          <div class="cur-field">
-            <label class="cur-label" for="cur-nascimento">Data de nascimento <sup>*</sup></label>
-            <input type="date" id="cur-nascimento" class="cur-input">
-          </div>
+              <input type="hidden" name="atividade" id="pa-atividade">
+              <input type="hidden" name="atividade_codigo" id="pa-atividade-codigo">
 
-          <div class="cur-field full">
-            <label class="cur-label" for="cur-endereco">Endereço <sup>*</sup></label>
-            <input type="text" id="cur-endereco" class="cur-input" placeholder="Rua, número, bairro">
-          </div>
+              <div class="cur-grid">
 
-          <div class="cur-field full">
-            <label class="cur-label" for="cur-vinculo">Vínculo <sup>*</sup></label>
-            <select id="cur-vinculo" class="cur-select">
-              <option value="">Selecione uma opção</option>
-              <option value="aposentado">Aposentado</option>
-              <option value="pensionista">Pensionista</option>
-              <option value="ativo">Ativo</option>
-            </select>
+                <div class="cur-field full">
+                  <label class="cur-label" for="cur-nome">Nome <sup>*</sup></label>
+                  <input type="text" id="cur-nome" name="nome" class="cur-input" placeholder="Nome completo">
+                </div>
+
+                <div class="cur-field">
+                  <label class="cur-label" for="cur-email">E-mail <sup>*</sup></label>
+                  <input type="email" id="cur-email" name="email" class="cur-input" placeholder="seu@email.com.br">
+                </div>
+
+                <div class="cur-field">
+                  <label class="cur-label" for="cur-telefone">Telefone <sup>*</sup></label>
+                  <input type="text" id="cur-telefone" name="telefone" class="cur-input" placeholder="(31) 00000-0000">
+                </div>
+
+                <div class="cur-field full">
+                  <label class="cur-label" for="cur-vinculo">Vínculo <sup>*</sup></label>
+                  <select id="cur-vinculo" name="vinculo" class="cur-select">
+                    <option value="">Selecione uma opção</option>
+                    <option value="aposentado">Aposentado</option>
+                    <option value="pensionista">Pensionista</option>
+                    <option value="ativo">Ativo</option>
+                  </select>
+                </div>
+
+              </div>
+
+              <hr class="cur-divider">
+
+              <div class="cur-btn-row">
+                <button type="submit" class="cur-btn-primary">Enviar inscrição</button>
+                <button type="reset" class="cur-btn-secondary">Limpar Formulário</button>
+              </div>
+            </form>
           </div>
 
         </div>
+      </div>
+    </section>
 
-        <div class="cur-courses-title">Cursos de interesse</div>
-        <div class="cur-check-grid">
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="psicanalise"> Psicanálise</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="psicologia"> Psicologia</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="bordado"> Bordado</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="violao"> Violão</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="coral"> Coral</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="decoupage"> Decoupage</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="biscuit"> Biscuit</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="criatividade"> Grupo de Criatividade</label>
-          <label class="cur-check-item"><input type="checkbox" name="curso" value="biodanza"> Biodanza</label>
+    <!-- ================= MAIS INFORMACOES / SERVICO SOCIAL ================= -->
+    <section class="pa-narrow" aria-labelledby="pa-apoio-titulo">
+      <div class="pa-apoio fade-up">
+        <span class="pa-apoio-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </span>
+        <div class="pa-apoio-texto">
+          <p class="pa-apoio-titulo" id="pa-apoio-titulo">Mais informações</p>
+          <p class="pa-apoio-desc">Fale com o <strong>Serviço Social</strong> pelo WhatsApp:</p>
         </div>
+        <a class="pa-apoio-link" href="https://wa.me/5531982746093" target="_blank" rel="noopener"
+           aria-label="Falar com o Serviço Social no WhatsApp: (31) 98274-6093">(31) 98274-6093</a>
+      </div>
+    </section>
 
-        <hr class="cur-divider">
-
-        <div class="cur-btn-row">
-          <button type="submit" class="cur-btn-primary">Enviar</button>
-          <button type="reset" class="cur-btn-secondary">Limpar Formulário</button>
+    <!-- ================= BLOCO FINAL ================= -->
+    <section class="pa-narrow">
+      <div class="cta-box pa-cta fade-up">
+        <div class="cta-box-text">
+          <h3>Venha fazer parte!</h3>
+          <p>O IPREMB de Portas Abertas é um espaço de encontro, cuidado e novas experiências. Escolha sua atividade, participe e venha viver bons momentos conosco!</p>
         </div>
-      </form>
-    </div>
+      </div>
+    </section>
 
   </div>
 </div>
@@ -279,6 +684,104 @@
 <script src="ipremb-navegacao.js"></script>
 <script src="ipremb-layout.js"></script>
 
+<!-- Selecao de atividade do Programa IPREMB de Portas Abertas (escopo local) -->
+<script>
+(function () {
+  'use strict';
+
+  var grade = document.getElementById('pa-grid');
+  if (!grade) { return; }
+
+  var cards       = Array.prototype.slice.call(grade.querySelectorAll('.pa-card'));
+  var bloqueio    = document.getElementById('pa-lock');
+  var cartaoForm  = document.getElementById('pa-form-card');
+  var zonaForm    = document.getElementById('pa-form-zone');
+  var saidaNome   = document.getElementById('pa-sel-nome');
+  var aviso       = document.getElementById('pa-status');
+  var campoNome   = document.getElementById('pa-atividade');
+  var campoCodigo = document.getElementById('pa-atividade-codigo');
+  var formulario  = document.getElementById('pa-formulario');
+
+  var atividadeAtual = '';
+  var codigoAtual = '';
+
+  function selecionar(card, rolar) {
+    if (!card) { return; }
+
+    var primeiraVez = cartaoForm.hasAttribute('hidden');
+
+    cards.forEach(function (item) {
+      var ativo = (item === card);
+      item.setAttribute('aria-checked', ativo ? 'true' : 'false');
+      item.tabIndex = ativo ? 0 : -1;
+    });
+
+    atividadeAtual = card.getAttribute('data-atividade') || '';
+    codigoAtual = card.getAttribute('data-codigo') || '';
+
+    saidaNome.textContent = atividadeAtual;
+    campoNome.value = atividadeAtual;
+    campoCodigo.value = codigoAtual;
+    aviso.textContent = 'Atividade selecionada: ' + atividadeAtual;
+
+    if (primeiraVez) {
+      bloqueio.hidden = true;
+      cartaoForm.hidden = false;
+    }
+
+    if (rolar && primeiraVez && zonaForm.scrollIntoView) {
+      zonaForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function (evento) {
+      /* evento.detail > 0 identifica clique real (mouse/toque).
+         Ativacao por teclado nao deve mover a rolagem da pagina. */
+      selecionar(card, evento.detail > 0);
+    });
+  });
+
+  grade.addEventListener('keydown', function (evento) {
+    var atual = cards.indexOf(document.activeElement);
+    if (atual === -1) { return; }
+
+    var destino = -1;
+    switch (evento.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        destino = (atual + 1) % cards.length;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        destino = (atual - 1 + cards.length) % cards.length;
+        break;
+      case 'Home':
+        destino = 0;
+        break;
+      case 'End':
+        destino = cards.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    evento.preventDefault();
+    cards[destino].focus();
+    selecionar(cards[destino], false);
+  });
+
+  /* "Limpar Formulario" nao deve apagar a atividade ja escolhida. */
+  if (formulario) {
+    formulario.addEventListener('reset', function () {
+      window.setTimeout(function () {
+        campoNome.value = atividadeAtual;
+        campoCodigo.value = codigoAtual;
+      }, 0);
+    });
+  }
+})();
+</script>
 
 </body>
 </html>

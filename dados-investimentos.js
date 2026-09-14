@@ -106,17 +106,7 @@
         vazio: {
           titulo: 'Nenhum documento publicado',
           descricao: 'Os certificados de regularidade previdenciária serão publicados após emissão pelo Ministério da Previdência Social.'
-        },
-        blocosExtras: [
-          {
-            rotulo: 'Status atual', tipo: 'status',
-            status: {
-              estado: 'pendente',
-              titulo: 'CRP — Aguardando publicação',
-              descricao: 'O certificado será publicado após emissão pelo Ministério da Previdência Social.'
-            }
-          }
-        ]
+        }
       },
 
       /* ------------------------------------------------ Composicao da Carteira */

@@ -34,7 +34,7 @@
         { rotulo: 'Licitações', href: 'transparencia-licitacoes.html', id: 'licitacoes' },
         { rotulo: 'Plano de Contratações Anuais', href: 'transparencia-plano-de-contratacoes-anuais.html', id: 'plano-de-contratacoes-anuais' },
         /* hierarquia institucional real — preservada */
-        { grupo: 'Pró-Gestão', href: 'transparencia-pro-gestao.html', id: 'pro-gestao' },
+        { rotulo: 'Pró-Gestão', href: 'transparencia-pro-gestao.html', id: 'pro-gestao' },
         { rotulo: 'Manuais', href: 'transparencia-pro-gestao-manuais.html', id: 'pro-gestao-manuais' },
         { rotulo: 'Mapeamentos dos Processos', href: 'transparencia-pro-gestao-mapeamento-de-processos.html', id: 'pro-gestao-mapeamento-de-processos' },
         { rotulo: 'Comitê de Ética', href: 'transparencia-pro-gestao-comite-de-etica.html', id: 'pro-gestao-comite-de-etica' }

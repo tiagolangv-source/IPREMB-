@@ -12,6 +12,12 @@
 <!-- Estrutura global compartilhada (Fase 1.15-2) -->
 <link rel="stylesheet" href="ipremb-global.css">
 <link rel="stylesheet" href="ipremb-consulta.css">
+<style>
+  /* Ajuste cirurgico, exclusivo desta pagina: respiro entre o estado vazio
+     de #cdDocs e o bloco de blocosExtras ("Relatorios anuais") logo abaixo.
+     Nao mexe em CSS global. */
+  #cdExtras { margin-top: 30px; }
+</style>
 </head>
 <body data-secao-ativa="Relatórios">
 
@@ -91,6 +97,50 @@
 <script src="ipremb-layout.js"></script>
 <script src="dados-relatorios.js"></script>
 <script src="ipremb-consulta.js"></script>
+
+<!-- Ajuste cirurgico, exclusivo desta pagina: a sidebar contextual (motor
+     global ipremb-consulta.js) decide o item ativo pelo atributo estatico
+     data-assunto da pagina, que nao muda com o hash da URL. Como o novo
+     item "Relatorios Anuais" aponta para a mesma pagina (apenas com hash
+     #cdExtras), so aqui e possivel diferenciar qual dos dois deve ficar
+     ativo. Reaproveita a mesma classe/atributo (.cur / aria-current) que
+     o motor ja usa; nao altera nenhum arquivo global. -->
+<script>
+(function () {
+  'use strict';
+  function aplicarAtivo() {
+    var sidebar = document.getElementById('cdSidebar');
+    if (!sidebar) { return false; }
+    var linkGerenciais = sidebar.querySelector('a[href="relatorios-gerenciais.html"]');
+    var linkAnuais = sidebar.querySelector('a[href="relatorios-gerenciais.html#cdExtras"]');
+    if (!linkGerenciais || !linkAnuais) { return false; }
+    var anuaisAtivo = location.hash === '#cdExtras';
+    linkGerenciais.classList.toggle('cur', !anuaisAtivo);
+    linkAnuais.classList.toggle('cur', anuaisAtivo);
+    if (anuaisAtivo) {
+      linkGerenciais.removeAttribute('aria-current');
+      linkAnuais.setAttribute('aria-current', 'page');
+    } else {
+      linkAnuais.removeAttribute('aria-current');
+      linkGerenciais.setAttribute('aria-current', 'page');
+    }
+    return true;
+  }
+  /* A sidebar e injetada de forma assincrona (dentro de uma Promise) pelo
+     motor global. Nao ha garantia de que ja exista quando este script roda
+     (carga direta na URL com hash e mais rapida que em navegacoes internas
+     subsequentes). Por isso, se ainda nao existir, observa o container ate
+     que o motor injete os links e so entao aplica — sem tocar no motor. */
+  var sidebarEl = document.getElementById('cdSidebar');
+  if (sidebarEl && !aplicarAtivo()) {
+    var obs = new MutationObserver(function () {
+      if (aplicarAtivo()) { obs.disconnect(); }
+    });
+    obs.observe(sidebarEl, { childList: true, subtree: true });
+  }
+  window.addEventListener('hashchange', aplicarAtivo);
+})();
+</script>
 
 </body>
 </html>

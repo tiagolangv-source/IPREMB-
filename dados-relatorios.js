@@ -34,6 +34,7 @@
         { rotulo: 'Relatório de Investimentos', href: 'relatorios-investimentos.html', id: 'investimentos' },
         { rotulo: 'Relatório do Crédito Consignado', href: 'relatorios-credito-consignado.html', id: 'credito-consignado' },
         { rotulo: 'Relatórios Gerenciais', href: 'relatorios-gerenciais.html', id: 'gerenciais' },
+        { rotulo: 'Relatórios Anuais', href: 'relatorios-gerenciais.html#cdExtras', id: 'gerenciais-anuais' },
         { rotulo: 'Relatório de Visitas de Instituições Financeiras', href: 'relatorios-visitas-financeiras.html', id: 'visitas-financeiras' }
       ]
     },
@@ -70,16 +71,7 @@
         vazio: {
           titulo: 'Nenhum documento publicado',
           descricao: 'Os relatórios do crédito consignado do exercício corrente serão publicados conforme disponibilidade.'
-        },
-        blocosExtras: [
-          {
-            rotulo: 'Análise especial', tipo: 'cartoes',
-            cartoes: [
-              { rotulo: 'Análise Evolução Consignado 2023 – 2025',
-                descricao: 'Estudo comparativo multianual', href: null }
-            ]
-          }
-        ]
+        }
       },
 
       /* ------------------------------------------------------- Gerenciais */

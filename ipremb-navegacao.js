@@ -156,6 +156,7 @@
           { rotulo: 'Relatório de Investimentos', href: 'relatorios-investimentos.html' },
           { rotulo: 'Relatório do Crédito Consignado', href: 'relatorios-credito-consignado.html' },
           { rotulo: 'Relatórios Gerenciais', href: 'relatorios-gerenciais.html' },
+          { rotulo: 'Relatórios Anuais', href: 'relatorios-gerenciais.html#cdExtras' },
           { rotulo: 'Relatório de Visitas de Instituições Financeiras', href: 'relatorios-visitas-financeiras.html' }
         ]
       },
