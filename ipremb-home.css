@@ -1,0 +1,135 @@
+/* ============================================================================
+   IPREMB — CSS de conteudo (formularios, FAQ e blocos editoriais)
+   Fase 1.15-7.
+
+   Reune as regras que viviam repetidas no <head> das paginas de Ouvidoria,
+   Servicos e institucionais e que NAO existiam em ipremb-global.css.
+   Extraidas VERBATIM: nenhuma regra foi reescrita ou teve valor alterado.
+   ========================================================================== */
+
+/* -- Faixa de acesso rapido (exclusiva da home: 8 cards em 6 colunas) --
+   Regras restauradas do checkpoint 1aafad2. Na extracao do Bloco 4 a grade
+   de 6 colunas e o span dos cards ficaram para tras e o bloco quebrou. -- */
+.quick-access-inner { grid-template-columns: repeat(6, 1fr); }
+.quick-card { grid-column: span 2; }
+.quick-card:nth-child(4),
+.quick-card:nth-child(5),
+.quick-card:nth-child(6),
+.quick-card:nth-child(7),
+.quick-card:nth-child(8) { border-top: 1px solid var(--gray-200); }
+.quick-card:nth-child(7) { grid-column: 2 / span 2; }
+.quick-card:nth-child(8) { grid-column: 4 / span 2; }
+.main-hero { position:relative; width:100%; overflow:hidden; background:var(--blue-900); }
+.mh-track-wrap { position:relative; overflow:hidden; }
+.mh-track { display:flex; transition:transform 0.65s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
+.mh-slide { min-width:100%; position:relative; min-height:clamp(420px, 55vh, 640px); max-height:700px; height:auto; display:flex; align-items:center; overflow:hidden; }
+.mh-bg { position:absolute; inset:0; }
+.mh-bg-1 { background:linear-gradient(135deg,#091D45 0%,#0E2860 55%,#1749C8 100%); }
+.mh-bg-2 { background:linear-gradient(135deg,#071829 0%,#0A1F4E 55%,#0E3066 100%); }
+.mh-bg-3 { background:linear-gradient(135deg,#0D2348 0%,#123170 55%,#1445A0 100%); }
+.mh-bg-4 { background:linear-gradient(135deg,#091D45 0%,#0B2255 55%,#162C6A 100%); }
+.mh-bg::before {
+    content:''; position:absolute; inset:0;
+    background-image:radial-gradient(circle at 20% 80%,rgba(23,73,200,0.18) 0%,transparent 50%),
+      radial-gradient(circle at 80% 20%,rgba(184,147,42,0.08) 0%,transparent 50%);
+  }
+.mh-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 48px; width:100%; box-sizing:border-box; }
+.mh-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px; padding:6px 16px; margin-bottom:24px;
+    font-size:12px; font-weight:500; color:rgba(255,255,255,0.8); letter-spacing:0.04em;
+  }
+@keyframes mh-pulse { 0%,100%{opacity:1}50%{opacity:0.35} }
+.mh-badge-dot { width:7px; height:7px; border-radius:50%; background:#4ade80; animation:mh-pulse 2s ease-in-out infinite; flex-shrink:0; }
+.mh-title { font-family:'Sora',sans-serif; font-size:44px; font-weight:700; color:#fff; line-height:1.14; margin:0 0 18px; max-width:600px; }
+.mh-title em { font-style:normal; color:#FECC02; }
+.mh-desc { font-size:16.5px; color:rgba(255,255,255,0.7); line-height:1.65; max-width:520px; margin:0 0 32px; }
+.mh-cta { display:flex; gap:12px; flex-wrap:wrap; }
+.mh-arrows { position:absolute; top:50%; transform:translateY(-50%); width:100%; left:0; pointer-events:none; z-index:10; display:flex; justify-content:space-between; padding:0 16px; box-sizing:border-box; }
+.mh-arrow { pointer-events:all; width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.2s,border-color 0.2s; }
+.mh-arrow:hover { background:rgba(255,255,255,0.22); border-color:rgba(255,255,255,0.4); }
+.mh-dots-bar { display:flex; align-items:center; gap:8px; position:absolute; bottom:24px; left:50%; transform:translateX(-50%); z-index:10; }
+.mh-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.3); border:none; cursor:pointer; transition:all 0.3s; padding:0; }
+.mh-dot.active { background:#fff; width:26px; border-radius:4px; }
+.mh-progress { position:absolute; bottom:0; left:0; height:3px; background:var(--gold); width:0%; transition:width 0.1s linear; z-index:11; }
+.hero-stats-strip { background:var(--blue-800); border-bottom:2px solid rgba(255,255,255,0.05); }
+.hero-stats-strip .container { display:flex; justify-content:center; }
+.hss-item { flex:1; padding:22px 24px; text-align:center; border-right:1px solid rgba(255,255,255,0.07); }
+.hss-item:last-child { border-right:none; }
+.hss-value { font-family:'Sora',sans-serif; font-size:20px; font-weight:700; color:#fff; margin-top:4px; }
+.hss-label { font-size:12px; color:rgba(255,255,255,0.48); }
+.news { background:var(--blue-900) !important; }
+.news .section-label { color:rgba(255,255,255,0.5) !important; }
+.news .section-title { color:#fff !important; }
+.news .section-title em { color:#FECC02 !important; }
+.news .news-head .btn { background:transparent !important; border:1.5px solid rgba(255,255,255,0.28) !important; color:rgba(255,255,255,0.78) !important; }
+.news .news-head .btn:hover { background:rgba(255,255,255,0.07) !important; }
+.news .news-card { background:var(--blue-800) !important; border-color:rgba(255,255,255,0.06) !important; }
+.news .news-title { color:#fff !important; }
+.news .news-excerpt { color:rgba(255,255,255,0.62) !important; }
+.news .news-meta, .news .news-date { color:rgba(255,255,255,0.42) !important; }
+.news .news-read { color:#FECC02 !important; }
+
+/* -- Prestacao de contas: composicao clara --------------------------------
+   Os overrides escuros desta secao foram removidos para que a camada clara
+   ja existente em ipremb-global.css volte a valer (fundo, cards, bordas,
+   titulo, rotulos e hover). Ficam aqui apenas os ajustes que a base nao
+   cobre: fundo externo em --gray-50, cards em --white e a manutencao do
+   dourado institucional (--gold) nos icones. O destaque do titulo usa
+   --blue-600 por contraste sobre o fundo claro.
+   Sem !important: ipremb-home.css carrega depois de ipremb-global.css. -- */
+.transparency { background: var(--gray-50); }
+.transparency .section-title em { color: var(--blue-600); }
+.transparency-intro { color: var(--gray-600); }
+.transparency-item { background: var(--white); border-color: var(--gray-200); }
+.trans-sub { color: var(--gray-600); }
+.trans-icon { color: var(--gold); background: rgba(184,147,42,0.12); }
+.transparency-item:hover .trans-icon { color: var(--gold); background: rgba(184,147,42,0.22); }
+@media(max-width:900px) {
+    .mh-title { font-size:32px; }
+    .mh-content { padding:0 24px; }
+  }
+@media(max-width:600px) {
+    .mh-title { font-size:26px; }
+    .mh-desc { font-size:14.5px; }
+    .hero-stats-strip .container { flex-wrap:wrap; }
+    .hss-item { flex:1 1 33%; }
+  }
+/* -- Faixa de acesso rapido: responsivo restaurado do checkpoint 1aafad2 -- */
+@media (max-width: 992px) {
+    .quick-access-inner { grid-template-columns: repeat(6, 1fr); padding: 0 28px; }
+  }
+@media (max-width: 768px) {
+    .quick-access-inner { grid-template-columns: repeat(4, 1fr); padding: 0 20px; }
+    .quick-card:nth-child(7), .quick-card:nth-child(8) { grid-column: span 2; }
+  }
+@media (max-width: 580px) {
+    .quick-access-inner { grid-template-columns: repeat(4, 1fr); padding: 0 16px; }
+  }
+@media (max-width: 380px) {
+    .quick-access-inner { grid-template-columns: repeat(4, 1fr); padding: 0 12px; }
+  }
+
+/* -- Compactacao desktop: Noticias e Prestacao de contas ------------------
+   Apenas espacamento (padding, margin, gap e proporcao da area grafica).
+   Nenhum tamanho de fonte e nenhuma largura de card foi alterado.
+   Escopo em min-width:993px para nao tocar no responsivo ja existente
+   (ipremb-global.css ja trata 992px, 768px, 580px e 380px). -- */
+@media (min-width: 993px) {
+    .news.section,
+    .transparency.section { padding: 68px 0; }
+    .news .section-label,
+    .transparency .section-label { margin-bottom: 10px; }
+    .news-head { margin-bottom: 28px; }
+    .news-grid { gap: 16px; }
+    .news-card.featured .news-img { aspect-ratio: 16/9; }
+    .news-body { padding: 16px 20px 18px; }
+    .news-meta { margin-bottom: 8px; }
+    .news-title { margin-bottom: 8px; }
+    .news-read { margin-top: 10px; }
+    .transparency-inner { gap: 56px; }
+    .transparency-intro { margin-top: 12px; margin-bottom: 22px; }
+    .transparency-links { gap: 10px; }
+    .transparency-item { padding: 14px 16px; }
+  }
