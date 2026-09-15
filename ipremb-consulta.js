@@ -430,11 +430,19 @@
     elDocs.innerHTML = htmlCarregando();
 
     function pintar(res) {
+      /* innerHTML destroi o card focado (navegacao por teclado); se o foco
+         estava dentro de #cdCards, restaura-o no equivalente recem-ativado
+         apos a repintura, em vez de deixa-lo cair para o body. */
+      var restaurarFoco = elCards && elCards.contains(doc.activeElement);
       if (elCards) elCards.innerHTML = htmlCards(assunto, res.valor, win.location.search);
       elDocs.innerHTML = htmlDocumentos(assunto, res);
       if (elRotFiltro) elRotFiltro.innerHTML = esc(assunto.rotuloFiltro || '');
       if (elRotDocs) elRotDocs.innerHTML = rotuloDocs(assunto, res);
       if (elExtras) elExtras.innerHTML = htmlExtras(assunto);
+      if (restaurarFoco) {
+        var novoAtivo = elCards.querySelector('a[aria-current="true"]') || elCards.querySelector('a[data-valor]');
+        if (novoAtivo) novoAtivo.focus();
+      }
     }
 
     function aplicarDaUrl() {

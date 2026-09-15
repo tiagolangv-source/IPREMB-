@@ -66,6 +66,9 @@
 .cns-contact-t{font-size:12px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:12px;}
 .cns-contact-item{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.45;margin-bottom:9px;}
 .cns-contact-item svg{flex-shrink:0;margin-top:1px;}
+/* Documentos ainda nao publicados: estado visual informativo, sem simular
+   download nem apontar para arquivo inexistente. */
+.doc-btn-off{background:var(--gray-100);border:1px solid var(--gray-200);color:var(--gray-400);cursor:not-allowed;}
 @media(max-width:900px){.cns-layout{grid-template-columns:1fr;}}
 </style>
     <div class="cns-layout">
@@ -80,7 +83,7 @@
           <div class="doc-name">Política de Privacidade do IPREMB</div>
           <div class="doc-meta">Versão em vigor — 2024</div>
         </div>
-        <a href="#" class="doc-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar</a>
+        <span class="doc-btn doc-btn-off" aria-disabled="true" title="Documento ainda não disponível para download">Em breve</span>
       </li>
       <li class="doc-item">
         <div class="doc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
@@ -88,7 +91,7 @@
           <div class="doc-name">Aviso de Privacidade ao Servidor</div>
           <div class="doc-meta">Documento informativo — 2024</div>
         </div>
-        <a href="#" class="doc-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar</a>
+        <span class="doc-btn doc-btn-off" aria-disabled="true" title="Documento ainda não disponível para download">Em breve</span>
       </li>
       <li class="doc-item">
         <div class="doc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
@@ -96,7 +99,7 @@
           <div class="doc-name">Política de Segurança da Informação</div>
           <div class="doc-meta">Publicada em 2024</div>
         </div>
-        <a href="#" class="doc-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar</a>
+        <span class="doc-btn doc-btn-off" aria-disabled="true" title="Documento ainda não disponível para download">Em breve</span>
       </li></ul>
     </div>
     <div class="info-block">
@@ -125,7 +128,6 @@
 </div>
 
 <div data-ipremb="rodape"></div>
-<div data-ipremb="busca"></div>
 <div data-ipremb="whatsapp"></div>
 
 <!-- Estrutura global: fonte de navegacao + componentes -->

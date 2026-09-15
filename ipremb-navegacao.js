@@ -181,14 +181,6 @@
       { rotulo: 'Portal do Segurado', href: PORTAL_SEGURADO, externo: true }
     ],
 
-    /* --------------------------------------------------------------- busca */
-    busca: {
-      titulo: 'Buscar no site',
-      placeholder: 'O que você procura?',
-      dica: 'Ex: Contracheque, Prova de Vida, Informe de Rendimentos',
-      aviso: 'Utilize o menu de navegação para encontrar o que procura.'
-    },
-
     /* ------------------------------------------------------------ whatsapp */
     whatsapp: {
       href: 'https://api.whatsapp.com/send?phone=5531994509461&text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+o+IPREMB.',

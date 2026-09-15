@@ -89,7 +89,6 @@
 </div>
 
 <div data-ipremb="rodape"></div>
-<div data-ipremb="busca"></div>
 <div data-ipremb="whatsapp"></div>
 
 <!-- Estrutura global: fonte de navegacao + componentes -->
@@ -139,6 +138,17 @@
     obs.observe(sidebarEl, { childList: true, subtree: true });
   }
   window.addEventListener('hashchange', aplicarAtivo);
+
+  /* O motor global troca de exercicio via pushState (ver ipremb-consulta.js),
+     que nao dispara 'hashchange' nem 'popstate'. Sem isto, o item ativo desta
+     sidebar ficava congelado no estado da carga inicial. #cdCards e repintado
+     pelo motor em toda mudanca de estado (inclusive popstate), entao observa-lo
+     mantem a sidebar sempre sincronizada com a URL atual, sem tocar no motor. */
+  var cardsEl = document.getElementById('cdCards');
+  if (cardsEl) {
+    var obsCards = new MutationObserver(aplicarAtivo);
+    obsCards.observe(cardsEl, { childList: true });
+  }
 })();
 </script>
 

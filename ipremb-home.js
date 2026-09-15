@@ -15,7 +15,11 @@
     var dots = dotsEl ? Array.from(dotsEl.querySelectorAll('.mh-dot')) : [];
     function render() {
       track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+      dots.forEach(function(d, i) {
+        var ativo = i === current;
+        d.classList.toggle('active', ativo);
+        if (ativo) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
+      });
     }
     function startProgress() {
       clearInterval(progTimer); progress = 0;
