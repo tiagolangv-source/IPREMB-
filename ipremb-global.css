@@ -1741,6 +1741,15 @@
   }
 
   /* ===== RESPONSIVE ===== */
+  /* AUD-01 (continuacao): entre ~993px e 1339px o menu desktop nao cabe
+     mais no container (mesmo com o ajuste de espacamento acima), o que
+     empurrava o header-actions para fora e gerava scroll horizontal.
+     Antecipa o breakpoint do menu hamburguer so para o header — as demais
+     regras do breakpoint de 992px (hero, grids, etc.) continuam em 992px. */
+  @media (max-width: 1340px) {
+    nav.main-nav { display: none; }
+    .hamburger { display: flex; }
+  }
   @media (max-width: 1280px) {
     .container { padding: 0 36px; }
     .hero-inner { gap: 56px; }
