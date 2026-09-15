@@ -5,14 +5,14 @@
    Todo o conteudo veio das paginas existentes:
      instituto-fotos.html            -> acervo + anos + descricoes
      instituto-fotos-2026.html       -> album de junho/2026 (titulo e contagem)
-     instituto-fotos-2026-junho.html -> as 9 fotos efetivamente publicadas
+     instituto-fotos-2026-junho.html -> fotos efetivamente publicadas
 
    NADA foi inventado. Anos sem album ficam SEM album (estado vazio legitimo).
 
-   Observacao de acervo: existem 35 arquivos em images/fotos/2026/junho/, mas
-   somente 9 estao publicados na pagina. Os outros 26 nao foram incluidos porque
-   nenhuma pagina os referencia — incluir seria publicar conteudo por conta
-   propria. Ver o relatorio da Fase 1.15-3.
+   Album de junho/2026: as 9 fotos demonstrativas foram removidas na correcao
+   pre-publicacao (decisao do projeto — a galeria definitiva sera alimentada
+   pela integracao FAC). O album fica SEM fotos (estado vazio legitimo) ate
+   a integracao entrar no ar.
 
    Ponto de substituicao futuro (FAC): trocar a origem deste objeto.
    ========================================================================== */
@@ -59,17 +59,7 @@
         titulo: 'Galeria de Junho',
         descricao: null,
         pagina: 'instituto-fotos-2026-junho.html',
-        fotos: [
-          foto('IMG_3599.JPG.jpeg'),
-          foto('IMG_3600.JPG.jpeg'),
-          foto('IMG_3601.JPG.jpeg'),
-          foto('IMG_3602.JPG.jpeg'),
-          foto('IMG_3603.JPG.jpeg'),
-          foto('IMG_3604.JPG.jpeg'),
-          foto('IMG_3605.JPG.jpeg'),
-          foto('IMG_3606.JPG.jpeg'),
-          foto('IMG_3620.JPG.jpeg')
-        ]
+        fotos: []
       }
     ]
   };

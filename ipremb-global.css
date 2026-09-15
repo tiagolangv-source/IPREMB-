@@ -289,7 +289,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 0;
-    gap: 32px;
+    /* AUD-01: reduzido de 32px para os 9 itens + botao caberem sem
+       overflow em 1366/1440px (largura do container e fixa em 1216px
+       nessas resolucoes, ver .container --max-w) */
+    gap: 20px;
   }
   .logo-area {
     display: flex;
@@ -347,9 +350,10 @@
   .nav-link {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 8px 10px;
-    font-size: 12.5px;
+    gap: 3px;
+    /* AUD-01: padding e fonte reduzidos para o menu caber em 1366/1440px */
+    padding: 8px 7px;
+    font-size: 11.5px;
     font-weight: 500;
     color: var(--gray-600);
     border-radius: var(--radius-sm);
@@ -367,7 +371,7 @@
     color: var(--blue-700);
   }
   .nav-link .nav-chevron {
-    width: 12px; height: 12px;
+    width: 10px; height: 10px;
     opacity: 0.40;
     transition: opacity 0.2s, transform 0.2s;
     flex-shrink: 0;
@@ -477,8 +481,14 @@
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
+  }
+  /* AUD-01: botao "Portal do Segurado" ligeiramente mais compacto para
+     caber junto ao menu em 1366/1440px */
+  .header-actions .btn-sm {
+    padding: 8px 14px;
+    font-size: 12.5px;
   }
   .hamburger {
     display: none;
