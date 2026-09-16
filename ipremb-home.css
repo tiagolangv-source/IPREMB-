@@ -133,3 +133,255 @@
     .transparency-links { gap: 10px; }
     .transparency-item { padding: 14px 16px; }
   }
+
+/* ============================================================================
+   HOME MOBILE — Bloco 1: Beneficios e Servicos como lista compacta
+   Escopo: SOMENTE max-width 580px (breakpoint mobile ja usado pela Home em
+   ipremb-global.css: .services-grid, .transparency-links e .contact-cards
+   passam a 1 coluna nesse mesmo ponto). Acima de 580px nada aqui se aplica,
+   portanto o desktop permanece intocado.
+   Arquivo exclusivo do index.html: nenhuma outra pagina e afetada.
+   ========================================================================== */
+@media (max-width: 580px) {
+  .services .services-head { margin-bottom: 22px; }
+  .services .services-grid { gap: 8px; }
+
+  .services .service-card {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 20px;
+    grid-template-areas:
+      "icon name arrow"
+      "icon desc arrow";
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 2px;
+    padding: 12px 14px;
+    min-height: 68px;
+    cursor: pointer;
+  }
+  .services .service-icon {
+    grid-area: icon;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    margin-bottom: 0;
+    align-self: center;
+  }
+  .services .service-name {
+    grid-area: name;
+    font-size: 16px;
+    line-height: 1.25;
+    margin-bottom: 0;
+    align-self: end;
+  }
+  .services .service-desc {
+    grid-area: desc;
+    font-size: 13px;
+    line-height: 1.42;
+    align-self: start;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .services .service-link {
+    grid-area: arrow;
+    align-self: center;
+    justify-content: flex-end;
+    margin-top: 0;
+    gap: 0;
+  }
+  .services .service-link svg { width: 18px; height: 18px; }
+  /* Texto do link preservado no DOM para leitores de tela; no mobile a
+     indicacao visual passa a ser a seta a direita. */
+  .services .service-link-text {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  /* Linha inteira clicavel, sem alterar o HTML nem o destino do link. */
+  .services .service-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+}
+
+/* ============================================================================
+   HOME MOBILE — Bloco 2: Navegacao por Perfil como seletor vertical expansivel
+   O botao .profile-toggle nasce com display:none e SO e exibido dentro de
+   .profile-grid.js-accordion (classe aplicada por ipremb-home.js quando a
+   media query de 580px casa). No desktop o botao nao e renderizado: nao entra
+   na arvore de acessibilidade, nao recebe foco e nao altera o layout.
+   Sem JavaScript o mobile continua exibindo os tres cards completos.
+   ========================================================================== */
+.profile-toggle { display: none; }
+
+@media (max-width: 580px) {
+  .profile-access .profile-grid.js-accordion { margin-top: 24px; gap: 10px; }
+
+  .profile-access .js-accordion .profile-card {
+    padding: 0;
+    border-radius: 14px;
+    cursor: default;
+  }
+  .profile-access .js-accordion .profile-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* O rotulo do perfil passa a ser o proprio botao: o badge e o titulo
+     originais ficariam duplicados na sanfona e por isso sao ocultados aqui.
+     Permanecem no DOM e voltam a ser exibidos acima de 580px. */
+  .profile-access .js-accordion .profile-badge,
+  .profile-access .js-accordion .profile-title { display: none; }
+
+  .profile-access .js-accordion .profile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 64px;
+    padding: 16px;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 14px;
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .profile-access .js-accordion .profile-toggle-title { flex: 1; min-width: 0; }
+  .profile-access .js-accordion .profile-toggle-chevron {
+    flex-shrink: 0;
+    opacity: 0.85;
+    transition: transform 0.2s ease;
+  }
+  /* Estado sinalizado pela ORIENTACAO do chevron (forma), nunca so por cor. */
+  .profile-access .js-accordion .profile-toggle[aria-expanded="false"] .profile-toggle-chevron {
+    transform: rotate(-90deg);
+  }
+  .profile-access .js-accordion .profile-toggle:focus-visible {
+    outline: 3px solid #FECC02;
+    outline-offset: -3px;
+  }
+
+  .profile-access .js-accordion .profile-panel {
+    padding: 0 16px 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .profile-access .js-accordion .profile-card.is-collapsed .profile-panel { display: none; }
+
+  .profile-access .js-accordion .profile-description {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .profile-access .js-accordion .profile-links { gap: 8px; margin-bottom: 16px; }
+  .profile-access .js-accordion .profile-link-item {
+    padding: 12px;
+    font-size: 14px;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+  .profile-access .js-accordion .profile-cta {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-toggle-chevron { transition: none; }
+}
+
+/* ============================================================================
+   HOME MOBILE — Bloco 3: Noticias e Comunicados como lista compacta
+   SEM imagem real (situacao atual): a area grafica deixa de reservar altura e
+   passa a conter apenas a etiqueta de categoria; o texto ocupa a largura toda.
+   COM imagem real (futuro): ipremb-home.js marca o card com .has-thumb e a
+   area grafica vira miniatura de 72x72 com proporcao preservada (object-fit).
+   Tudo dentro de max-width:580px — o desktop segue com os cards atuais.
+   ========================================================================== */
+@media (max-width: 580px) {
+  .news .news-head { margin-bottom: 22px; }
+  .news .news-grid { gap: 10px; }
+
+  /* --- Sem imagem: nenhuma area decorativa vazia --- */
+  .news .news-card .news-img,
+  .news .news-card.featured .news-img {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    background: none;
+    overflow: visible;
+    padding: 14px 16px 0;
+  }
+  .news .news-img-placeholder,
+  .news .news-img-overlay { display: none; }
+  .news .news-img-cat {
+    position: static;
+    top: auto;
+    left: auto;
+    display: inline-block;
+  }
+  .news .news-body { padding: 8px 16px 16px; }
+  .news .news-meta { margin-bottom: 6px; }
+  .news .news-title,
+  .news .news-card.featured .news-title {
+    font-size: 15.5px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .news .news-excerpt { font-size: 13px; line-height: 1.55; }
+  .news .news-read { margin-top: 10px; }
+  /* Item inteiro clicavel, preservando o destino do link existente. */
+  .news .news-card { position: relative; }
+  .news .news-read::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+
+  /* --- Com imagem real: miniatura compacta 72x72 --- */
+  .news .news-card.has-thumb {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-areas:
+      "cat   cat"
+      "thumb body";
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 8px;
+    padding: 14px 16px;
+  }
+  .news .news-card.has-thumb .news-img { display: contents; }
+  .news .news-card.has-thumb .news-img-cat { grid-area: cat; justify-self: start; }
+  .news .news-card.has-thumb .news-img img {
+    grid-area: thumb;
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+  .news .news-card.has-thumb .news-body { grid-area: body; padding: 0; }
+}
