@@ -34,7 +34,7 @@
         { rotulo: 'Relatório de Investimentos', href: 'relatorios-investimentos.html', id: 'investimentos' },
         { rotulo: 'Relatório do Crédito Consignado', href: 'relatorios-credito-consignado.html', id: 'credito-consignado' },
         { rotulo: 'Relatórios Gerenciais', href: 'relatorios-gerenciais.html', id: 'gerenciais' },
-        { rotulo: 'Relatórios Anuais', href: 'relatorios-gerenciais.html#cdExtras', id: 'gerenciais-anuais' },
+        { rotulo: 'Relatórios Anuais', href: 'relatorios-anuais.html', id: 'anuais' },
         { rotulo: 'Relatório de Visitas de Instituições Financeiras', href: 'relatorios-visitas-financeiras.html', id: 'visitas-financeiras' }
       ]
     },
@@ -88,15 +88,20 @@
         vazio: {
           titulo: 'Nenhum documento publicado',
           descricao: 'Selecione um ano ou categoria para visualizar os relatórios gerenciais correspondentes.'
-        },
-        blocosExtras: [
-          {
-            rotulo: 'Relatórios anuais', tipo: 'cartoes',
-            cartoes: [
-              { rotulo: 'Relatórios Anuais', descricao: 'Consolidados anuais de gestão', href: null }
-            ]
-          }
-        ]
+        }
+      },
+
+      /* ------------------------------------------------------ Relatorios Anuais
+         Destino proprio. Antes era um bloco extra dentro de Gerenciais, acessado
+         por relatorios-gerenciais.html#cdExtras: o titulo e o breadcrumb seguiam
+         sendo os de Gerenciais. Mesma forma dos demais assuntos sem filtro desta
+         familia (outros, visitas-financeiras). */
+      {
+        id: 'anuais', nome: 'Relatórios Anuais',
+        filtro: 'nenhum',
+        rotuloDocumentos: 'Documentos publicados',
+        documentos: [],
+        vazio: { titulo: 'Nenhum documento publicado', descricao: null }
       },
 
       /* --------------------------------------------- Relatorio de Investimentos */
