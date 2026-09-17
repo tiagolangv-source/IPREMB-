@@ -471,6 +471,74 @@
         .pa-card { padding: 20px 18px 46px; }
         .pa-card-flag { left: 18px; }
       }
+      /* ---- MOBILE: lista compacta de atividades ----
+         Ajuste exclusivamente de apresentacao: nenhum HTML e nenhum JavaScript
+         foi alterado. A descricao e o selo passam a ser revelados pelo mesmo
+         aria-checked que o script ja mantem, de modo que selecao, radiogroup,
+         navegacao por setas, campos ocultos e formulario continuam intactos.
+         O breakpoint 599px acompanha a grade, que so vira 2 colunas em 600px.
+         Em coluna unica a figura de 112x90 e a reserva de 46px para o selo
+         respondiam por ~1.480px da altura da lista; aqui a figura cai para
+         44x44 e o selo deixa de ser absoluto, aparecendo apenas no card
+         selecionado. */
+      @media (max-width: 599px) {
+        .pa-grid { gap: 10px; }
+
+        /* Linha compacta: figura a esquerda, titulo a direita. O padding
+           inferior reservado ao selo e removido — ele so existe agora dentro
+           do card selecionado, em fluxo normal. */
+        .pa-card {
+          display: grid;
+          grid-template-columns: 44px minmax(0, 1fr);
+          align-items: center;
+          column-gap: 12px;
+          row-gap: 0;
+          padding: 12px 16px;
+          min-height: 68px;
+        }
+        .pa-card-figura {
+          width: 44px;
+          height: 44px;
+          margin: 0;
+          grid-row: 1;
+          grid-column: 1;
+          align-self: center;
+        }
+        .pa-card-nome {
+          grid-row: 1;
+          grid-column: 2;
+          align-self: center;
+          margin: 0;
+          font-size: 15px;
+        }
+        /* Ocultas no estado normal; o conteudo permanece no DOM e volta
+           integralmente quando a atividade e selecionada. */
+        .pa-card-desc { display: none; }
+        .pa-card-flag { position: static; display: none; }
+
+        /* ESTADO SELECIONADO: alem da borda, do fundo e do anel que ja
+           existem, a atividade revela a descricao completa (sem truncar) e o
+           selo textual — a identificacao nunca depende so de cor. */
+        .pa-card[aria-checked="true"] { align-items: start; }
+        .pa-card[aria-checked="true"] .pa-card-figura,
+        .pa-card[aria-checked="true"] .pa-card-nome { align-self: start; }
+        .pa-card[aria-checked="true"] .pa-card-desc {
+          display: block;
+          grid-row: 2;
+          grid-column: 2;
+          margin-top: 6px;
+          font-size: 13px;
+        }
+        .pa-card[aria-checked="true"] .pa-card-flag {
+          display: inline-flex;
+          grid-row: 3;
+          grid-column: 2;
+          justify-self: start;
+          width: max-content;
+          margin-top: 8px;
+        }
+      }
+
     </style>
 
     <!-- ================= APRESENTACAO DO PROGRAMA ================= -->

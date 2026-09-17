@@ -385,3 +385,152 @@
   }
   .news .news-card.has-thumb .news-body { grid-area: body; padding: 0; }
 }
+
+/* ============================================================================
+   POPUP INSTITUCIONAL — PROVA DE VIDA (exclusivo da Home)
+   Camada independente sobre a pagina. Nenhuma regra global foi alterada:
+   todo o bloco esta isolado sob o prefixo .pv-popup e so existe nesta folha,
+   que e carregada apenas pelo index.html.
+
+   Z-INDEX: o maior valor usado no projeto e 999 (.mobile-menu); o WhatsApp
+   flutuante usa 900 e o header 100. O overlay adota 10000 e por isso fica
+   acima de todos eles sem precisar mexer no z-index desses componentes.
+
+   LARGURA: a arte tem 622x778px (proporcao 0.7995). Em vez de recortar ou
+   deformar, a largura do modal e derivada da altura disponivel, garantindo
+   que a imagem inteira caiba na viewport preservando a proporcao original.
+   ========================================================================== */
+.pv-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.pv-popup[hidden] { display: none; }
+
+.pv-popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 29, 69, 0.66);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.pv-popup-dialog {
+  --pv-altura: 88vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(560px, 92vw, calc((var(--pv-altura) - 104px) * 0.7995));
+  max-height: var(--pv-altura);
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 70px rgba(9, 29, 69, 0.42);
+  overflow: hidden;
+  animation: pv-popup-entrada 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Em celulares a barra de endereco altera o vh; svh evita estouro vertical. */
+@supports (height: 1svh) {
+  .pv-popup-dialog { --pv-altura: 88svh; }
+}
+@keyframes pv-popup-entrada {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pv-popup-dialog { animation: none; }
+}
+
+/* Titulo acessivel: lido por leitores de tela, invisivel na tela. */
+.pv-popup-titulo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.pv-popup-fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-200);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue-900);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(9, 29, 69, 0.18);
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+}
+.pv-popup-fechar:hover { background: var(--blue-900); color: var(--white); }
+.pv-popup-fechar:active { transform: scale(0.94); }
+.pv-popup-fechar:focus-visible {
+  outline: 2px solid var(--blue-400);
+  outline-offset: 2px;
+}
+
+/* Rolagem apenas vertical e apenas em telas muito baixas: nunca horizontal. */
+.pv-popup-corpo {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pv-popup-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.pv-popup-cta {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  background: var(--blue-600);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(23, 73, 200, 0.24);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.pv-popup-cta:hover {
+  background: var(--blue-700);
+  box-shadow: 0 4px 18px rgba(23, 73, 200, 0.36);
+}
+.pv-popup-cta:focus-visible {
+  outline: 2px solid var(--blue-400);
+  outline-offset: 3px;
+}
+
+@media (max-width: 580px) {
+  .pv-popup { padding: 10px; }
+  .pv-popup-dialog { width: min(92vw, calc((var(--pv-altura) - 96px) * 0.7995)); }
+  .pv-popup-cta { margin: 12px; padding: 12px 14px; font-size: 13px; }
+}

@@ -288,6 +288,10 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             Empréstimo Consignado
           </a>
+          <a href="https://ipremb.facsistemas.com.br/aberturaDeProcesso/" target="_blank" rel="noopener" class="profile-link-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            Abertura de Processo
+          </a>
         </div>
         <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="profile-cta">
           Ir para minha área
@@ -326,6 +330,10 @@
           <a href="contato.html" class="profile-link-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12"/><path d="M1.61 3.38 2 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37"/></svg>
             Falar com o instituto
+          </a>
+          <a href="https://ipremb.facsistemas.com.br/aberturaDeProcesso/" target="_blank" rel="noopener" class="profile-link-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            Abertura de Processo
           </a>
         </div>
         <a href="https://ipremb.mg.gov.br/facServidor/" target="_blank" rel="noopener" class="profile-cta">
@@ -668,6 +676,28 @@
 
 <div data-ipremb="rodape"></div>
 <div data-ipremb="whatsapp"></div>
+
+<!-- ============================================================
+     POPUP INSTITUCIONAL — PROVA DE VIDA (exclusivo da Home)
+     Camada independente sobre a pagina. Abre uma vez por sessao,
+     controlada em ipremb-home.js. Estilos em ipremb-home.css.
+     ============================================================ -->
+<div class="pv-popup" id="pvPopup" hidden>
+  <div class="pv-popup-overlay" data-pv-fechar></div>
+  <div class="pv-popup-dialog" role="dialog" aria-modal="true" aria-labelledby="pvPopupTitulo">
+    <h2 class="pv-popup-titulo" id="pvPopupTitulo">Prova de Vida IPREMB</h2>
+    <button type="button" class="pv-popup-fechar" id="pvPopupFechar" aria-label="Fechar aviso de Prova de Vida">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="pv-popup-corpo">
+      <img class="pv-popup-img" src="images/comunicados/prova-de-vida-popup.png" width="622" height="778" alt="Prova de Vida do IPREMB: aposentados e pensionistas devem realizar a prova de vida anualmente, no mês de seu aniversário, pelo aplicativo Ipremb (Android e iOS) ou presencialmente na sede do IPREMB.">
+      <a class="pv-popup-cta" href="servicos-prova-de-vida.html">
+        Saiba mais sobre a Prova de Vida
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- Estrutura global: fonte de navegacao + componentes -->
 <script src="ipremb-navegacao.js"></script>

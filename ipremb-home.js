@@ -127,3 +127,90 @@
       if (img) card.classList.add('has-thumb');
     });
   })();
+
+/* ============================================================================
+   IPREMB — Popup institucional da Prova de Vida (exclusivo da Home)
+   Abre uma unica vez por sessao do navegador. O controle usa sessionStorage;
+   se o armazenamento estiver indisponivel (modo restrito, cookies bloqueados),
+   o site continua funcionando normalmente e o popup apenas deixa de lembrar
+   que ja foi visto naquela sessao.
+
+   Acessibilidade: role="dialog" + aria-modal ja estao no HTML; aqui cuidamos
+   do foco inicial, do ciclo de Tab dentro do modal, do ESC e da devolucao do
+   foco ao elemento anterior. Nada fora do modal e alterado de forma
+   permanente: o bloqueio de rolagem restaura o valor original ao fechar.
+   ========================================================================== */
+(function() {
+    var CHAVE = 'ipremb_prova_vida_popup_2026';
+    var popup = document.getElementById('pvPopup');
+    if (!popup) return;
+
+    var dialog = popup.querySelector('.pv-popup-dialog');
+    var btnFechar = document.getElementById('pvPopupFechar');
+    var overlay = popup.querySelector('[data-pv-fechar]');
+    var focoAnterior = null;
+    var scrollAnterior = '';
+    var aberto = false;
+
+    /* sessionStorage pode lancar excecao antes mesmo de ser lido. */
+    function jaVisto() {
+      try { return window.sessionStorage.getItem(CHAVE) === '1'; }
+      catch (e) { return false; }
+    }
+    function marcarVisto() {
+      try { window.sessionStorage.setItem(CHAVE, '1'); }
+      catch (e) { /* segue sem memoria de sessao */ }
+    }
+
+    function focaveis() {
+      return Array.prototype.filter.call(
+        dialog.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
+        function(el) { return !el.disabled && el.offsetParent !== null; }
+      );
+    }
+
+    function aoTeclar(ev) {
+      if (ev.key === 'Escape' || ev.key === 'Esc') { ev.preventDefault(); fechar(); return; }
+      if (ev.key !== 'Tab') return;
+      var itens = focaveis();
+      if (!itens.length) { ev.preventDefault(); return; }
+      var primeiro = itens[0], ultimo = itens[itens.length - 1];
+      if (ev.shiftKey && document.activeElement === primeiro) { ev.preventDefault(); ultimo.focus(); }
+      else if (!ev.shiftKey && document.activeElement === ultimo) { ev.preventDefault(); primeiro.focus(); }
+      else if (!dialog.contains(document.activeElement)) { ev.preventDefault(); primeiro.focus(); }
+    }
+
+    function abrir() {
+      if (aberto) return;
+      aberto = true;
+      focoAnterior = document.activeElement;
+      scrollAnterior = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      popup.hidden = false;
+      if (btnFechar) btnFechar.focus();
+      document.addEventListener('keydown', aoTeclar, true);
+    }
+
+    function fechar() {
+      if (!aberto) return;
+      aberto = false;
+      document.removeEventListener('keydown', aoTeclar, true);
+      popup.hidden = true;
+      /* Restaura exatamente o estado anterior: nada de classe presa. */
+      if (scrollAnterior) { document.body.style.overflow = scrollAnterior; }
+      else { document.body.style.removeProperty('overflow'); }
+      marcarVisto();
+      if (focoAnterior && typeof focoAnterior.focus === 'function' &&
+          document.body.contains(focoAnterior)) {
+        focoAnterior.focus();
+      }
+    }
+
+    if (btnFechar) btnFechar.addEventListener('click', fechar);
+    if (overlay) overlay.addEventListener('click', fechar);
+    /* O link "Saiba mais" navega para outra pagina: encerra o estado antes. */
+    var cta = popup.querySelector('.pv-popup-cta');
+    if (cta) cta.addEventListener('click', function() { marcarVisto(); });
+
+    if (!jaVisto()) { abrir(); }
+  })();
