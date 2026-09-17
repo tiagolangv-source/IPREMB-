@@ -1,7 +1,6 @@
 /* ============================================================================
    IPREMB — Piloto Fase 1.15-1: consulta documental por exercicio
    Assunto piloto: Avaliacao Atuarial
-   Regras de origem: FASE_1_15_0_CONTRATOS_E_REGRAS.md
 
    CAMADA DE LOGICA + APRESENTACAO GERADA.
    Nao contem dados institucionais (ver dados-avaliacao-atuarial.js).

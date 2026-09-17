@@ -14,8 +14,7 @@
    <div data-galeria="album" data-album="2026-junho"></div> — o mesmo modelo
    tecnico e reutilizado, sem duplicar markup.
 
-   Regras de URL e historico seguem o contrato aprovado no piloto
-   (FASE_1_15_0_CONTRATOS_E_REGRAS.md, secoes 3 a 5):
+   Regras de URL e historico seguem o contrato aprovado no piloto:
      parametro invalido nao quebra a pagina, cai no nivel valido mais proximo
      e a URL e normalizada por replaceState.
 

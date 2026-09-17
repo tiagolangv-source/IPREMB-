@@ -10,9 +10,6 @@
    Um assunto continua sendo um destino proprio. O que deixa de crescer e a
    quantidade de HTML por periodo.
 
-   Regras de URL, historico, parametros invalidos e estados seguem
-   FASE_1_15_0_CONTRATOS_E_REGRAS.md (secoes 2 a 5).
-
    COMO USAR numa pagina:
      <div data-consulta="normativos" data-assunto="portarias-de-beneficios"></div>
      <script src="dados-normativos.js"></script>

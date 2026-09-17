@@ -1,6 +1,6 @@
 /* ============================================================================
    IPREMB — Dados da consulta documental: Avaliacao Atuarial
-   Fase 1.15-1 (piloto). Contrato definido em FASE_1_15_0_CONTRATOS_E_REGRAS.md
+   Fase 1.15-1 (piloto).
 
    CAMADA DE DADOS. Este arquivo NAO contem HTML, CSS, classes, icones nem
    qualquer texto de interface. Somente conteudo.
